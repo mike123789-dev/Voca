@@ -1,0 +1,615 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		51E5EA2B25A1FC89008A8034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA2A25A1FC89008A8034 /* AppDelegate.swift */; };
+		51E5EA2D25A1FC89008A8034 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA2C25A1FC89008A8034 /* SceneDelegate.swift */; };
+		51E5EA2F25A1FC89008A8034 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA2E25A1FC89008A8034 /* ViewController.swift */; };
+		51E5EA3225A1FC89008A8034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E5EA3025A1FC89008A8034 /* Main.storyboard */; };
+		51E5EA3525A1FC89008A8034 /* Voca.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA3325A1FC89008A8034 /* Voca.xcdatamodeld */; };
+		51E5EA3725A1FC8C008A8034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51E5EA3625A1FC8C008A8034 /* Assets.xcassets */; };
+		51E5EA3A25A1FC8C008A8034 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E5EA3825A1FC8C008A8034 /* LaunchScreen.storyboard */; };
+		51E5EA4525A1FC8C008A8034 /* VocaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA4425A1FC8C008A8034 /* VocaTests.swift */; };
+		51E5EA5025A1FC8C008A8034 /* VocaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA4F25A1FC8C008A8034 /* VocaUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		51E5EA4125A1FC8C008A8034 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 51E5EA1F25A1FC89008A8034 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 51E5EA2625A1FC89008A8034;
+			remoteInfo = Voca;
+		};
+		51E5EA4C25A1FC8C008A8034 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 51E5EA1F25A1FC89008A8034 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 51E5EA2625A1FC89008A8034;
+			remoteInfo = Voca;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		51E5EA2725A1FC89008A8034 /* Voca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voca.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		51E5EA2A25A1FC89008A8034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		51E5EA2C25A1FC89008A8034 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		51E5EA2E25A1FC89008A8034 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		51E5EA3125A1FC89008A8034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		51E5EA3425A1FC89008A8034 /* Voca.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Voca.xcdatamodel; sourceTree = "<group>"; };
+		51E5EA3625A1FC8C008A8034 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		51E5EA3925A1FC8C008A8034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		51E5EA3B25A1FC8C008A8034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51E5EA4025A1FC8C008A8034 /* VocaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		51E5EA4425A1FC8C008A8034 /* VocaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaTests.swift; sourceTree = "<group>"; };
+		51E5EA4625A1FC8C008A8034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51E5EA4B25A1FC8C008A8034 /* VocaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		51E5EA4F25A1FC8C008A8034 /* VocaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaUITests.swift; sourceTree = "<group>"; };
+		51E5EA5125A1FC8C008A8034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		51E5EA2425A1FC89008A8034 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E5EA3D25A1FC8C008A8034 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E5EA4825A1FC8C008A8034 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		51E5EA1E25A1FC89008A8034 = {
+			isa = PBXGroup;
+			children = (
+				51E5EA2925A1FC89008A8034 /* Voca */,
+				51E5EA4325A1FC8C008A8034 /* VocaTests */,
+				51E5EA4E25A1FC8C008A8034 /* VocaUITests */,
+				51E5EA2825A1FC89008A8034 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		51E5EA2825A1FC89008A8034 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				51E5EA2725A1FC89008A8034 /* Voca.app */,
+				51E5EA4025A1FC8C008A8034 /* VocaTests.xctest */,
+				51E5EA4B25A1FC8C008A8034 /* VocaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		51E5EA2925A1FC89008A8034 /* Voca */ = {
+			isa = PBXGroup;
+			children = (
+				51E5EA2A25A1FC89008A8034 /* AppDelegate.swift */,
+				51E5EA2C25A1FC89008A8034 /* SceneDelegate.swift */,
+				51E5EA2E25A1FC89008A8034 /* ViewController.swift */,
+				51E5EA3025A1FC89008A8034 /* Main.storyboard */,
+				51E5EA3625A1FC8C008A8034 /* Assets.xcassets */,
+				51E5EA3825A1FC8C008A8034 /* LaunchScreen.storyboard */,
+				51E5EA3B25A1FC8C008A8034 /* Info.plist */,
+				51E5EA3325A1FC89008A8034 /* Voca.xcdatamodeld */,
+			);
+			path = Voca;
+			sourceTree = "<group>";
+		};
+		51E5EA4325A1FC8C008A8034 /* VocaTests */ = {
+			isa = PBXGroup;
+			children = (
+				51E5EA4425A1FC8C008A8034 /* VocaTests.swift */,
+				51E5EA4625A1FC8C008A8034 /* Info.plist */,
+			);
+			path = VocaTests;
+			sourceTree = "<group>";
+		};
+		51E5EA4E25A1FC8C008A8034 /* VocaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				51E5EA4F25A1FC8C008A8034 /* VocaUITests.swift */,
+				51E5EA5125A1FC8C008A8034 /* Info.plist */,
+			);
+			path = VocaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		51E5EA2625A1FC89008A8034 /* Voca */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51E5EA5425A1FC8C008A8034 /* Build configuration list for PBXNativeTarget "Voca" */;
+			buildPhases = (
+				51E5EA2325A1FC89008A8034 /* Sources */,
+				51E5EA2425A1FC89008A8034 /* Frameworks */,
+				51E5EA2525A1FC89008A8034 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Voca;
+			productName = Voca;
+			productReference = 51E5EA2725A1FC89008A8034 /* Voca.app */;
+			productType = "com.apple.product-type.application";
+		};
+		51E5EA3F25A1FC8C008A8034 /* VocaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51E5EA5725A1FC8C008A8034 /* Build configuration list for PBXNativeTarget "VocaTests" */;
+			buildPhases = (
+				51E5EA3C25A1FC8C008A8034 /* Sources */,
+				51E5EA3D25A1FC8C008A8034 /* Frameworks */,
+				51E5EA3E25A1FC8C008A8034 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				51E5EA4225A1FC8C008A8034 /* PBXTargetDependency */,
+			);
+			name = VocaTests;
+			productName = VocaTests;
+			productReference = 51E5EA4025A1FC8C008A8034 /* VocaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		51E5EA4A25A1FC8C008A8034 /* VocaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 51E5EA5A25A1FC8C008A8034 /* Build configuration list for PBXNativeTarget "VocaUITests" */;
+			buildPhases = (
+				51E5EA4725A1FC8C008A8034 /* Sources */,
+				51E5EA4825A1FC8C008A8034 /* Frameworks */,
+				51E5EA4925A1FC8C008A8034 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				51E5EA4D25A1FC8C008A8034 /* PBXTargetDependency */,
+			);
+			name = VocaUITests;
+			productName = VocaUITests;
+			productReference = 51E5EA4B25A1FC8C008A8034 /* VocaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		51E5EA1F25A1FC89008A8034 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					51E5EA2625A1FC89008A8034 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+					51E5EA3F25A1FC8C008A8034 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 51E5EA2625A1FC89008A8034;
+					};
+					51E5EA4A25A1FC8C008A8034 = {
+						CreatedOnToolsVersion = 12.3;
+						TestTargetID = 51E5EA2625A1FC89008A8034;
+					};
+				};
+			};
+			buildConfigurationList = 51E5EA2225A1FC89008A8034 /* Build configuration list for PBXProject "Voca" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 51E5EA1E25A1FC89008A8034;
+			productRefGroup = 51E5EA2825A1FC89008A8034 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				51E5EA2625A1FC89008A8034 /* Voca */,
+				51E5EA3F25A1FC8C008A8034 /* VocaTests */,
+				51E5EA4A25A1FC8C008A8034 /* VocaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		51E5EA2525A1FC89008A8034 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51E5EA3A25A1FC8C008A8034 /* LaunchScreen.storyboard in Resources */,
+				51E5EA3725A1FC8C008A8034 /* Assets.xcassets in Resources */,
+				51E5EA3225A1FC89008A8034 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E5EA3E25A1FC8C008A8034 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E5EA4925A1FC8C008A8034 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		51E5EA2325A1FC89008A8034 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51E5EA2F25A1FC89008A8034 /* ViewController.swift in Sources */,
+				51E5EA2B25A1FC89008A8034 /* AppDelegate.swift in Sources */,
+				51E5EA3525A1FC89008A8034 /* Voca.xcdatamodeld in Sources */,
+				51E5EA2D25A1FC89008A8034 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E5EA3C25A1FC8C008A8034 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51E5EA4525A1FC8C008A8034 /* VocaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		51E5EA4725A1FC8C008A8034 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				51E5EA5025A1FC8C008A8034 /* VocaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		51E5EA4225A1FC8C008A8034 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 51E5EA2625A1FC89008A8034 /* Voca */;
+			targetProxy = 51E5EA4125A1FC8C008A8034 /* PBXContainerItemProxy */;
+		};
+		51E5EA4D25A1FC8C008A8034 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 51E5EA2625A1FC89008A8034 /* Voca */;
+			targetProxy = 51E5EA4C25A1FC8C008A8034 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		51E5EA3025A1FC89008A8034 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				51E5EA3125A1FC89008A8034 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		51E5EA3825A1FC8C008A8034 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				51E5EA3925A1FC8C008A8034 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		51E5EA5225A1FC8C008A8034 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		51E5EA5325A1FC8C008A8034 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		51E5EA5525A1FC8C008A8034 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = Voca/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Codesquad.Voca;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		51E5EA5625A1FC8C008A8034 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = Voca/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Codesquad.Voca;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		51E5EA5825A1FC8C008A8034 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = VocaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Codesquad.VocaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Voca.app/Voca";
+			};
+			name = Debug;
+		};
+		51E5EA5925A1FC8C008A8034 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = VocaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Codesquad.VocaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Voca.app/Voca";
+			};
+			name = Release;
+		};
+		51E5EA5B25A1FC8C008A8034 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = VocaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Codesquad.VocaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Voca;
+			};
+			name = Debug;
+		};
+		51E5EA5C25A1FC8C008A8034 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = VocaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.Codesquad.VocaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Voca;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		51E5EA2225A1FC89008A8034 /* Build configuration list for PBXProject "Voca" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51E5EA5225A1FC8C008A8034 /* Debug */,
+				51E5EA5325A1FC8C008A8034 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		51E5EA5425A1FC8C008A8034 /* Build configuration list for PBXNativeTarget "Voca" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51E5EA5525A1FC8C008A8034 /* Debug */,
+				51E5EA5625A1FC8C008A8034 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		51E5EA5725A1FC8C008A8034 /* Build configuration list for PBXNativeTarget "VocaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51E5EA5825A1FC8C008A8034 /* Debug */,
+				51E5EA5925A1FC8C008A8034 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		51E5EA5A25A1FC8C008A8034 /* Build configuration list for PBXNativeTarget "VocaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				51E5EA5B25A1FC8C008A8034 /* Debug */,
+				51E5EA5C25A1FC8C008A8034 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		51E5EA3325A1FC89008A8034 /* Voca.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				51E5EA3425A1FC89008A8034 /* Voca.xcdatamodel */,
+			);
+			currentVersion = 51E5EA3425A1FC89008A8034 /* Voca.xcdatamodel */;
+			path = Voca.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 51E5EA1F25A1FC89008A8034 /* Project object */;
+}
