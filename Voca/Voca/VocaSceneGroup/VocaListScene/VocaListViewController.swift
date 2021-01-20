@@ -8,9 +8,19 @@
 import UIKit
 
 class VocaListViewController: UIViewController {
-
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    let viewModel = VocaListViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    @IBAction func didTapEditButton(_ sender: Any) {
+    }
+    
+    @IBAction func didTapAddButton(_ sender: Any) {
+    }
+    
 }

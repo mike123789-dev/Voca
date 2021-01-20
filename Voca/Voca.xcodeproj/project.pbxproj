@@ -12,6 +12,7 @@
 		51ADDEA825B84A3900E9CA18 /* VocaBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEA525B84A3900E9CA18 /* VocaBrain.swift */; };
 		51ADDEB525B84B5B00E9CA18 /* VocaListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEB425B84B5B00E9CA18 /* VocaListViewModel.swift */; };
 		51ADDEBD25B84B7000E9CA18 /* VocaListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEBC25B84B7000E9CA18 /* VocaListViewController.swift */; };
+		51ADDEC225B84F7500E9CA18 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEC125B84F7500E9CA18 /* TestData.swift */; };
 		51E5EA2B25A1FC89008A8034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA2A25A1FC89008A8034 /* AppDelegate.swift */; };
 		51E5EA2D25A1FC89008A8034 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA2C25A1FC89008A8034 /* SceneDelegate.swift */; };
 		51E5EA3225A1FC89008A8034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E5EA3025A1FC89008A8034 /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		51ADDEA525B84A3900E9CA18 /* VocaBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaBrain.swift; sourceTree = "<group>"; };
 		51ADDEB425B84B5B00E9CA18 /* VocaListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaListViewModel.swift; sourceTree = "<group>"; };
 		51ADDEBC25B84B7000E9CA18 /* VocaListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaListViewController.swift; sourceTree = "<group>"; };
+		51ADDEC125B84F7500E9CA18 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		51E5EA2725A1FC89008A8034 /* Voca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E5EA2A25A1FC89008A8034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51E5EA2C25A1FC89008A8034 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				51E5EA3025A1FC89008A8034 /* Main.storyboard */,
 				51E5EA3825A1FC8C008A8034 /* LaunchScreen.storyboard */,
 				51E5EA3B25A1FC8C008A8034 /* Info.plist */,
+				51ADDEC125B84F7500E9CA18 /* TestData.swift */,
 				51E5EA3625A1FC8C008A8034 /* Assets.xcassets */,
 				51E5EA3325A1FC89008A8034 /* Voca.xcdatamodeld */,
 			);
@@ -321,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51ADDEC225B84F7500E9CA18 /* TestData.swift in Sources */,
 				51ADDEB525B84B5B00E9CA18 /* VocaListViewModel.swift in Sources */,
 				51ADDEA725B84A3900E9CA18 /* VocaSection.swift in Sources */,
 				51E5EA2B25A1FC89008A8034 /* AppDelegate.swift in Sources */,

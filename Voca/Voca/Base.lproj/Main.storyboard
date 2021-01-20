@@ -5,24 +5,68 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--단어-->
+        <!--Voca List View Controller-->
         <scene sceneID="m2c-5k-huk">
             <objects>
                 <viewController id="BC6-dO-BEx" customClass="VocaListViewController" customModule="Voca" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NSV-5p-BXE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sic-gm-SEV">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hzX-ci-Dp2">
+                                    <size key="itemSize" width="328" height="136"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xjC-Rd-E2B">
+                                        <rect key="frame" x="43" y="0.0" width="328" height="136"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aBy-1b-Frm">
+                                            <rect key="frame" x="0.0" y="0.0" width="328" height="136"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="328" height="136"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="pfd-mX-M9a"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sic-gm-SEV" firstAttribute="leading" secondItem="pfd-mX-M9a" secondAttribute="leading" id="4fv-SR-xU8"/>
+                            <constraint firstItem="pfd-mX-M9a" firstAttribute="trailing" secondItem="sic-gm-SEV" secondAttribute="trailing" id="coe-4O-TbB"/>
+                            <constraint firstItem="sic-gm-SEV" firstAttribute="top" secondItem="NSV-5p-BXE" secondAttribute="topMargin" id="fIe-kT-dnl"/>
+                            <constraint firstItem="pfd-mX-M9a" firstAttribute="bottom" secondItem="sic-gm-SEV" secondAttribute="bottom" id="lNh-ze-B9m"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="단어" id="pe7-pn-9bf"/>
+                    <navigationItem key="navigationItem" id="6DV-Xg-irP">
+                        <barButtonItem key="leftBarButtonItem" title="편집" id="s85-ta-WhM">
+                            <connections>
+                                <action selector="didTapEditButton:" destination="BC6-dO-BEx" id="eLq-oE-jhO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="단어 추가" id="rf1-yd-Dqs">
+                            <connections>
+                                <action selector="didTapAddButton:" destination="BC6-dO-BEx" id="kEy-IJ-UHf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="sic-gm-SEV" id="dRg-bd-nPM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B5b-zg-X8Q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="191.30434782608697" y="118.52678571428571"/>
+            <point key="canvasLocation" x="1101.449275362319" y="118.52678571428571"/>
         </scene>
         <!--Item-->
         <scene sceneID="tne-QT-ifu">
@@ -38,7 +82,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1050.7246376811595" y="121.875"/>
+            <point key="canvasLocation" x="1960.8695652173915" y="121.875"/>
         </scene>
         <!--Item-->
         <scene sceneID="oXx-PI-HXo">
@@ -54,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lm7-gg-Yr5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1808.6956521739132" y="128.57142857142856"/>
+            <point key="canvasLocation" x="2718.840579710145" y="128.57142857142856"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ahi-yH-gaN">
@@ -66,7 +110,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BC6-dO-BEx" kind="relationship" relationship="viewControllers" id="J6I-hd-Rxz"/>
+                        <segue destination="P60-HC-5Hp" kind="relationship" relationship="viewControllers" id="J6I-hd-Rxz"/>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="5uR-gT-6WZ"/>
                         <segue destination="2mP-qC-QZw" kind="relationship" relationship="viewControllers" id="FsA-fV-tWT"/>
                     </connections>
@@ -74,6 +118,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XJo-XY-bgX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1051" y="-922"/>
+        </scene>
+        <!--단어-->
+        <scene sceneID="vRR-9Z-iBH">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P60-HC-5Hp" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="단어" id="pe7-pn-9bf"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aiI-mt-cS3">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BC6-dO-BEx" kind="relationship" relationship="rootViewController" id="wF9-ZY-rJ1"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fh8-rV-Gx8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="191.30434782608697" y="118.52678571428571"/>
         </scene>
     </scenes>
     <resources>
