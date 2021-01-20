@@ -21,20 +21,53 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="hzX-ci-Dp2">
-                                    <size key="itemSize" width="328" height="136"/>
+                                    <size key="itemSize" width="351" height="64"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xjC-Rd-E2B">
-                                        <rect key="frame" x="43" y="0.0" width="328" height="136"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VocaCollectionViewCell" id="xjC-Rd-E2B" customClass="VocaCollectionViewCell" customModule="Voca" customModuleProvider="target">
+                                        <rect key="frame" x="31.5" y="0.0" width="351" height="64"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="aBy-1b-Frm">
-                                            <rect key="frame" x="0.0" y="0.0" width="328" height="136"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="351" height="64"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vDv-gq-kC4">
+                                                    <rect key="frame" x="30" y="21.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eL7-kQ-9dk">
+                                                    <rect key="frame" x="283.5" y="23" width="37.5" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="star.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1Kt-El-kSm">
+                                                    <rect key="frame" x="5" y="24" width="15" height="15"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="15" id="1hw-4J-P63"/>
+                                                        <constraint firstAttribute="height" constant="15" id="XJv-sj-WW2"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vDv-gq-kC4" firstAttribute="centerY" secondItem="aBy-1b-Frm" secondAttribute="centerY" id="4te-n9-Pwa"/>
+                                                <constraint firstItem="vDv-gq-kC4" firstAttribute="leading" secondItem="aBy-1b-Frm" secondAttribute="leading" constant="30" id="JkV-zO-WFg"/>
+                                                <constraint firstItem="1Kt-El-kSm" firstAttribute="leading" secondItem="aBy-1b-Frm" secondAttribute="leading" constant="5" id="dWT-OM-ldH"/>
+                                                <constraint firstItem="1Kt-El-kSm" firstAttribute="centerY" secondItem="aBy-1b-Frm" secondAttribute="centerY" id="mJl-Ag-U6z"/>
+                                                <constraint firstAttribute="trailing" secondItem="eL7-kQ-9dk" secondAttribute="trailing" constant="30" id="mNN-Z7-ILW"/>
+                                                <constraint firstItem="eL7-kQ-9dk" firstAttribute="centerY" secondItem="aBy-1b-Frm" secondAttribute="centerY" id="wpM-z1-yYJ"/>
+                                            </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="328" height="136"/>
+                                        <size key="customSize" width="351" height="64"/>
+                                        <connections>
+                                            <outlet property="answerLabel" destination="eL7-kQ-9dk" id="yau-6q-AFg"/>
+                                            <outlet property="questionLabel" destination="vDv-gq-kC4" id="okw-uW-M4u"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -106,6 +139,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="w4q-vf-1dc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L7w-ma-7DH">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -140,6 +174,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
