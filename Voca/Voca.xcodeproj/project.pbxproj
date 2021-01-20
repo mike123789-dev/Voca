@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BC504D8B7E60EB722D85E62 /* Pods_VocaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DC1A73C445EF157317FFF9 /* Pods_VocaTests.framework */; };
+		234E8C6D75254EE13212438C /* Pods_Voca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0584AF11E81223E49CB85F84 /* Pods_Voca.framework */; };
 		51ADDEA625B84A3900E9CA18 /* Voca.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEA325B84A3900E9CA18 /* Voca.swift */; };
 		51ADDEA725B84A3900E9CA18 /* VocaSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEA425B84A3900E9CA18 /* VocaSection.swift */; };
 		51ADDEA825B84A3900E9CA18 /* VocaBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEA525B84A3900E9CA18 /* VocaBrain.swift */; };
@@ -21,6 +23,7 @@
 		51E5EA3A25A1FC8C008A8034 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E5EA3825A1FC8C008A8034 /* LaunchScreen.storyboard */; };
 		51E5EA4525A1FC8C008A8034 /* VocaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA4425A1FC8C008A8034 /* VocaTests.swift */; };
 		51E5EA5025A1FC8C008A8034 /* VocaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA4F25A1FC8C008A8034 /* VocaUITests.swift */; };
+		8453AABAED93BE1E9965E363 /* Pods_Voca_VocaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259AC6681F31489D73FE7B74 /* Pods_Voca_VocaUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0584AF11E81223E49CB85F84 /* Pods_Voca.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voca.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		16BBC31F6F57ED5C8C3A9C77 /* Pods-VocaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocaTests.release.xcconfig"; path = "Target Support Files/Pods-VocaTests/Pods-VocaTests.release.xcconfig"; sourceTree = "<group>"; };
+		22AAA2341AA93A7C0BD083C9 /* Pods-VocaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocaTests.debug.xcconfig"; path = "Target Support Files/Pods-VocaTests/Pods-VocaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		259AC6681F31489D73FE7B74 /* Pods_Voca_VocaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voca_VocaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		38A3EBC187849A1366BDA025 /* Pods-Voca-VocaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voca-VocaUITests.release.xcconfig"; path = "Target Support Files/Pods-Voca-VocaUITests/Pods-Voca-VocaUITests.release.xcconfig"; sourceTree = "<group>"; };
 		51ADDEA325B84A3900E9CA18 /* Voca.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Voca.swift; sourceTree = "<group>"; };
 		51ADDEA425B84A3900E9CA18 /* VocaSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaSection.swift; sourceTree = "<group>"; };
 		51ADDEA525B84A3900E9CA18 /* VocaBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaBrain.swift; sourceTree = "<group>"; };
@@ -61,6 +69,10 @@
 		51E5EA4B25A1FC8C008A8034 /* VocaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E5EA4F25A1FC8C008A8034 /* VocaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaUITests.swift; sourceTree = "<group>"; };
 		51E5EA5125A1FC8C008A8034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7106633CF579918504801D1E /* Pods-Voca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voca.debug.xcconfig"; path = "Target Support Files/Pods-Voca/Pods-Voca.debug.xcconfig"; sourceTree = "<group>"; };
+		C5DC1A73C445EF157317FFF9 /* Pods_VocaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D21850B5E981F353BAF78BA9 /* Pods-Voca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voca.release.xcconfig"; path = "Target Support Files/Pods-Voca/Pods-Voca.release.xcconfig"; sourceTree = "<group>"; };
+		E35A96704A4C3AD81CFE3EB5 /* Pods-Voca-VocaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voca-VocaUITests.debug.xcconfig"; path = "Target Support Files/Pods-Voca-VocaUITests/Pods-Voca-VocaUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				234E8C6D75254EE13212438C /* Pods_Voca.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BC504D8B7E60EB722D85E62 /* Pods_VocaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,12 +96,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8453AABAED93BE1E9965E363 /* Pods_Voca_VocaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		346C5A89EABD3C22CB8594D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0584AF11E81223E49CB85F84 /* Pods_Voca.framework */,
+				259AC6681F31489D73FE7B74 /* Pods_Voca_VocaUITests.framework */,
+				C5DC1A73C445EF157317FFF9 /* Pods_VocaTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		51ADDEA225B84A3900E9CA18 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +170,8 @@
 				51E5EA4325A1FC8C008A8034 /* VocaTests */,
 				51E5EA4E25A1FC8C008A8034 /* VocaUITests */,
 				51E5EA2825A1FC89008A8034 /* Products */,
+				7550168CFB3D526BCAC9466B /* Pods */,
+				346C5A89EABD3C22CB8594D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -194,6 +221,19 @@
 			path = VocaUITests;
 			sourceTree = "<group>";
 		};
+		7550168CFB3D526BCAC9466B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7106633CF579918504801D1E /* Pods-Voca.debug.xcconfig */,
+				D21850B5E981F353BAF78BA9 /* Pods-Voca.release.xcconfig */,
+				E35A96704A4C3AD81CFE3EB5 /* Pods-Voca-VocaUITests.debug.xcconfig */,
+				38A3EBC187849A1366BDA025 /* Pods-Voca-VocaUITests.release.xcconfig */,
+				22AAA2341AA93A7C0BD083C9 /* Pods-VocaTests.debug.xcconfig */,
+				16BBC31F6F57ED5C8C3A9C77 /* Pods-VocaTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -201,9 +241,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51E5EA5425A1FC8C008A8034 /* Build configuration list for PBXNativeTarget "Voca" */;
 			buildPhases = (
+				40AD85EAF9DA2750A04A0EAB /* [CP] Check Pods Manifest.lock */,
 				51E5EA2325A1FC89008A8034 /* Sources */,
 				51E5EA2425A1FC89008A8034 /* Frameworks */,
 				51E5EA2525A1FC89008A8034 /* Resources */,
+				51ADDEC925B852A000E9CA18 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -218,6 +260,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51E5EA5725A1FC8C008A8034 /* Build configuration list for PBXNativeTarget "VocaTests" */;
 			buildPhases = (
+				63B6B09AF5002A4964D8951C /* [CP] Check Pods Manifest.lock */,
 				51E5EA3C25A1FC8C008A8034 /* Sources */,
 				51E5EA3D25A1FC8C008A8034 /* Frameworks */,
 				51E5EA3E25A1FC8C008A8034 /* Resources */,
@@ -236,6 +279,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 51E5EA5A25A1FC8C008A8034 /* Build configuration list for PBXNativeTarget "VocaUITests" */;
 			buildPhases = (
+				44119F7DF3A98D384112D457 /* [CP] Check Pods Manifest.lock */,
 				51E5EA4725A1FC8C008A8034 /* Sources */,
 				51E5EA4825A1FC8C008A8034 /* Frameworks */,
 				51E5EA4925A1FC8C008A8034 /* Resources */,
@@ -318,6 +362,92 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		40AD85EAF9DA2750A04A0EAB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Voca-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		44119F7DF3A98D384112D457 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Voca-VocaUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		51ADDEC925B852A000E9CA18 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		63B6B09AF5002A4964D8951C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VocaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		51E5EA2325A1FC89008A8034 /* Sources */ = {
@@ -505,6 +635,7 @@
 		};
 		51E5EA5525A1FC8C008A8034 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7106633CF579918504801D1E /* Pods-Voca.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -524,6 +655,7 @@
 		};
 		51E5EA5625A1FC8C008A8034 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D21850B5E981F353BAF78BA9 /* Pods-Voca.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -543,6 +675,7 @@
 		};
 		51E5EA5825A1FC8C008A8034 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22AAA2341AA93A7C0BD083C9 /* Pods-VocaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -565,6 +698,7 @@
 		};
 		51E5EA5925A1FC8C008A8034 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16BBC31F6F57ED5C8C3A9C77 /* Pods-VocaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -587,6 +721,7 @@
 		};
 		51E5EA5B25A1FC8C008A8034 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E35A96704A4C3AD81CFE3EB5 /* Pods-Voca-VocaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -607,6 +742,7 @@
 		};
 		51E5EA5C25A1FC8C008A8034 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38A3EBC187849A1366BDA025 /* Pods-Voca-VocaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
