@@ -14,7 +14,7 @@ class VocaListViewController: UIViewController {
     
     private var dataSource: DataSource! = nil
     typealias DataSource = UICollectionViewDiffableDataSource<VocaSection, VocaItem>
-
+    
     let viewModel = VocaListViewModel()
     var subscriptions = Set<AnyCancellable>()
     
@@ -33,7 +33,8 @@ class VocaListViewController: UIViewController {
     }
     
     private func configureCollectionView() {
-        //        collectionView.delegate = self
+        collectionView.delegate = self
+        collectionView.allowsMultipleSelection = true
         configureLayout()
         configureDataSource()
     }
@@ -74,7 +75,7 @@ extension VocaListViewController {
             let headerDisclosureOption = UICellAccessory.OutlineDisclosureOptions(style: .header)
             cell.accessories = [.outlineDisclosure(options:headerDisclosureOption)]
         }
-                
+        
         dataSource = DataSource(collectionView: collectionView,
                                 cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
                                     switch item {
@@ -88,7 +89,7 @@ extension VocaListViewController {
                                         let cell = collectionView
                                             .dequeueReusableCell(
                                                 withReuseIdentifier: "VocaCollectionViewCell",
-                                                                 for: indexPath) as? VocaCollectionViewCell
+                                                for: indexPath) as? VocaCollectionViewCell
                                         cell?.configure(with: childItem)
                                         return cell
                                     }
@@ -100,4 +101,8 @@ extension VocaListViewController {
         }
     }
     
+}
+
+//MARK: - UICollectionViewDelegate 관렴 함수
+extension VocaListViewController: UICollectionViewDelegate {
 }
