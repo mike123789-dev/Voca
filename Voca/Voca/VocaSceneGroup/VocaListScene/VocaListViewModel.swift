@@ -20,8 +20,7 @@ class VocaListViewModel {
     typealias SectionSnapshot = NSDiffableDataSourceSectionSnapshot<VocaItem>
     
     let snapshotPublisher = PassthroughSubject<Snapshot, Never>()
-    let sectionSnapshotPublisher = PassthroughSubject<(SectionSnapshot,VocaSection), Never>()
-    
+    let sectionSnapshotPublisher = PassthroughSubject<(SectionSnapshot, VocaSection), Never>()
     
     func fetch() {
         let sections = TestData.sections
@@ -34,7 +33,7 @@ class VocaListViewModel {
             let header = VocaItem.parent(section)
             sectionSnapshot.append([header])
             sectionSnapshot.append(
-                section.vocas.map{
+                section.vocas.map {
                     VocaItem.child($0)
                 },
                 to: header

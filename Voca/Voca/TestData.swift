@@ -26,7 +26,7 @@ struct TestData {
         return section
     }
     
-    static let sections : [VocaSection]
+    static let sections: [VocaSection]
         = [section1, section2]
     
 }
