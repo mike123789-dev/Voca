@@ -35,6 +35,8 @@ class VocaListViewController: UIViewController {
     private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.allowsMultipleSelection = true
+        collectionView.allowsSelectionDuringEditing = false
+        collectionView.allowsSelectionDuringEditing = false
         configureLayout()
         configureDataSource()
     }
@@ -61,6 +63,31 @@ extension VocaListViewController {
     
     private func configureLayout() {
         var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        configuration.trailingSwipeActionsConfigurationProvider = { [weak self] (indexPath) in
+            guard let item = self?.dataSource?.itemIdentifier(for: indexPath) else {
+                return nil
+            }
+            let deleteAction = UIContextualAction(style: .destructive, title: "제거") { (action, _, completion) in
+//                코어데이터에서 지우기
+//                self?.handleSwipe(for: action, item: item)
+                completion(true)
+            }
+            return UISwipeActionsConfiguration(actions: [deleteAction])
+        }
+        configuration.leadingSwipeActionsConfigurationProvider = { [weak self] (indexPath) in
+            guard let item = self?.dataSource?.itemIdentifier(for: indexPath) else {
+                return nil
+            }
+            let favoriteAction = UIContextualAction(style: .normal, title: nil) { (action, _, completion) in
+//                코어 데이터에서 좋아요 toggle
+//                self?.handleSwipe(for: action, item: item)
+                completion(true)
+            }
+            favoriteAction.image = UIImage(named: "person")
+            favoriteAction.backgroundColor = .systemOrange
+            return UISwipeActionsConfiguration(actions: [favoriteAction])
+        }
+
         collectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: configuration)
     }
     

@@ -160,10 +160,18 @@
 			isa = PBXGroup;
 			children = (
 				51ADDEB425B84B5B00E9CA18 /* VocaListViewModel.swift */,
+				51ADDEDA25B87A6600E9CA18 /* Views */,
+			);
+			path = VocaListScene;
+			sourceTree = "<group>";
+		};
+		51ADDEDA25B87A6600E9CA18 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 				51ADDED525B85AF900E9CA18 /* VocaCollectionViewCell.swift */,
 				51ADDEBC25B84B7000E9CA18 /* VocaListViewController.swift */,
 			);
-			path = VocaListScene;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		51E5EA1E25A1FC89008A8034 = {
