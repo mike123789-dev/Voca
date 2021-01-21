@@ -22,7 +22,7 @@ class VocaListViewController: UIViewController {
         super.viewDidLoad()
         configureCollectionView()
         configureBinding()
-        viewModel.fetch()
+        viewModel.setup()
     }
     
     @IBAction func didTapEditButton(_ sender: Any) {
@@ -52,7 +52,6 @@ class VocaListViewController: UIViewController {
             .sink { [weak self] sectionSnapshot, section in
                 guard let self = self else { return }
                 self.dataSource.apply(sectionSnapshot, to: section, animatingDifferences: true)
-                print(section)
             }
             .store(in: &subscriptions)
     }
@@ -124,7 +123,6 @@ extension VocaListViewController {
         
         dataSource.reorderingHandlers.canReorderItem = { item in true}
         dataSource.reorderingHandlers.didReorder = { transaction in
-            print(transaction)
         }
     }
     
