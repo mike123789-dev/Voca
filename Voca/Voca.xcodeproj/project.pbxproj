@@ -168,8 +168,8 @@
 		51ADDEDA25B87A6600E9CA18 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				51ADDED525B85AF900E9CA18 /* VocaCollectionViewCell.swift */,
 				51ADDEBC25B84B7000E9CA18 /* VocaListViewController.swift */,
+				51ADDED525B85AF900E9CA18 /* VocaCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
