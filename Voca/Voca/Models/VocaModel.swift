@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Voca: Hashable {
+struct VocaModel: Hashable {
     let id = UUID()
     let question: String
     let answer: String

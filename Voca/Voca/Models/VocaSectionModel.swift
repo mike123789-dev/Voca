@@ -6,12 +6,12 @@
 //
 import Foundation
 
-class VocaSection: Hashable {
+class VocaSectionModel: Hashable {
 
     let id = UUID()
     let title: String
     var vocaBrains: [VocaBrain] = []
-    var vocas: [Voca] {
+    var vocas: [VocaModel] {
         vocaBrains.map { $0.voca }
     }
     var vocaCounts: Int {
@@ -22,11 +22,11 @@ class VocaSection: Hashable {
         self.title = title
     }
 
-    func add(voca: Voca) {
+    func add(voca: VocaModel) {
         self.vocaBrains.append(VocaBrain(voca: voca))
     }
     
-    func addMutliple(vocas: [Voca]) {
+    func addMutliple(vocas: [VocaModel]) {
         self.vocaBrains.append(contentsOf: vocas.map { VocaBrain(voca: $0) })
     }
 
@@ -34,7 +34,7 @@ class VocaSection: Hashable {
       hasher.combine(id)
     }
     
-    static func == (lhs: VocaSection, rhs: VocaSection) -> Bool {
+    static func == (lhs: VocaSectionModel, rhs: VocaSectionModel) -> Bool {
         lhs.id == rhs.id
     }
     
