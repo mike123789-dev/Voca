@@ -31,7 +31,7 @@ class VocaListViewModel: NSObject {
     func setup() {
         setupCoreData()
         loadSavedData()
-        fetch()
+//        fetch()
     }
     
     private func fetch() {
@@ -57,7 +57,7 @@ class VocaListViewModel: NSObject {
     }
 
     private func setupCoreData() {
-        container.loadPersistentStores { store, error in
+        container.loadPersistentStores { _, _ in
             self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         }
     }
@@ -77,7 +77,10 @@ class VocaListViewModel: NSObject {
             let request = VocaSection.createFetchRequest()
             let sort = NSSortDescriptor(key: "date", ascending: true)
             request.sortDescriptors = [sort]
-            fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+            fetchedResultsController = NSFetchedResultsController(fetchRequest: request,
+                                                                  managedObjectContext: container.viewContext,
+                                                                  sectionNameKeyPath: nil,
+                                                                  cacheName: nil)
             fetchedResultsController.delegate = self
         }
         if !currentSearchText.isEmpty {
@@ -87,6 +90,7 @@ class VocaListViewModel: NSObject {
         
         do {
             try fetchedResultsController.performFetch()
+            print("updateSnapshot1")
             updateSnapshot()
         } catch {
             print("Fetch failed")
@@ -109,14 +113,27 @@ class VocaListViewModel: NSObject {
                 },
                 to: header
             )
+            sectionSnapshot.expand([header])
             sectionSnapshotPublisher.send((sectionSnapshot, section))
         }
     }
     
 }
+extension VocaListViewModel {
+    func delete(_ item: VocaItem) {
+        switch item {
+        case .child(let voca):
+            container.viewContext.delete(voca)
+        case .parent(let section):
+            container.viewContext.delete(section)
+        }
+        saveContext()
+    }
+}
 
 extension VocaListViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        updateSnapshot()
+//        print("updateSnapshot2")
+//        updateSnapshot()
     }
 }

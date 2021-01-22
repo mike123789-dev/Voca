@@ -63,12 +63,16 @@ extension VocaListViewController {
     private func configureLayout() {
         var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
         configuration.trailingSwipeActionsConfigurationProvider = { [weak self] (indexPath) in
-            guard let item = self?.dataSource?.itemIdentifier(for: indexPath) else {
+            guard let item = self?.dataSource?.itemIdentifier(for: indexPath),
+                  let self = self else {
                 return nil
             }
             let deleteAction = UIContextualAction(style: .destructive, title: "제거") { (action, _, completion) in
-//                코어데이터에서 지우기
-//                self?.handleSwipe(for: action, item: item)
+                
+                var snapShot = self.dataSource.snapshot()
+                snapShot.deleteItems([item])
+                self.dataSource.apply(snapShot)
+                self.viewModel.delete(item)
                 completion(true)
             }
             return UISwipeActionsConfiguration(actions: [deleteAction])
