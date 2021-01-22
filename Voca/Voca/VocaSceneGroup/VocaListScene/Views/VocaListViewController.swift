@@ -16,29 +16,22 @@ class VocaListViewController: UIViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<VocaSection, VocaItem>
     
     let viewModel = VocaListViewModel()
+    @Published var isEditMode = false
     var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        configureNavigationController()
         configureBinding()
         viewModel.setup()
     }
     
     @IBAction func didTapEditButton(_ sender: Any) {
-        collectionView.isEditing.toggle()
+        isEditMode.toggle()
     }
     
     @IBAction func didTapAddButton(_ sender: Any) {
-    }
-    
-    private func configureCollectionView() {
-        collectionView.delegate = self
-        collectionView.allowsMultipleSelection = true
-        collectionView.allowsSelectionDuringEditing = false
-        collectionView.allowsSelectionDuringEditing = false
-        configureLayout()
-        configureDataSource()
     }
     
     private func configureBinding() {
@@ -54,11 +47,37 @@ class VocaListViewController: UIViewController {
                 self.dataSource.apply(sectionSnapshot, to: section, animatingDifferences: true)
             }
             .store(in: &subscriptions)
+        $isEditMode
+            .sink { [weak self] isEditMode in
+                self?.collectionView.isEditing = isEditMode
+                self?.navigationController?.setToolbarHidden(!isEditMode, animated: true)
+            }
+            .store(in: &subscriptions)
     }
+    
+    @objc
+    func didTapAddFolderButton() {
+        print("tap")
+    }
+    
+    @objc
+    func didTapFavoriteButton() {
+        print("tap")
+    }
+    
 }
 
 //MARK: - CollectionView 관련 함수들
 extension VocaListViewController {
+    
+    private func configureCollectionView() {
+        collectionView.delegate = self
+        collectionView.allowsMultipleSelection = true
+        collectionView.allowsSelectionDuringEditing = false
+        collectionView.allowsSelectionDuringEditing = false
+        configureLayout()
+        configureDataSource()
+    }
     
     private func configureLayout() {
         var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
@@ -82,15 +101,15 @@ extension VocaListViewController {
                 return nil
             }
             let favoriteAction = UIContextualAction(style: .normal, title: nil) { (action, _, completion) in
-//                코어 데이터에서 좋아요 toggle
-//                self?.handleSwipe(for: action, item: item)
+                //                코어 데이터에서 좋아요 toggle
+                //                self?.handleSwipe(for: action, item: item)
                 completion(true)
             }
             favoriteAction.image = UIImage(named: "person")
             favoriteAction.backgroundColor = .systemOrange
             return UISwipeActionsConfiguration(actions: [favoriteAction])
         }
-
+        
         collectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: configuration)
     }
     
@@ -128,6 +147,27 @@ extension VocaListViewController {
         dataSource.reorderingHandlers.canReorderItem = { item in true}
         dataSource.reorderingHandlers.didReorder = { transaction in
         }
+    }
+    
+}
+
+//MARK: - NavigationContoller 관련 함수
+extension VocaListViewController {
+    
+    func configureNavigationController() {
+        //        UIBarButtonItem(
+        let addFolder = UIBarButtonItem(title: "폴더 추가",
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(didTapAddFolderButton))
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
+                                     target: self,
+                                     action: nil)
+        let favorites = UIBarButtonItem(title: "즐쳐찾기",
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(didTapAddFolderButton))
+        toolbarItems = [addFolder, spacer, favorites]
     }
     
 }
