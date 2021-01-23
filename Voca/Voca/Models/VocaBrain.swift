@@ -8,7 +8,7 @@
 import Foundation
 
 class VocaBrain {
-    let voca: Voca
+    let voca: VocaModel
     let addedDate = Date()
     var isFavorite: Bool = false
     
@@ -22,7 +22,7 @@ class VocaBrain {
         Double(correctCount)/Double(totalCount)
     }
     
-    init(voca: Voca) {
+    init(voca: VocaModel) {
         self.voca = voca
     }
     
