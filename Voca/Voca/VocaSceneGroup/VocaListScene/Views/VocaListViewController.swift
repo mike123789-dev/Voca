@@ -32,6 +32,8 @@ class VocaListViewController: UIViewController {
     }
     
     @IBAction func didTapAddButton(_ sender: Any) {
+        let alert = CustomAlertViewController(type: .addVoca)
+        self.present(alert, animated: true)
     }
     
     private func configureBinding() {
@@ -57,6 +59,8 @@ class VocaListViewController: UIViewController {
     
     @objc
     func didTapAddFolderButton() {
+        let alert = CustomAlertViewController(type: .addFolder)
+        self.present(alert, animated: true)
         print("tap")
     }
     
