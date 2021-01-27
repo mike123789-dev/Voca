@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		1BC504D8B7E60EB722D85E62 /* Pods_VocaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DC1A73C445EF157317FFF9 /* Pods_VocaTests.framework */; };
 		234E8C6D75254EE13212438C /* Pods_Voca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0584AF11E81223E49CB85F84 /* Pods_Voca.framework */; };
+		51290D7F25C1A17800A3EBBB /* VocaAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D7E25C1A17800A3EBBB /* VocaAddViewController.swift */; };
+		51290D8725C1A2F600A3EBBB /* VocaAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D8625C1A2F600A3EBBB /* VocaAddTableViewCell.swift */; };
+		51290D8F25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D8E25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift */; };
+		51290D9425C1BA4A00A3EBBB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D9325C1BA4A00A3EBBB /* CardView.swift */; };
+		51290D9C25C1CDA900A3EBBB /* TextFieldStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D9B25C1CDA900A3EBBB /* TextFieldStackViewController.swift */; };
 		51ADDEA625B84A3900E9CA18 /* VocaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEA325B84A3900E9CA18 /* VocaModel.swift */; };
 		51ADDEA725B84A3900E9CA18 /* VocaSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEA425B84A3900E9CA18 /* VocaSectionModel.swift */; };
 		51ADDEB525B84B5B00E9CA18 /* VocaListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEB425B84B5B00E9CA18 /* VocaListViewModel.swift */; };
@@ -56,6 +61,11 @@
 		22AAA2341AA93A7C0BD083C9 /* Pods-VocaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocaTests.debug.xcconfig"; path = "Target Support Files/Pods-VocaTests/Pods-VocaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		259AC6681F31489D73FE7B74 /* Pods_Voca_VocaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voca_VocaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38A3EBC187849A1366BDA025 /* Pods-Voca-VocaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voca-VocaUITests.release.xcconfig"; path = "Target Support Files/Pods-Voca-VocaUITests/Pods-Voca-VocaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		51290D7E25C1A17800A3EBBB /* VocaAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaAddViewController.swift; sourceTree = "<group>"; };
+		51290D8625C1A2F600A3EBBB /* VocaAddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaAddTableViewCell.swift; sourceTree = "<group>"; };
+		51290D8E25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaAddCellViewModel.swift; sourceTree = "<group>"; };
+		51290D9325C1BA4A00A3EBBB /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		51290D9B25C1CDA900A3EBBB /* TextFieldStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStackViewController.swift; sourceTree = "<group>"; };
 		51ADDEA325B84A3900E9CA18 /* VocaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaModel.swift; sourceTree = "<group>"; };
 		51ADDEA425B84A3900E9CA18 /* VocaSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaSectionModel.swift; sourceTree = "<group>"; };
 		51ADDEB425B84B5B00E9CA18 /* VocaListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaListViewModel.swift; sourceTree = "<group>"; };
@@ -127,6 +137,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		51290D7D25C1A16900A3EBBB /* VocaAddScene */ = {
+			isa = PBXGroup;
+			children = (
+				51290D7E25C1A17800A3EBBB /* VocaAddViewController.swift */,
+				51290D8E25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift */,
+				51290D8625C1A2F600A3EBBB /* VocaAddTableViewCell.swift */,
+			);
+			path = VocaAddScene;
+			sourceTree = "<group>";
+		};
 		51ADDEA225B84A3900E9CA18 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,8 +174,9 @@
 		51ADDEB025B84AEB00E9CA18 /* VocaSceneGroup */ = {
 			isa = PBXGroup;
 			children = (
-				51ADDF7725BBAD3700E9CA18 /* SupportingViews */,
+				51290D7D25C1A16900A3EBBB /* VocaAddScene */,
 				51ADDEB325B84B4600E9CA18 /* VocaListScene */,
+				51ADDF7725BBAD3700E9CA18 /* SupportingViews */,
 			);
 			path = VocaSceneGroup;
 			sourceTree = "<group>";
@@ -177,8 +198,8 @@
 		51ADDEB325B84B4600E9CA18 /* VocaListScene */ = {
 			isa = PBXGroup;
 			children = (
-				51ADDEB425B84B5B00E9CA18 /* VocaListViewModel.swift */,
 				51ADDEDA25B87A6600E9CA18 /* Views */,
+				51ADDEB425B84B5B00E9CA18 /* VocaListViewModel.swift */,
 			);
 			path = VocaListScene;
 			sourceTree = "<group>";
@@ -196,7 +217,9 @@
 			isa = PBXGroup;
 			children = (
 				51ADDF6D25BAA1DB00E9CA18 /* CustomAlertViewController.swift */,
+				51290D9325C1BA4A00A3EBBB /* CardView.swift */,
 				51ADDF7B25BBB60200E9CA18 /* TextFieldStackView.swift */,
+				51290D9B25C1CDA900A3EBBB /* TextFieldStackViewController.swift */,
 			);
 			path = SupportingViews;
 			sourceTree = "<group>";
@@ -493,20 +516,25 @@
 			files = (
 				51ADDF6025B9C0B200E9CA18 /* Voca+CoreDataClass.swift in Sources */,
 				51ADDF5525B9BA6000E9CA18 /* VocaSection+CoreDataProperties.swift in Sources */,
+				51290D7F25C1A17800A3EBBB /* VocaAddViewController.swift in Sources */,
 				51ADDF6125B9C0B200E9CA18 /* Voca+CoreDataProperties.swift in Sources */,
+				51290D8F25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift in Sources */,
 				51ADDF6925B9C85700E9CA18 /* VocaBrain.swift in Sources */,
 				51ADDF2A25B9B07600E9CA18 /* Voca.xcdatamodeld in Sources */,
 				51ADDEC225B84F7500E9CA18 /* TestData.swift in Sources */,
 				51ADDEB525B84B5B00E9CA18 /* VocaListViewModel.swift in Sources */,
 				51ADDEA725B84A3900E9CA18 /* VocaSectionModel.swift in Sources */,
 				51E5EA2B25A1FC89008A8034 /* AppDelegate.swift in Sources */,
+				51290D8725C1A2F600A3EBBB /* VocaAddTableViewCell.swift in Sources */,
 				51ADDEBD25B84B7000E9CA18 /* VocaListViewController.swift in Sources */,
 				51ADDED625B85AF900E9CA18 /* VocaCollectionViewCell.swift in Sources */,
+				51290D9425C1BA4A00A3EBBB /* CardView.swift in Sources */,
 				51ADDF6E25BAA1DC00E9CA18 /* CustomAlertViewController.swift in Sources */,
 				51ADDF5425B9BA6000E9CA18 /* VocaSection+CoreDataClass.swift in Sources */,
 				51ADDF7C25BBB60200E9CA18 /* TextFieldStackView.swift in Sources */,
 				51E5EA2D25A1FC89008A8034 /* SceneDelegate.swift in Sources */,
 				51ADDEA625B84A3900E9CA18 /* VocaModel.swift in Sources */,
+				51290D9C25C1CDA900A3EBBB /* TextFieldStackViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

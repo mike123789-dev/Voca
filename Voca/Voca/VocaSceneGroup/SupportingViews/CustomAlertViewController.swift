@@ -45,17 +45,17 @@ class CustomAlertViewController: UIAlertController {
         addAction(cancelAction)
         addAction(okAction)
         
-        let contentVC = TextFieldStackView()
+        let contentVC = TextFieldStackViewController()
         setValue(contentVC, forKey: "contentViewController")
-        contentVC.$textFieldString
-            .sink {[weak self ] text in
-                if text.isEmpty {
-                    self?.isValid = false
-                } else {
-                    self?.isValid = true
-                }
-            }
-            .store(in: &subscriptions)
+//        contentVC.$textFieldString
+//            .sink {[weak self ] text in
+//                if text.isEmpty {
+//                    self?.isValid = false
+//                } else {
+//                    self?.isValid = true
+//                }
+//            }
+//            .store(in: &subscriptions)
     }
     
     private func setupBinding() {

@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension Voca {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Voca> {
@@ -41,6 +40,6 @@ extension Voca {
     
 }
 
-extension Voca : Identifiable {
+extension Voca: Identifiable {
 
 }
