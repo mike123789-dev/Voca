@@ -15,16 +15,54 @@ class VocaAddTableViewCell: UITableViewCell {
     let questionStackView = TextFieldStackView()
     let answerStackView = TextFieldStackView()
     var subscriptions = Set<AnyCancellable>()
-    
+    let toolBar = UIToolbar(frame: CGRect(x: 0.0,
+                                          y: 0.0,
+                                          width: UIScreen.main.bounds.size.width,
+                                          height: 44.0))
+
     override func awakeFromNib() {
         super.awakeFromNib()
         stackView.spacing = 10
         stackView.addArrangedSubview(questionStackView)
         stackView.addArrangedSubview(answerStackView)
+        setupToolbar()
     }
     
     override func prepareForReuse() {
         subscriptions.forEach { $0.cancel() }
+    }
+    
+    private func setupToolbar() {
+        let upButton = UIBarButtonItem(image: UIImage(systemName: "chevron.up"),
+                                         style: .plain,
+                                         target: questionStackView.textField,
+                                         action: #selector(UITextField.becomeFirstResponder))
+        upButton.width = 50
+
+        let downButton = UIBarButtonItem(image: UIImage(systemName: "chevron.down"),
+                                           style: .plain,
+                                           target: answerStackView.textField,
+                                           action: #selector(UITextField.becomeFirstResponder))
+        downButton.width = 50
+
+        let flexible = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let keyboardButton = UIBarButtonItem(image: UIImage(systemName: "keyboard.chevron.compact.down"),
+                                         style: .plain,
+                                         target: self,
+                                         action: #selector(didTapDoneButton))
+        toolBar.items = [upButton, downButton, flexible, keyboardButton]
+        questionStackView.textField.inputAccessoryView = toolBar
+        answerStackView.textField.inputAccessoryView = toolBar
+    }
+    
+    @objc func didTapUpButton(sender: Any) {
+        
+    }
+    @objc func didTapDownButton(sender: Any) {
+        
+    }
+    @objc func didTapDoneButton(sender: Any) {
+        endEditing(true)
     }
 
     func configure(with viewModel: VocaAddCellViewModel) {
