@@ -13,13 +13,12 @@ class CustomAlertViewController: UIAlertController {
     enum CustomAlertType {
         case addVoca, addFolder
     }
-    
     @Published var isValid: Bool = false
     var subscriptions = Set<AnyCancellable>()
-    
+    var textHandler: ((String) -> Void)?
     var cancelAction: UIAlertAction!
     var okAction: UIAlertAction!
-
+    
     convenience init(type: CustomAlertType) {
         switch type {
         case .addFolder:
@@ -40,22 +39,29 @@ class CustomAlertViewController: UIAlertController {
     }
     
     private func setupView() {
+        
+        let contentVC = TextFieldStackViewController()
+        contentVC.stackView.textField.text = "hello"
+        setValue(contentVC, forKey: "contentViewController")
+        contentVC.$textFieldString
+            .sink {[weak self ] text in
+                if text.isEmpty {
+                    self?.isValid = false
+                } else {
+                    self?.isValid = true
+                }
+            }
+            .store(in: &subscriptions)
+        
         cancelAction = UIAlertAction(title: "취소", style: .cancel)
-        okAction = UIAlertAction(title: "추가", style: .default, handler: nil)
+        okAction = UIAlertAction(title: "추가",
+                                 style: .default,
+                                 handler: { [weak self] _ in
+                                    self?.textHandler?(contentVC.textFieldString)
+                                 })
         addAction(cancelAction)
         addAction(okAction)
         
-        let contentVC = TextFieldStackViewController()
-        setValue(contentVC, forKey: "contentViewController")
-//        contentVC.$textFieldString
-//            .sink {[weak self ] text in
-//                if text.isEmpty {
-//                    self?.isValid = false
-//                } else {
-//                    self?.isValid = true
-//                }
-//            }
-//            .store(in: &subscriptions)
     }
     
     private func setupBinding() {

@@ -129,6 +129,19 @@ extension VocaListViewModel {
         }
         saveContext()
     }
+    
+    func addFolder(title: String) {
+        let s = VocaSection(context: container.viewContext)
+        s.date = Date()
+        s.title = title
+        s.id = UUID()
+        saveContext()
+        updateSnapshot()
+    }
+    
+    func addVoca(_ voca: (String, String), to folder: String) {
+    }
+    
 }
 
 extension VocaListViewModel: NSFetchedResultsControllerDelegate {

@@ -27,13 +27,16 @@ class VocaListViewController: UIViewController {
         viewModel.setup()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        isEditMode = false
+    }
+    
     @IBAction func didTapEditButton(_ sender: Any) {
         isEditMode.toggle()
     }
     
     @IBAction func didTapAddButton(_ sender: Any) {
-        let alert = CustomAlertViewController(type: .addVoca)
-        self.present(alert, animated: true)
     }
     
     private func configureBinding() {
@@ -59,14 +62,16 @@ class VocaListViewController: UIViewController {
     
     @objc
     func didTapAddFolderButton() {
-        let alert = CustomAlertViewController(type: .addFolder)
+        let alert = CustomAlertViewController(type: .addVoca)
+        alert.textHandler = { [weak self] inputText in
+            self?.viewModel.addFolder(title: inputText)
+        }
         self.present(alert, animated: true)
-        print("tap")
     }
     
     @objc
     func didTapFavoriteButton() {
-        print("tap")
+        //TODO: 좋아요 기능 추가
     }
     
 }
