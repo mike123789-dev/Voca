@@ -102,6 +102,7 @@ extension VocaListViewController {
     
     private func configureLayout() {
         var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+        
         configuration.trailingSwipeActionsConfigurationProvider = { [weak self] (indexPath) in
             guard let item = self?.dataSource?.itemIdentifier(for: indexPath),
                   let self = self else {
@@ -140,7 +141,8 @@ extension VocaListViewController {
                 return UISwipeActionsConfiguration(actions: [favoriteAction, modifyAction])
             }
         }
-        
+        configuration.headerMode = .firstItemInSection
+        configuration.footerMode = .supplementary
         collectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: configuration)
     }
     
@@ -156,6 +158,20 @@ extension VocaListViewController {
             cell.accessories = [.outlineDisclosure(options:headerDisclosureOption)]
         }
         
+        let footerRegistration = UICollectionView.SupplementaryRegistration
+        <UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionFooter) {
+            [unowned self] (footerView, _, indexPath) in
+            
+            let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            let count = section.vocas.count
+            
+            // Configure footer view content
+            var configuration = footerView.defaultContentConfiguration()
+            configuration.text = "단어 수: \(count)"
+            configuration.textProperties.alignment = .center
+            footerView.contentConfiguration = configuration
+        }
+
         dataSource =
             DataSource(collectionView: collectionView,
                        cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
@@ -175,6 +191,16 @@ extension VocaListViewController {
                             return cell
                         }
                        })
+        dataSource.supplementaryViewProvider = { [unowned self]
+            (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
+            if elementKind == UICollectionView.elementKindSectionFooter {
+                return self.collectionView.dequeueConfiguredReusableSupplementary(
+                    using: footerRegistration, for: indexPath)
+            } else {
+                return nil
+            }
+        }
+
         
         dataSource.reorderingHandlers.canReorderItem = { item in true}
         dataSource.reorderingHandlers.didReorder = { transaction in
