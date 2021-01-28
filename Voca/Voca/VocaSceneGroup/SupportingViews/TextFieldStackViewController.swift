@@ -24,7 +24,7 @@ class TextFieldStackViewController: UIViewController {
     func setupStackView() {
         view.addSubview(stackView)
         stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+//        stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
         stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
         stackView.didTextFieldChange = { [weak self] text in
