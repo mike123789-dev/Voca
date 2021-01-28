@@ -51,6 +51,8 @@ class VocaAddViewController: UIViewController {
         tableView.reloadData()
     }
     
+    @IBAction func didTapCameraButton(_ sender: Any) {
+    }
 }
 
 extension VocaAddViewController: UITableViewDataSource {
