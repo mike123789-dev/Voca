@@ -187,6 +187,7 @@ extension VocaListViewController {
 extension VocaListViewController {
     
     func configureNavigationController() {
+        navigationController?.navigationBar.prefersLargeTitles = true
         let addFolder = UIBarButtonItem(title: "폴더 추가",
                                         style: .plain,
                                         target: self,
