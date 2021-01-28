@@ -19,19 +19,19 @@ class VocaListViewModel: NSObject {
     
     typealias Snapshot = NSDiffableDataSourceSnapshot<VocaSection, VocaItem>
     typealias SectionSnapshot = NSDiffableDataSourceSectionSnapshot<VocaItem>
-
+    
     var container = NSPersistentContainer(name: "Voca")
     var currentSearchText = ""
     var predicate: NSPredicate?
     var fetchedResultsController: NSFetchedResultsController<VocaSection>!
-
+    
     let snapshotPublisher = PassthroughSubject<Snapshot, Never>()
     let sectionSnapshotPublisher = PassthroughSubject<(SectionSnapshot, VocaSection), Never>()
     
     func setup() {
         setupCoreData()
         loadSavedData()
-//        fetch()
+        //        fetch()
     }
     
     private func fetch() {
@@ -55,13 +55,13 @@ class VocaListViewModel: NSObject {
         }
         loadSavedData()
     }
-
+    
     private func setupCoreData() {
         container.loadPersistentStores { _, _ in
             self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         }
     }
-
+    
     private func saveContext() {
         if container.viewContext.hasChanges {
             do {
@@ -71,16 +71,17 @@ class VocaListViewModel: NSObject {
             }
         }
     }
-
+    
     private func loadSavedData() {
         if fetchedResultsController == nil {
             let request = VocaSection.createFetchRequest()
             let sort = NSSortDescriptor(key: "date", ascending: true)
             request.sortDescriptors = [sort]
-            fetchedResultsController = NSFetchedResultsController(fetchRequest: request,
-                                                                  managedObjectContext: container.viewContext,
-                                                                  sectionNameKeyPath: nil,
-                                                                  cacheName: nil)
+            fetchedResultsController =
+                NSFetchedResultsController(fetchRequest: request,
+                                           managedObjectContext: container.viewContext,
+                                           sectionNameKeyPath: nil,
+                                           cacheName: nil)
             fetchedResultsController.delegate = self
         }
         if !currentSearchText.isEmpty {
@@ -96,7 +97,7 @@ class VocaListViewModel: NSObject {
             print("Fetch failed")
         }
     }
-
+    
     private func updateSnapshot() {
         guard let sections = fetchedResultsController.fetchedObjects else { return }
         var snapshot = Snapshot()
@@ -139,14 +140,37 @@ extension VocaListViewModel {
         updateSnapshot()
     }
     
-    func addVoca(_ voca: (String, String), to folder: String) {
+    func addVoca(_ voca: (answer: String, question: String), to folder: String) {
+        let v = Voca(context: container.viewContext)
+        v.answer = voca.answer
+        v.question = voca.question
+        v.correctCount = 0
+        v.wrongCount = 0
+        v.isFavorite = false
+        v.date = Date()
+        v.id = UUID()
+        
+        let section = fetchedResultsController.fetchedObjects?.first(where: { section -> Bool in
+            section.title == folder
+        })
+        
+        section?.addToVocas(v)
+        saveContext()
+        updateSnapshot()
+        
     }
     
 }
 
 extension VocaListViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        print("updateSnapshot2")
-//        updateSnapshot()
+        //        print("updateSnapshot2")
+        //        updateSnapshot()
+    }
+}
+
+extension VocaListViewModel: VocaAddDelegate {
+    func didAdd(_ voca: (answer: String, question: String), to folder: String) {
+        addVoca(voca, to: folder)
     }
 }
