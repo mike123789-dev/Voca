@@ -91,7 +91,7 @@
                         <barButtonItem key="rightBarButtonItem" title="단어 추가" id="rf1-yd-Dqs">
                             <connections>
                                 <action selector="didTapAddButton:" destination="BC6-dO-BEx" id="kEy-IJ-UHf"/>
-                                <segue destination="zvz-YV-8Zr" kind="show" id="jax-hl-PuO"/>
+                                <segue destination="zvz-YV-8Zr" kind="show" identifier="VocaAddViewController" id="jax-hl-PuO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -103,7 +103,7 @@
             </objects>
             <point key="canvasLocation" x="1101.449275362319" y="118.52678571428571"/>
         </scene>
-        <!--Voca Add View Controller-->
+        <!--단어 추가-->
         <scene sceneID="ygu-w5-kuf">
             <objects>
                 <viewController id="zvz-YV-8Zr" customClass="VocaAddViewController" customModule="Voca" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,14 +112,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="off-kE-Sfr">
-                                <rect key="frame" x="10" y="194" width="394" height="609"/>
+                                <rect key="frame" x="0.0" y="198" width="414" height="605"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="zrn-h1-fWi" userLabel="FooterView">
-                                    <rect key="frame" x="0.0" y="291" width="394" height="65"/>
+                                    <rect key="frame" x="0.0" y="291" width="414" height="65"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRZ-H6-FcI">
-                                            <rect key="frame" x="177" y="12.5" width="40" height="40"/>
+                                            <rect key="frame" x="187" y="12.5" width="40" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="NUS-ZV-wY8"/>
                                                 <constraint firstAttribute="width" constant="40" id="Rse-DH-Hy4"/>
@@ -142,17 +142,17 @@
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="AddVoca" rowHeight="235" id="D9y-S4-v2A" customClass="VocaAddTableViewCell" customModule="Voca" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="394" height="235"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="235"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D9y-S4-v2A" id="oSO-HI-VQo">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="235"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="235"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uPR-Fo-oSn" customClass="CardView" customModule="Voca" customModuleProvider="target">
-                                                    <rect key="frame" x="30" y="21" width="334" height="193"/>
+                                                    <rect key="frame" x="30" y="21" width="354" height="193"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="coI-Ey-WHV">
-                                                            <rect key="frame" x="325" y="5" width="4" height="4"/>
+                                                            <rect key="frame" x="345" y="5" width="4" height="4"/>
                                                             <color key="backgroundColor" systemColor="linkColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="4" id="KIz-QQ-CZd"/>
@@ -160,7 +160,7 @@
                                                             </constraints>
                                                         </view>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="IcQ-km-TvO">
-                                                            <rect key="frame" x="20" y="5" width="294" height="183"/>
+                                                            <rect key="frame" x="20" y="5" width="314" height="183"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         </stackView>
                                                     </subviews>
@@ -190,19 +190,18 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ldt-yZ-xON">
-                                <rect key="frame" x="40" y="104" width="334" height="80"/>
+                                <rect key="frame" x="60" y="98" width="294" height="90"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNc-tC-u46">
-                                        <rect key="frame" x="30" y="10" width="274" height="60"/>
+                                        <rect key="frame" x="40" y="0.0" width="214" height="90"/>
                                     </pickerView>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <constraints>
-                                    <constraint firstItem="DNc-tC-u46" firstAttribute="top" secondItem="ldt-yZ-xON" secondAttribute="top" constant="10" id="0Yg-GV-j5J"/>
-                                    <constraint firstAttribute="bottom" secondItem="DNc-tC-u46" secondAttribute="bottom" constant="10" id="8e5-K7-Nps"/>
-                                    <constraint firstAttribute="height" constant="80" id="AgI-7B-1at"/>
-                                    <constraint firstItem="DNc-tC-u46" firstAttribute="leading" secondItem="ldt-yZ-xON" secondAttribute="leading" constant="30" id="Lmf-Qu-Wki"/>
-                                    <constraint firstAttribute="trailing" secondItem="DNc-tC-u46" secondAttribute="trailing" constant="30" id="e3z-vx-ckl"/>
+                                    <constraint firstItem="DNc-tC-u46" firstAttribute="top" secondItem="ldt-yZ-xON" secondAttribute="top" id="0Yg-GV-j5J"/>
+                                    <constraint firstAttribute="bottom" secondItem="DNc-tC-u46" secondAttribute="bottom" id="8e5-K7-Nps"/>
+                                    <constraint firstAttribute="height" constant="90" id="AgI-7B-1at"/>
+                                    <constraint firstItem="DNc-tC-u46" firstAttribute="leading" secondItem="ldt-yZ-xON" secondAttribute="leading" constant="40" id="Lmf-Qu-Wki"/>
+                                    <constraint firstAttribute="trailing" secondItem="DNc-tC-u46" secondAttribute="trailing" constant="40" id="e3z-vx-ckl"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -210,16 +209,20 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RZc-pX-qi5" firstAttribute="bottom" secondItem="off-kE-Sfr" secondAttribute="bottom" constant="10" id="5Oj-Q6-Ry4"/>
-                            <constraint firstItem="ldt-yZ-xON" firstAttribute="top" secondItem="RZc-pX-qi5" secondAttribute="top" constant="16" id="GsW-dd-xwM"/>
-                            <constraint firstItem="ldt-yZ-xON" firstAttribute="leading" secondItem="RZc-pX-qi5" secondAttribute="leading" constant="40" id="Hhj-dQ-EF1"/>
-                            <constraint firstItem="off-kE-Sfr" firstAttribute="leading" secondItem="RZc-pX-qi5" secondAttribute="leading" constant="10" id="RQM-WL-L0m"/>
-                            <constraint firstItem="RZc-pX-qi5" firstAttribute="trailing" secondItem="ldt-yZ-xON" secondAttribute="trailing" constant="40" id="VKu-ft-H3y"/>
-                            <constraint firstItem="RZc-pX-qi5" firstAttribute="trailing" secondItem="off-kE-Sfr" secondAttribute="trailing" constant="10" id="fVx-HW-uYc"/>
+                            <constraint firstItem="ldt-yZ-xON" firstAttribute="top" secondItem="RZc-pX-qi5" secondAttribute="top" constant="10" id="GsW-dd-xwM"/>
+                            <constraint firstItem="ldt-yZ-xON" firstAttribute="leading" secondItem="RZc-pX-qi5" secondAttribute="leading" constant="60" id="Hhj-dQ-EF1"/>
+                            <constraint firstItem="off-kE-Sfr" firstAttribute="leading" secondItem="RZc-pX-qi5" secondAttribute="leading" id="RQM-WL-L0m"/>
+                            <constraint firstItem="RZc-pX-qi5" firstAttribute="trailing" secondItem="ldt-yZ-xON" secondAttribute="trailing" constant="60" id="VKu-ft-H3y"/>
+                            <constraint firstItem="RZc-pX-qi5" firstAttribute="trailing" secondItem="off-kE-Sfr" secondAttribute="trailing" id="fVx-HW-uYc"/>
                             <constraint firstItem="off-kE-Sfr" firstAttribute="top" secondItem="ldt-yZ-xON" secondAttribute="bottom" constant="10" id="fdL-Mx-tbR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="QO8-qU-ZP4">
-                        <barButtonItem key="rightBarButtonItem" title="추가" id="2BA-Ko-G8D"/>
+                    <navigationItem key="navigationItem" title="단어 추가" id="QO8-qU-ZP4">
+                        <barButtonItem key="rightBarButtonItem" title="추가" id="2BA-Ko-G8D">
+                            <connections>
+                                <action selector="didPressAddVocas:" destination="zvz-YV-8Zr" id="Qjd-Fv-owg"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="pickerView" destination="DNc-tC-u46" id="SFF-qM-L6i"/>
@@ -313,9 +316,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

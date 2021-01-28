@@ -32,6 +32,18 @@ class VocaListViewController: UIViewController {
         isEditMode = false
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let segueId = segue.identifier else { return }
+        switch segueId {
+        case "VocaAddViewController":
+            guard let addVC = segue.destination as? VocaAddViewController  else { return }
+            addVC.viewModel.folders = dataSource.snapshot().sectionIdentifiers
+            addVC.viewModel.delegate = viewModel
+        default:
+            break
+        }
+    }
+    
     @IBAction func didTapEditButton(_ sender: Any) {
         isEditMode.toggle()
     }
