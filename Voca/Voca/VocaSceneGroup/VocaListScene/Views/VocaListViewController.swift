@@ -13,7 +13,7 @@ class VocaListViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var dataSource: DataSource! = nil
-    typealias DataSource = UICollectionViewDiffableDataSource<VocaSection, VocaItem>
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, VocaItem>
     
     let viewModel = VocaListViewModel()
     @Published var isEditMode = false
@@ -37,7 +37,14 @@ class VocaListViewController: UIViewController {
         switch segueId {
         case "VocaAddViewController":
             guard let addVC = segue.destination as? VocaAddViewController  else { return }
-            addVC.viewModel.folders = dataSource.snapshot().sectionIdentifiers
+            addVC.viewModel.folders = dataSource.snapshot().sectionIdentifiers.map({ section -> String in
+                switch section {
+                case .folder(count: _, title: let title):
+                    return title
+                case .favorite(count: _):
+                    return ""
+                }
+            })
             addVC.viewModel.delegate = viewModel
         default:
             break
@@ -84,6 +91,7 @@ class VocaListViewController: UIViewController {
     @objc
     func didTapFavoriteButton() {
         //TODO: 좋아요 기능 추가
+        viewModel.isShowingFavorites.toggle()
     }
     
 }
@@ -149,7 +157,6 @@ extension VocaListViewController {
     private func configureDataSource() {
         
         let parentCell = UICollectionView.CellRegistration<UICollectionViewListCell, VocaSection> { cell, _, item in
-            
             var content = cell.defaultContentConfiguration()
             content.text = item.title
             cell.contentConfiguration = content
@@ -159,17 +166,19 @@ extension VocaListViewController {
         }
         
         let footerRegistration = UICollectionView.SupplementaryRegistration
-        <UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionFooter) {
-            [unowned self] (footerView, _, indexPath) in
+        <UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionFooter) { [unowned self] (footerView, _, indexPath) in
             
             let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-            let count = section.vocas.count
-            
-            // Configure footer view content
-            var configuration = footerView.defaultContentConfiguration()
-            configuration.text = "단어 수: \(count)"
-            configuration.textProperties.alignment = .center
-            footerView.contentConfiguration = configuration
+            switch section {
+            case .folder(count: let count, title: _):
+                // Configure footer view content
+                var configuration = footerView.defaultContentConfiguration()
+                configuration.text = "단어 수: \(count)"
+                configuration.textProperties.alignment = .center
+                footerView.contentConfiguration = configuration
+            case .favorite(count: let count):
+                print(count)
+            }
         }
 
         dataSource =
@@ -191,8 +200,7 @@ extension VocaListViewController {
                             return cell
                         }
                        })
-        dataSource.supplementaryViewProvider = { [unowned self]
-            (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
+        dataSource.supplementaryViewProvider = { [unowned self] (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
             if elementKind == UICollectionView.elementKindSectionFooter {
                 return self.collectionView.dequeueConfiguredReusableSupplementary(
                     using: footerRegistration, for: indexPath)
@@ -201,9 +209,9 @@ extension VocaListViewController {
             }
         }
 
-        
         dataSource.reorderingHandlers.canReorderItem = { item in true}
         dataSource.reorderingHandlers.didReorder = { transaction in
+            //TODO: Reorder 구현
         }
     }
     
@@ -224,7 +232,7 @@ extension VocaListViewController {
         let favorites = UIBarButtonItem(title: "즐쳐찾기",
                                         style: .plain,
                                         target: self,
-                                        action: #selector(didTapAddFolderButton))
+                                        action: #selector(didTapFavoriteButton))
         toolbarItems = [addFolder, spacer, favorites]
     }
     

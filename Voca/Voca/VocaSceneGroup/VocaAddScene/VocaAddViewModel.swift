@@ -12,7 +12,7 @@ protocol VocaAddDelegate: class {
 }
 
 class VocaAddViewModel {
-    var folders: [VocaSection] = []
+    var folders: [String] = []
     var pickedFolderIndex = 0
     var cellViewModels = [VocaAddCellViewModel()]
     weak var delegate: VocaAddDelegate?
@@ -39,6 +39,6 @@ class VocaAddViewModel {
         let vocas = cellViewModels.map { vm -> (String, String) in
             (vm.questionText, vm.answerText)
         }
-        delegate?.didAdd(vocas, to: folders[pickedFolderIndex].title)
+        delegate?.didAdd(vocas, to: folders[pickedFolderIndex])
     }
 }

@@ -120,11 +120,11 @@ extension VocaAddViewController: UITableViewDelegate {
 
 extension VocaAddViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        viewModel.folders[row].title
+        viewModel.folders[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(viewModel.folders[row].title)
+        print(viewModel.folders[row])
         viewModel.pickedFolderIndex = row
     }
 }

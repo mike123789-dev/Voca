@@ -15,9 +15,14 @@ enum VocaItem: Hashable {
     case child(Voca)
 }
 
+enum Section: Hashable {
+    case favorite(count: Int)
+    case folder(count: Int, title: String)
+}
+
 class VocaListViewModel: NSObject {
     
-    typealias Snapshot = NSDiffableDataSourceSnapshot<VocaSection, VocaItem>
+    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, VocaItem>
     typealias SectionSnapshot = NSDiffableDataSourceSectionSnapshot<VocaItem>
     
     var container = NSPersistentContainer(name: "Voca")
@@ -26,7 +31,13 @@ class VocaListViewModel: NSObject {
     var fetchedResultsController: NSFetchedResultsController<VocaSection>!
     
     let snapshotPublisher = PassthroughSubject<Snapshot, Never>()
-    let sectionSnapshotPublisher = PassthroughSubject<(SectionSnapshot, VocaSection), Never>()
+    let sectionSnapshotPublisher = PassthroughSubject<(SectionSnapshot, Section), Never>()
+    
+    var isShowingFavorites = false {
+        didSet {
+            print("showing favorites \(isShowingFavorites)")
+        }
+    }
     
     func setup() {
         setupCoreData()
@@ -76,23 +87,22 @@ class VocaListViewModel: NSObject {
     }
     
     private func updateSnapshot() {
-        guard let sections = fetchedResultsController.fetchedObjects else { return }
+        guard let vocaSections = fetchedResultsController.fetchedObjects else { return }
+        let sections = vocaSections.map { Section.folder(count: $0.vocas.count, title: $0.title) }
         var snapshot = Snapshot()
         snapshot.appendSections(sections)
         snapshotPublisher.send(snapshot)
         
-        for section in sections {
+        for (index, section) in vocaSections.enumerated() {
             var sectionSnapshot = SectionSnapshot()
             let header = VocaItem.parent(section)
             sectionSnapshot.append([header])
             sectionSnapshot.append(
-                section.vocaArray.map {
-                    VocaItem.child($0)
-                },
+                section.vocaArray.map {  VocaItem.child($0) },
                 to: header
             )
             sectionSnapshot.expand([header])
-            sectionSnapshotPublisher.send((sectionSnapshot, section))
+            sectionSnapshotPublisher.send((sectionSnapshot, sections[index]))
         }
     }
     
@@ -114,10 +124,9 @@ extension VocaListViewModel {
         s.title = title
         s.id = UUID()
         saveContext()
-        updateSnapshot()
     }
     
-    func addVoca(_ vocas: [(question: String, answer: String)], to folder: String) {
+    func addVocas(_ vocas: [(question: String, answer: String)], to folder: String) {
         let section = fetchedResultsController.fetchedObjects?.first(where: { section -> Bool in
             section.title == folder
         })
@@ -133,20 +142,19 @@ extension VocaListViewModel {
             section?.addToVocas(v)
         }
         saveContext()
-        updateSnapshot()
     }
     
 }
 
 extension VocaListViewModel: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        //        print("updateSnapshot2")
-        //        updateSnapshot()
+                print("updateSnapshot2")
+                updateSnapshot()
     }
 }
 
 extension VocaListViewModel: VocaAddDelegate {
     func didAdd(_ vocas: [(String, String)], to folder: String) {
-        addVoca(vocas, to: folder)
+        addVocas(vocas, to: folder)
     }
 }
