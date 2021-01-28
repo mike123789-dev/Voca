@@ -120,14 +120,25 @@ extension VocaListViewController {
             guard let item = self?.dataSource?.itemIdentifier(for: indexPath) else {
                 return nil
             }
-            let favoriteAction = UIContextualAction(style: .normal, title: nil) { (action, _, completion) in
-                //                코어 데이터에서 좋아요 toggle
-                //                self?.handleSwipe(for: action, item: item)
+            let favoriteAction = UIContextualAction(style: .normal, title: "즐겨찾기") { (action, _, completion) in
+                //TODO: 좋아요 토글 기능 추가
                 completion(true)
             }
-            favoriteAction.image = UIImage(named: "person")
+            favoriteAction.image = .checkmark
             favoriteAction.backgroundColor = .systemOrange
-            return UISwipeActionsConfiguration(actions: [favoriteAction])
+            let modifyAction = UIContextualAction(style: .normal, title: "수정") { (_, _, completion) in
+                //TODO: 수정 기능 추가
+                
+                completion(true)
+            }
+            modifyAction.image = nil
+            modifyAction.backgroundColor = .systemBlue
+            switch item {
+            case .parent(let section):
+                return UISwipeActionsConfiguration(actions: [modifyAction])
+            case .child(let voca):
+                return UISwipeActionsConfiguration(actions: [favoriteAction, modifyAction])
+            }
         }
         
         collectionView.collectionViewLayout = UICollectionViewCompositionalLayout.list(using: configuration)
@@ -145,24 +156,25 @@ extension VocaListViewController {
             cell.accessories = [.outlineDisclosure(options:headerDisclosureOption)]
         }
         
-        dataSource = DataSource(collectionView: collectionView,
-                                cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
-                                    switch item {
-                                    case .parent(let parentItem):
-                                        let cell = collectionView
-                                            .dequeueConfiguredReusableCell(using: parentCell,
-                                                                           for: indexPath,
-                                                                           item: parentItem)
-                                        return cell
-                                    case .child(let childItem):
-                                        let cell = collectionView
-                                            .dequeueReusableCell(
-                                                withReuseIdentifier: "VocaCollectionViewCell",
-                                                for: indexPath) as? VocaCollectionViewCell
-                                        cell?.configure(with: childItem)
-                                        return cell
-                                    }
-                                })
+        dataSource =
+            DataSource(collectionView: collectionView,
+                       cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
+                        switch item {
+                        case .parent(let parentItem):
+                            let cell = collectionView
+                                .dequeueConfiguredReusableCell(using: parentCell,
+                                                               for: indexPath,
+                                                               item: parentItem)
+                            return cell
+                        case .child(let childItem):
+                            let cell = collectionView
+                                .dequeueReusableCell(
+                                    withReuseIdentifier: "VocaCollectionViewCell",
+                                    for: indexPath) as? VocaCollectionViewCell
+                            cell?.configure(with: childItem)
+                            return cell
+                        }
+                       })
         
         dataSource.reorderingHandlers.canReorderItem = { item in true}
         dataSource.reorderingHandlers.didReorder = { transaction in
@@ -175,7 +187,6 @@ extension VocaListViewController {
 extension VocaListViewController {
     
     func configureNavigationController() {
-        //        UIBarButtonItem(
         let addFolder = UIBarButtonItem(title: "폴더 추가",
                                         style: .plain,
                                         target: self,
