@@ -8,7 +8,7 @@
 import Foundation
 
 protocol VocaAddDelegate: class {
-    func didAdd(_ voca: (answer: String, question: String), to folder: String)
+    func didAdd(_ vocas: [(String, String)], to folder: String)
 }
 
 class VocaAddViewModel {
@@ -36,9 +36,9 @@ class VocaAddViewModel {
     }
     
     func didPressAddVocas() {
-        let firstVoca = cellViewModels.first.map { vm -> (String, String) in
+        let vocas = cellViewModels.map { vm -> (String, String) in
             (vm.questionText, vm.answerText)
         }
-        delegate?.didAdd(firstVoca!, to: folders[pickedFolderIndex].title)
+        delegate?.didAdd(vocas, to: folders[pickedFolderIndex].title)
     }
 }

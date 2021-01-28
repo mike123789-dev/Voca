@@ -107,8 +107,7 @@ extension VocaListViewController {
                   let self = self else {
                 return nil
             }
-            let deleteAction = UIContextualAction(style: .destructive, title: "제거") { (action, _, completion) in
-                
+            let deleteAction = UIContextualAction(style: .destructive, title: "제거") { (_, _, completion) in
                 var snapShot = self.dataSource.snapshot()
                 snapShot.deleteItems([item])
                 self.dataSource.apply(snapShot)

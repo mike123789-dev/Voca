@@ -31,44 +31,11 @@ class VocaListViewModel: NSObject {
     func setup() {
         setupCoreData()
         loadSavedData()
-        //        fetch()
-    }
-    
-    private func fetch() {
-        let sections = TestData.sections
-        sections.forEach { section in
-            let s = VocaSection(context: container.viewContext)
-            s.date = Date()
-            s.title = section.title
-            s.id = UUID()
-            section.vocas.forEach { voca in
-                let v = Voca(context: container.viewContext)
-                v.answer = voca.answer
-                v.question = voca.question
-                v.correctCount = 0
-                v.wrongCount = 0
-                v.isFavorite = false
-                v.date = Date()
-                v.id = UUID()
-                s.addToVocas(v)
-            }
-        }
-        loadSavedData()
     }
     
     private func setupCoreData() {
         container.loadPersistentStores { _, _ in
             self.container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        }
-    }
-    
-    private func saveContext() {
-        if container.viewContext.hasChanges {
-            do {
-                try container.viewContext.save()
-            } catch {
-                print("An error occurred while saving: \(error)")
-            }
         }
     }
     
@@ -95,6 +62,16 @@ class VocaListViewModel: NSObject {
             updateSnapshot()
         } catch {
             print("Fetch failed")
+        }
+    }
+    
+    private func saveContext() {
+        if container.viewContext.hasChanges {
+            do {
+                try container.viewContext.save()
+            } catch {
+                print("An error occurred while saving: \(error)")
+            }
         }
     }
     
@@ -140,24 +117,23 @@ extension VocaListViewModel {
         updateSnapshot()
     }
     
-    func addVoca(_ voca: (answer: String, question: String), to folder: String) {
-        let v = Voca(context: container.viewContext)
-        v.answer = voca.answer
-        v.question = voca.question
-        v.correctCount = 0
-        v.wrongCount = 0
-        v.isFavorite = false
-        v.date = Date()
-        v.id = UUID()
-        
+    func addVoca(_ vocas: [(question: String, answer: String)], to folder: String) {
         let section = fetchedResultsController.fetchedObjects?.first(where: { section -> Bool in
             section.title == folder
         })
-        
-        section?.addToVocas(v)
+        vocas.forEach { voca in
+            let v = Voca(context: container.viewContext)
+            v.answer = voca.answer
+            v.question = voca.question
+            v.correctCount = 0
+            v.wrongCount = 0
+            v.isFavorite = false
+            v.date = Date()
+            v.id = UUID()
+            section?.addToVocas(v)
+        }
         saveContext()
         updateSnapshot()
-        
     }
     
 }
@@ -170,7 +146,7 @@ extension VocaListViewModel: NSFetchedResultsControllerDelegate {
 }
 
 extension VocaListViewModel: VocaAddDelegate {
-    func didAdd(_ voca: (answer: String, question: String), to folder: String) {
-        addVoca(voca, to: folder)
+    func didAdd(_ vocas: [(String, String)], to folder: String) {
+        addVoca(vocas, to: folder)
     }
 }
