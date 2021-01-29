@@ -8,14 +8,25 @@
 import UIKit
 
 class SwipeCardView: CardView {
-    var label = UILabel()
-    var moreButton = UIButton()
+    var questionLabel = UILabel()
+    var answerLabel = UILabel()
+    var favoriteButton = UIButton()
     weak var delegate: SwipeCardsDelegate?
     var divisor: CGFloat = 0
-    
     var dataSource: AddVocaModel? {
         didSet {
-            label.text = "\(dataSource?.question ?? "") : \(dataSource?.answer ?? "")"
+            questionLabel.text = "\(dataSource?.question ?? "")"
+            answerLabel.text = "\(dataSource?.answer ?? "")"
+        }
+    }
+    var isAnswerHidden = true {
+        didSet {
+            UIView.transition(with: self,
+                              duration: 0.3,
+                              options: .transitionCrossDissolve) { [weak self] in
+                guard let self = self else { return }
+                self.answerLabel.isHidden = self.isAnswerHidden
+            }
         }
     }
     
@@ -23,7 +34,9 @@ class SwipeCardView: CardView {
         super.init(frame: frame)
         backgroundColor = .white
         setupCard()
-        setupLabelView()
+        setupGesture()
+        setupQuestionLabel()
+        setupAnswerLabel()
         setupButton()
     }
     
@@ -38,23 +51,50 @@ class SwipeCardView: CardView {
         super.shadowOfSetHeight = 3
     }
     
-    private func setupLabelView() {
-        addSubview(label)
-        label.backgroundColor = .white
-        label.textColor = .black
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 18)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        label.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+    private func setupQuestionLabel() {
+        addSubview(questionLabel)
+        questionLabel.backgroundColor = .white
+        questionLabel.textColor = .black
+        questionLabel.textAlignment = .center
+        questionLabel.font = UIFont.systemFont(ofSize: 30)
+        questionLabel.translatesAutoresizingMaskIntoConstraints = false
+        questionLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        questionLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+    }
+    
+    private func setupAnswerLabel() {
+        addSubview(answerLabel)
+        answerLabel.isHidden = isAnswerHidden
+        answerLabel.backgroundColor = .white
+        answerLabel.textColor = .black
+        answerLabel.textAlignment = .center
+        answerLabel.font = UIFont.systemFont(ofSize: 18)
+        answerLabel.translatesAutoresizingMaskIntoConstraints = false
+        answerLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        answerLabel.topAnchor.constraint(equalTo: questionLabel.bottomAnchor, constant: 10).isActive = true
     }
     
     private func setupButton() {
-        addSubview(moreButton)
-        moreButton.titleLabel?.text = "더"
-        moreButton.translatesAutoresizingMaskIntoConstraints = false
-        moreButton.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        moreButton.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        favoriteButton.tintColor = .systemYellow
+        favoriteButton.frame.size = CGSize(width: 44, height: 44)
+        favoriteButton.sizeToFit()
+        addSubview(favoriteButton)
+        favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+        favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
+        favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+    }
+    
+    private func setupGesture() {
+        let tapGesture = UITapGestureRecognizer(
+          target: self,
+          action: #selector(handleTap)
+        )
+        addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTap() {
+        isAnswerHidden.toggle()
     }
     
 }
