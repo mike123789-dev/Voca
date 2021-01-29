@@ -16,12 +16,19 @@ import UIKit
     var shadowColour: UIColor = .systemGray
     var shadowOpacity: CGFloat = 0.5
     
+    var isEfficient = true
+    
     override func layoutSubviews() {
         layer.cornerRadius = cornnerRadius
         layer.shadowColor = shadowColour.cgColor
         layer.shadowOffset = CGSize(width: shadowOfSetWidth, height: shadowOfSetHeight)
-        let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornnerRadius)
-        layer.shadowPath = shadowPath.cgPath
         layer.shadowOpacity = Float(shadowOpacity)
+        
+        if isEfficient == true {
+            let shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: cornnerRadius)
+            layer.shadowPath = shadowPath.cgPath
+            layer.shouldRasterize = true
+            layer.rasterizationScale = UIScreen.main.scale
+        }
     }
 }
