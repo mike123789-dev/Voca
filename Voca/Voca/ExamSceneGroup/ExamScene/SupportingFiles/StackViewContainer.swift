@@ -69,6 +69,27 @@ class StackViewContainer: UIView {
         
         cardView.frame = cardViewFrame
     }
+    
+    private func addEmptyView() {
+        if visibleCards.count == 0 {
+            guard let datasource = dataSource,
+                  let emptyView = datasource.emptyView(),
+                  let superview = superview else { return }
+            self.addSubview(emptyView)
+            //TODO: emptyview 위치 조절해주기
+            emptyView.isHidden = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                UIView.transition(with: self,
+                                  duration: 0.5,
+                                  options: [.transitionFlipFromBottom],
+                                  animations: {
+                                    emptyView.isHidden = false
+                                  })
+            }
+            
+        }
+        
+    }
 }
 
 extension StackViewContainer: SwipeCardsDelegate {
@@ -90,5 +111,6 @@ extension StackViewContainer: SwipeCardsDelegate {
                            },
                            completion: nil)
         }
+        addEmptyView()
     }
 }
