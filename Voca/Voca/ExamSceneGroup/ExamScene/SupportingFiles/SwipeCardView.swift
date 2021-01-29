@@ -45,6 +45,7 @@ class SwipeCardView: CardView {
     }
     
     private func setupCard() {
+        super.isEfficient = false
         super.cornnerRadius = 10
         super.shadowOpacity = 1.0
         super.shadowOfSetWidth = .zero
@@ -87,14 +88,64 @@ class SwipeCardView: CardView {
     
     private func setupGesture() {
         let tapGesture = UITapGestureRecognizer(
-          target: self,
-          action: #selector(handleTap)
+            target: self,
+            action: #selector(handleTap)
         )
         addGestureRecognizer(tapGesture)
+        self.isUserInteractionEnabled = true
+        addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture)))
+        
     }
     
     @objc func handleTap() {
         isAnswerHidden.toggle()
+    }
+    
+    @objc func handlePanGesture(sender: UIPanGestureRecognizer) {
+        guard let card = sender.view as? SwipeCardView else { return }
+        let translation = sender.translation(in: self)
+        let centerOfParentContainer = CGPoint(x: self.frame.width / 2,
+                                              y: self.frame.height / 2)
+        card.center = CGPoint(x: centerOfParentContainer.x + translation.x,
+                              y: centerOfParentContainer.y + translation.y)
+        
+        switch sender.state {
+        case .ended:
+            if translation.x > 100 {
+                delegate?.swipeDidEnd(on: card, direction: .right)
+                UIView.animate(withDuration: 1,
+                               animations: {
+                                card.center = CGPoint(x: card.center.x + 200,
+                                                      y: card.center.y + 75)
+                                card.alpha = 0
+                                self.layoutIfNeeded()
+                               },
+                               completion: nil)
+                return
+            } else if translation.x < -100 {
+                delegate?.swipeDidEnd(on: card, direction: .left)
+                UIView.animate(withDuration: 1,
+                               animations: {
+                                card.center = CGPoint(x: card.center.x - 200,
+                                                      y: card.center.y + 75)
+                                card.alpha = 0
+                                self.layoutIfNeeded()
+                               },
+                               completion: nil)
+                return
+            }
+            UIView.animate(withDuration: 0.2) {
+                card.transform = .identity
+                print(CGPoint(x: self.frame.width / 2, y: self.frame.height / 2))
+                card.center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+                self.layoutIfNeeded()
+            }
+        case .changed:
+            let rotation = tan(translation.x / (self.frame.width * 2.0))
+            card.transform = CGAffineTransform(rotationAngle: rotation)
+        default:
+            break
+        }
     }
     
 }
