@@ -11,12 +11,16 @@ class StackViewContainer: UIView {
     
     var numberOfCardsToShow: Int = 0
     var cardsToBeVisible: Int = 3
-    var cardViews: [SwipeCardView] = []
     var remainingcards: Int = 0
+    
+    var cardViews: [SwipeCardView] = []
+    var visibleCards: [SwipeCardView] {
+        return subviews as? [SwipeCardView] ?? []
+    }
     
     let horizontalInset: CGFloat = 10.0
     let verticalInset: CGFloat = 10.0
-
+    
     var dataSource: SwipeCardsDataSource? {
         didSet {
             reloadData()
@@ -31,7 +35,7 @@ class StackViewContainer: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     func reloadData() {
         guard let datasource = dataSource else { return }
         setNeedsLayout()
@@ -39,7 +43,7 @@ class StackViewContainer: UIView {
         numberOfCardsToShow = datasource.numberOfCardsToShow()
         remainingcards = numberOfCardsToShow
         
-        //스택에 뷰를 추가하는것 (최대 3개의 카드를 보여줄것이다)
+        //스택에 뷰를 추가하기 (최대 3개의 카드를 보여줄것이다)
         for i in 0..<min(numberOfCardsToShow, cardsToBeVisible) {
             addCardView(cardView: datasource.card(at: i), atIndex: i)
         }
@@ -68,7 +72,23 @@ class StackViewContainer: UIView {
 }
 
 extension StackViewContainer: SwipeCardsDelegate {
-    func swipeDidEnd(on view: SwipeCardView) {
-        print("did end!")
+    func swipeDidEnd(on view: SwipeCardView, direction: SwipeCardDirection) {
+        guard let datasource = dataSource else { return }
+        view.removeFromSuperview()
+        
+        if remainingcards > 0 {
+            let newIndex = datasource.numberOfCardsToShow() - remainingcards
+            addCardView(cardView: datasource.card(at: newIndex), atIndex: 2)
+        }
+        for (cardIndex, cardView) in visibleCards.reversed().enumerated() {
+            UIView.animate(withDuration: 0.2,
+                           animations: { [weak self] in
+                            guard let self = self else { return }
+                            cardView.center = self.center
+                            self.setCardFrame(cardView: cardView, at: cardIndex)
+                            self.layoutIfNeeded()
+                           },
+                           completion: nil)
+        }
     }
 }

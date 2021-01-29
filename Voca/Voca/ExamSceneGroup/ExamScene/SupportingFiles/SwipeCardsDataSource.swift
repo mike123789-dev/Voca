@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum SwipeCardDirection {
+    case left, right
+}
+
 protocol SwipeCardsDataSource {
     func numberOfCardsToShow() -> Int
     func card(at index: Int) -> SwipeCardView
@@ -14,5 +18,5 @@ protocol SwipeCardsDataSource {
 }
 
 protocol SwipeCardsDelegate: class {
-    func swipeDidEnd(on view: SwipeCardView)
+    func swipeDidEnd(on view: SwipeCardView, direction: SwipeCardDirection)
 }
