@@ -31,7 +31,7 @@ class ExamViewController: UIViewController {
 }
 
 extension ExamViewController: SwipeCardsDataSource {
-
+    
     func numberOfCardsToShow() -> Int {
         return vocas.count
     }
@@ -43,7 +43,10 @@ extension ExamViewController: SwipeCardsDataSource {
     }
     
     func emptyView() -> UIView? {
-        return nil
+        let width = view.frame.size.width - 30
+        let height = view.frame.size.height - 30
+        return ResultView(frame: CGRect(origin: .zero,
+                                        size: CGSize(width: width, height: height)))
     }
     
 }
