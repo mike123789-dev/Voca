@@ -8,22 +8,42 @@
 import UIKit
 
 class ExamViewController: UIViewController {
-
+    
+    var vocas: [AddVocaModel] = TestData.section3.vocas
+    var stackContainer: StackViewContainer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupStackContainter()
+        stackContainer.dataSource = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupStackContainter() {
+        stackContainer = StackViewContainer()
+        view.addSubview(stackContainer)
+        stackContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        stackContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60).isActive = true
+        stackContainer.widthAnchor.constraint(equalToConstant: 300).isActive = true
+        stackContainer.heightAnchor.constraint(equalToConstant: 400).isActive = true
+        stackContainer.translatesAutoresizingMaskIntoConstraints = false
     }
-    */
+    
+}
 
+extension ExamViewController: SwipeCardsDataSource {
+
+    func numberOfCardsToShow() -> Int {
+        return vocas.count
+    }
+    
+    func card(at index: Int) -> SwipeCardView {
+        let card = SwipeCardView()
+        card.dataSource = vocas[index]
+        return card
+    }
+    
+    func emptyView() -> UIView? {
+        return nil
+    }
+    
 }
