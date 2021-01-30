@@ -11,8 +11,8 @@ class SwipeCardView: CardView {
     var questionLabel = UILabel()
     var answerLabel = UILabel()
     var favoriteButton = UIButton()
+    var infoView = InfoView()
     weak var delegate: SwipeCardsDelegate?
-    var divisor: CGFloat = 0
     var dataSource: AddVocaModel? {
         didSet {
             questionLabel.text = "\(dataSource?.question ?? "")"
@@ -29,12 +29,15 @@ class SwipeCardView: CardView {
             }
         }
     }
+    var divisor: CGFloat = 0
+    let swipeThreshold: CGFloat = 100
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .white
         setupCard()
         setupGesture()
+        setupInfoView()
         setupQuestionLabel()
         setupAnswerLabel()
         setupButton()
@@ -82,8 +85,17 @@ class SwipeCardView: CardView {
         favoriteButton.sizeToFit()
         addSubview(favoriteButton)
         favoriteButton.translatesAutoresizingMaskIntoConstraints = false
-        favoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: 10).isActive = true
-        favoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10).isActive = true
+        favoriteButton.centerYAnchor.constraint(equalTo: infoView.centerYAnchor).isActive = true
+        favoriteButton.trailingAnchor.constraint(equalTo: infoView.trailingAnchor, constant: -10).isActive = true
+    }
+    
+    private func setupInfoView() {
+        addSubview(infoView)
+        infoView.translatesAutoresizingMaskIntoConstraints = false
+        infoView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        infoView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        infoView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        infoView.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     private func setupGesture() {
@@ -111,7 +123,7 @@ class SwipeCardView: CardView {
         
         switch sender.state {
         case .ended:
-            if translation.x > 100 {
+            if translation.x > swipeThreshold {
                 delegate?.swipeDidEnd(on: card, direction: .right)
                 UIView.animate(withDuration: 1,
                                animations: {
@@ -122,7 +134,7 @@ class SwipeCardView: CardView {
                                },
                                completion: nil)
                 return
-            } else if translation.x < -100 {
+            } else if translation.x < -swipeThreshold {
                 delegate?.swipeDidEnd(on: card, direction: .left)
                 UIView.animate(withDuration: 1,
                                animations: {
@@ -138,13 +150,27 @@ class SwipeCardView: CardView {
                 card.transform = .identity
                 print(CGPoint(x: self.frame.width / 2, y: self.frame.height / 2))
                 card.center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+                self.infoView.reset()
                 self.layoutIfNeeded()
             }
         case .changed:
             let rotation = tan(translation.x / (self.frame.width * 2.0))
             card.transform = CGAffineTransform(rotationAngle: rotation)
+            configureInfoView(difference: translation.x)
         default:
             break
+        }
+    }
+    
+    func configureInfoView(difference: CGFloat) {
+        let diff = min(abs(difference), swipeThreshold)
+        let diffPercentage = diff / swipeThreshold
+        if difference > 0 {
+            infoView.configure(isOkay: true, percentage: diffPercentage)
+        } else if difference < 0 {
+            infoView.configure(isOkay: false, percentage: diffPercentage)
+        } else {
+            infoView.reset()
         }
     }
     
