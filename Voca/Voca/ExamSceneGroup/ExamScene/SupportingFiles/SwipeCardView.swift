@@ -81,12 +81,16 @@ class SwipeCardView: CardView {
     private func setupButton() {
         favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
         favoriteButton.tintColor = .systemYellow
-        favoriteButton.frame.size = CGSize(width: 44, height: 44)
         favoriteButton.sizeToFit()
+        favoriteButton.addTarget(self,
+                                 action: #selector(didTapFavoriteButton),
+                                 for: .touchUpInside)
         addSubview(favoriteButton)
         favoriteButton.translatesAutoresizingMaskIntoConstraints = false
         favoriteButton.centerYAnchor.constraint(equalTo: infoView.centerYAnchor).isActive = true
         favoriteButton.trailingAnchor.constraint(equalTo: infoView.trailingAnchor, constant: -10).isActive = true
+        favoriteButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        favoriteButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     private func setupInfoView() {
@@ -105,8 +109,12 @@ class SwipeCardView: CardView {
         )
         addGestureRecognizer(tapGesture)
         self.isUserInteractionEnabled = true
-        addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture)))
-        
+        addGestureRecognizer(UIPanGestureRecognizer(target: self,
+                                                    action: #selector(handlePanGesture)))
+    }
+    
+    @objc func didTapFavoriteButton(){
+        delegate?.didPressFavoriteButton()
     }
     
     @objc func handleTap() {
@@ -148,7 +156,6 @@ class SwipeCardView: CardView {
             }
             UIView.animate(withDuration: 0.2) {
                 card.transform = .identity
-                print(CGPoint(x: self.frame.width / 2, y: self.frame.height / 2))
                 card.center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
                 self.infoView.reset()
                 self.layoutIfNeeded()
@@ -157,6 +164,13 @@ class SwipeCardView: CardView {
             let rotation = tan(translation.x / (self.frame.width * 2.0))
             card.transform = CGAffineTransform(rotationAngle: rotation)
             configureInfoView(difference: translation.x)
+            if translation.x > swipeThreshold {
+                delegate?.swipeWillEnd(direction: .right)
+            } else if translation.x < -swipeThreshold {
+                delegate?.swipeWillEnd(direction: .left)
+            } else {
+                delegate?.swipeWillEnd(direction: .unknown)
+            }
         default:
             break
         }
