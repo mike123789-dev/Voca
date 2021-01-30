@@ -6,47 +6,68 @@
 //
 
 import UIKit
+import Combine
 
 class ExamViewController: UIViewController {
     
-    var vocas: [AddVocaModel] = TestData.section3.vocas
-    var stackContainer: StackViewContainer!
+    @IBOutlet weak var leftCountLabel: UILabel!
+    @IBOutlet weak var rightCountLabel: UILabel!
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var stackViewContainer: StackViewContainer!
+    
+    let viewModel = ExamViewModel()
+    var subscriptions = Set<AnyCancellable>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupStackContainter()
-        stackContainer.dataSource = self
+        stackViewContainer.dataSource = self
+        setupBinding()
     }
     
-    private func setupStackContainter() {
-        stackContainer = StackViewContainer()
-        view.addSubview(stackContainer)
-        stackContainer.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        stackContainer.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60).isActive = true
-        stackContainer.widthAnchor.constraint(equalToConstant: 300).isActive = true
-        stackContainer.heightAnchor.constraint(equalToConstant: 400).isActive = true
-        stackContainer.translatesAutoresizingMaskIntoConstraints = false
+    private func setupBinding() {
+        viewModel.$leftCount
+            .map { "\($0)" }
+            .assign(to: \.text, on: leftCountLabel)
+            .store(in: &subscriptions)
+        viewModel.$rightCount
+            .map { "\($0)" }
+            .assign(to: \.text, on: rightCountLabel)
+            .store(in: &subscriptions)
+        viewModel.$progressPercent
+            .assign(to: \.progress, on: progressView)
+            .store(in: &subscriptions)
+        viewModel.$currendIndex
+            .map { [weak self] in
+                "\($0 + 1 )  / \(self?.viewModel.vocas.count ?? 1)" }
+            .assign(to: \.text, on: progressLabel)
+            .store(in: &subscriptions)
     }
     
+    @IBAction func didTapResetButton(_ sender: Any) {
+        stackViewContainer.reloadData()
+    }
+
 }
 
 extension ExamViewController: SwipeCardsDataSource {
     
     func numberOfCardsToShow() -> Int {
-        return vocas.count
+        return viewModel.vocas.count
     }
     
     func card(at index: Int) -> SwipeCardView {
         let card = SwipeCardView()
-        card.dataSource = vocas[index]
+        card.dataSource = viewModel.vocas[index]
         return card
     }
     
     func emptyView() -> UIView? {
-        let width = view.frame.size.width - 30
-        let height = view.frame.size.height - 30
-        return ResultView(frame: CGRect(origin: .zero,
-                                        size: CGSize(width: width, height: height)))
+//        let width = view.frame.size.width - 30
+//        let height = view.frame.size.height - 30
+//        return ResultView(frame: CGRect(origin: .zero,
+//                                        size: CGSize(width: width, height: height)))
+        nil
     }
     
 }
