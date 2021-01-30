@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InfoView: UIView {
+class SwipeCardInfoView: UIView {
     
     var infoLabel = UILabel()
     

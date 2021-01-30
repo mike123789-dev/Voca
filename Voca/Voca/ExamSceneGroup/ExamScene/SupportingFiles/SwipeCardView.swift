@@ -11,7 +11,7 @@ class SwipeCardView: CardView {
     var questionLabel = UILabel()
     var answerLabel = UILabel()
     var favoriteButton = UIButton()
-    var infoView = InfoView()
+    var infoView = SwipeCardInfoView()
     weak var delegate: SwipeCardsDelegate?
     var dataSource: AddVocaModel? {
         didSet {
