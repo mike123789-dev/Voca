@@ -12,6 +12,7 @@ class StackViewContainer: UIView {
     var numberOfCardsToShow: Int = 0
     var cardsToBeVisible: Int = 3
     var remainingcards: Int = 0
+    var currentCardIndex = 0
     
     var cardViews: [SwipeCardView] = []
     var visibleCards: [SwipeCardView] {
@@ -21,6 +22,7 @@ class StackViewContainer: UIView {
     let horizontalInset: CGFloat = 10.0
     let verticalInset: CGFloat = 10.0
     
+    weak var delegate: SwipeStackDelegate?
     var dataSource: SwipeCardsDataSource? {
         didSet {
             reloadData()
@@ -51,10 +53,12 @@ class StackViewContainer: UIView {
     }
     
     func resetCards() {
+        currentCardIndex = 0
         cardViews = []
         for views in visibleCards {
             views.removeFromSuperview()
         }
+        delegate?.didReset()
     }
     
     private func addCardView(cardView: SwipeCardView, atIndex index: Int) {
@@ -100,9 +104,20 @@ class StackViewContainer: UIView {
 }
 
 extension StackViewContainer: SwipeCardsDelegate {
+    
+    func didPressFavoriteButton() {
+        delegate?.didPressFavoriteButton(index: currentCardIndex)
+    }
+    
+    func swipeWillEnd(direction: SwipeCardDirection) {
+        delegate?.willSwipeCard(to: direction)
+    }
+    
     func swipeDidEnd(on view: SwipeCardView, direction: SwipeCardDirection) {
         guard let datasource = dataSource else { return }
         view.removeFromSuperview()
+        delegate?.didSwipeCard(at: currentCardIndex, direction: direction)
+        currentCardIndex += 1
         
         if remainingcards > 0 {
             let newIndex = datasource.numberOfCardsToShow() - remainingcards

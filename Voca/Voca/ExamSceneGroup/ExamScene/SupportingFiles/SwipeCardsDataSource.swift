@@ -8,7 +8,7 @@
 import UIKit
 
 enum SwipeCardDirection {
-    case left, right
+    case left, right, unknown
 }
 
 protocol SwipeCardsDataSource {
@@ -18,5 +18,14 @@ protocol SwipeCardsDataSource {
 }
 
 protocol SwipeCardsDelegate: class {
+    func swipeWillEnd(direction: SwipeCardDirection)
     func swipeDidEnd(on view: SwipeCardView, direction: SwipeCardDirection)
+    func didPressFavoriteButton()
+}
+
+protocol SwipeStackDelegate: class {
+    func willSwipeCard(to direction: SwipeCardDirection)
+    func didSwipeCard(at index: Int, direction: SwipeCardDirection)
+    func didPressFavoriteButton(index: Int)
+    func didReset()
 }
