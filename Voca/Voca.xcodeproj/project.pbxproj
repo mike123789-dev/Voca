@@ -38,6 +38,7 @@
 		51D07BB625C3EE0400DA2F69 /* StackViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07BB525C3EE0400DA2F69 /* StackViewContainer.swift */; };
 		51D07BBE25C453F400DA2F69 /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51D07BBD25C453F400DA2F69 /* ResultView.xib */; };
 		51D07BC325C4540A00DA2F69 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07BC225C4540A00DA2F69 /* ResultView.swift */; };
+		51D07BD425C4EB0C00DA2F69 /* SwipeCardInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07BD325C4EB0C00DA2F69 /* SwipeCardInfoView.swift */; };
 		51E5EA2B25A1FC89008A8034 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA2A25A1FC89008A8034 /* AppDelegate.swift */; };
 		51E5EA2D25A1FC89008A8034 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA2C25A1FC89008A8034 /* SceneDelegate.swift */; };
 		51E5EA3225A1FC89008A8034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E5EA3025A1FC89008A8034 /* Main.storyboard */; };
@@ -100,6 +101,7 @@
 		51D07BB525C3EE0400DA2F69 /* StackViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewContainer.swift; sourceTree = "<group>"; };
 		51D07BBD25C453F400DA2F69 /* ResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
 		51D07BC225C4540A00DA2F69 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		51D07BD325C4EB0C00DA2F69 /* SwipeCardInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardInfoView.swift; sourceTree = "<group>"; };
 		51E5EA2725A1FC89008A8034 /* Voca.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Voca.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E5EA2A25A1FC89008A8034 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51E5EA2C25A1FC89008A8034 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				51D07BA525C3EDB100DA2F69 /* SwipeCardsDataSource.swift */,
 				51D07BB525C3EE0400DA2F69 /* StackViewContainer.swift */,
 				51D07BAD25C3EDD800DA2F69 /* SwipeCardView.swift */,
+				51D07BD325C4EB0C00DA2F69 /* SwipeCardInfoView.swift */,
 				51D07BC225C4540A00DA2F69 /* ResultView.swift */,
 				51D07BBD25C453F400DA2F69 /* ResultView.xib */,
 			);
@@ -581,6 +584,7 @@
 				51ADDF5525B9BA6000E9CA18 /* VocaSection+CoreDataProperties.swift in Sources */,
 				51290D7F25C1A17800A3EBBB /* VocaAddViewController.swift in Sources */,
 				51ADDF6125B9C0B200E9CA18 /* Voca+CoreDataProperties.swift in Sources */,
+				51D07BD425C4EB0C00DA2F69 /* SwipeCardInfoView.swift in Sources */,
 				51290D8F25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift in Sources */,
 				51D07BA625C3EDB100DA2F69 /* SwipeCardsDataSource.swift in Sources */,
 				513DE9CE25C2D9BC00810997 /* ExamViewController.swift in Sources */,
