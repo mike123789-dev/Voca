@@ -61,18 +61,25 @@ class ExamViewController: UIViewController {
         viewModel.willSwipePublisher
             .sink { [weak self] direction in
                 guard let self = self else { return }
-                UIView.animate(withDuration: 0.3) {
-                    switch direction {
-                    case .left:
-                        self.leftCountViewWidthConstraint.isActive = true
-                    case .right:
-                        self.rightCountViewWidthConstraint.isActive = true
-                    case .unknown:
-                        self.leftCountViewWidthConstraint.isActive = false
-                        self.rightCountViewWidthConstraint.isActive = false
-                    }
-                    self.view.layoutIfNeeded()
-                }
+                UIView.animate(withDuration: 0.3,
+                               delay: 0,
+                               usingSpringWithDamping: 0.7,
+                               initialSpringVelocity: 3.0,
+                               options: .curveEaseInOut,
+                               animations: {
+                                switch direction {
+                                case .left:
+                                    self.leftCountViewWidthConstraint.isActive = true
+                                case .right:
+                                    self.rightCountViewWidthConstraint.isActive = true
+                                case .unknown:
+                                    self.leftCountViewWidthConstraint.isActive = false
+                                    self.rightCountViewWidthConstraint.isActive = false
+                                }
+                                self.view.layoutIfNeeded()
+                                
+                               },
+                               completion: nil)
             }
             .store(in: &subscriptions)
     }
