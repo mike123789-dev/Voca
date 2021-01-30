@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+class ExamViewModel {
+    var vocas: [AddVocaModel] = TestData.section3.vocas
+    @Published var currendIndex = 0
+    @Published var progressPercent: Float = 0
+    @Published var leftCount = 0
+    @Published var rightCount = 0
+}
