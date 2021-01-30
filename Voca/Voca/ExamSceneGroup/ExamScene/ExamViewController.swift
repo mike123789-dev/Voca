@@ -32,6 +32,11 @@ class ExamViewController: UIViewController {
         setupConstraints(isActive: false)
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stackViewContainer.removeFromSuperview()
+    }
+    
     private func setupBinding() {
         viewModel.$leftCount
             .map { "\($0)" }
