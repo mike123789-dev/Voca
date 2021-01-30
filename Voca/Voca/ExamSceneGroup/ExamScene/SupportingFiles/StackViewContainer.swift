@@ -40,6 +40,7 @@ class StackViewContainer: UIView {
         guard let datasource = dataSource else { return }
         setNeedsLayout()
         layoutIfNeeded()
+        resetCards()
         numberOfCardsToShow = datasource.numberOfCardsToShow()
         remainingcards = numberOfCardsToShow
         
@@ -47,7 +48,13 @@ class StackViewContainer: UIView {
         for i in 0..<min(numberOfCardsToShow, cardsToBeVisible) {
             addCardView(cardView: datasource.card(at: i), atIndex: i)
         }
-        
+    }
+    
+    func resetCards() {
+        cardViews = []
+        for views in visibleCards {
+            views.removeFromSuperview()
+        }
     }
     
     private func addCardView(cardView: SwipeCardView, atIndex index: Int) {
