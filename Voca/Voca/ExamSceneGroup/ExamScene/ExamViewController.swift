@@ -11,7 +11,11 @@ import Combine
 class ExamViewController: UIViewController {
     
     @IBOutlet weak var leftCountLabel: UILabel!
+    @IBOutlet weak var leftCountView: UIView!
+    @IBOutlet var leftCountViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var rightCountLabel: UILabel!
+    @IBOutlet weak var rightCountView: UIView!
+    @IBOutlet var rightCountViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var stackViewContainer: StackViewContainer!
@@ -21,8 +25,11 @@ class ExamViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.configureInitialState()
         stackViewContainer.dataSource = self
+        stackViewContainer.delegate = self.viewModel
         setupBinding()
+        setupConstraints(isActive: false)
     }
     
     private func setupBinding() {
@@ -35,19 +42,50 @@ class ExamViewController: UIViewController {
             .assign(to: \.text, on: rightCountLabel)
             .store(in: &subscriptions)
         viewModel.$progressPercent
-            .assign(to: \.progress, on: progressView)
+            .sink(receiveValue: { [weak self] value in
+                UIView.animate(withDuration: 0.4) {
+                    self?.progressView.setProgress(value, animated: true)
+                }
+            })
             .store(in: &subscriptions)
-        viewModel.$currendIndex
+        viewModel.$currentIndex
             .map { [weak self] in
                 "\($0 + 1 )  / \(self?.viewModel.vocas.count ?? 1)" }
             .assign(to: \.text, on: progressLabel)
             .store(in: &subscriptions)
+        viewModel.willSwipePublisher
+            .sink { [weak self] direction in
+                guard let self = self else { return }
+                UIView.animate(withDuration: 0.3) {
+                    switch direction {
+                    case .left:
+                        self.leftCountViewWidthConstraint.isActive = true
+                    case .right:
+                        self.rightCountViewWidthConstraint.isActive = true
+                    case .unknown:
+                        self.leftCountViewWidthConstraint.isActive = false
+                        self.rightCountViewWidthConstraint.isActive = false
+                    }
+                    self.view.layoutIfNeeded()
+                }
+            }
+            .store(in: &subscriptions)
+    }
+    
+    private func setSize(_ view: UIView, to length: CGFloat) {
+        view.heightAnchor.constraint(equalToConstant: length).isActive = true
+        view.widthAnchor.constraint(equalToConstant: length).isActive = true
+    }
+    
+    private func setupConstraints(isActive: Bool) {
+        leftCountViewWidthConstraint.isActive = isActive
+        rightCountViewWidthConstraint.isActive = isActive
     }
     
     @IBAction func didTapResetButton(_ sender: Any) {
         stackViewContainer.reloadData()
     }
-
+    
 }
 
 extension ExamViewController: SwipeCardsDataSource {
@@ -63,10 +101,10 @@ extension ExamViewController: SwipeCardsDataSource {
     }
     
     func emptyView() -> UIView? {
-//        let width = view.frame.size.width - 30
-//        let height = view.frame.size.height - 30
-//        return ResultView(frame: CGRect(origin: .zero,
-//                                        size: CGSize(width: width, height: height)))
+        //        let width = view.frame.size.width - 30
+        //        let height = view.frame.size.height - 30
+        //        return ResultView(frame: CGRect(origin: .zero,
+        //                                        size: CGSize(width: width, height: height)))
         nil
     }
     
