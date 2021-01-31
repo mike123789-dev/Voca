@@ -33,6 +33,8 @@
 		51ADDF6925B9C85700E9CA18 /* VocaBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDF6825B9C85700E9CA18 /* VocaBrain.swift */; };
 		51ADDF6E25BAA1DC00E9CA18 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDF6D25BAA1DB00E9CA18 /* CustomAlertViewController.swift */; };
 		51ADDF7C25BBB60200E9CA18 /* TextFieldStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDF7B25BBB60200E9CA18 /* TextFieldStackView.swift */; };
+		51C5603125C64DC400644AC4 /* ExamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C5603025C64DC400644AC4 /* ExamCollectionViewCell.swift */; };
+		51C5603A25C6F63700644AC4 /* ExamHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C5603925C6F63600644AC4 /* ExamHeaderCollectionReusableView.swift */; };
 		51D07BA625C3EDB100DA2F69 /* SwipeCardsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07BA525C3EDB100DA2F69 /* SwipeCardsDataSource.swift */; };
 		51D07BAE25C3EDD800DA2F69 /* SwipeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07BAD25C3EDD800DA2F69 /* SwipeCardView.swift */; };
 		51D07BB625C3EE0400DA2F69 /* StackViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07BB525C3EE0400DA2F69 /* StackViewContainer.swift */; };
@@ -96,6 +98,8 @@
 		51ADDF6825B9C85700E9CA18 /* VocaBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaBrain.swift; sourceTree = "<group>"; };
 		51ADDF6D25BAA1DB00E9CA18 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		51ADDF7B25BBB60200E9CA18 /* TextFieldStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStackView.swift; sourceTree = "<group>"; };
+		51C5603025C64DC400644AC4 /* ExamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCollectionViewCell.swift; sourceTree = "<group>"; };
+		51C5603925C6F63600644AC4 /* ExamHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		51D07BA525C3EDB100DA2F69 /* SwipeCardsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardsDataSource.swift; sourceTree = "<group>"; };
 		51D07BAD25C3EDD800DA2F69 /* SwipeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardView.swift; sourceTree = "<group>"; };
 		51D07BB525C3EE0400DA2F69 /* StackViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewContainer.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 			children = (
 				513DE9C625C2D99400810997 /* ExamListViewController.swift */,
 				513DE9D525C2D9CF00810997 /* ExamListViewModel.swift */,
+				51C5603025C64DC400644AC4 /* ExamCollectionViewCell.swift */,
+				51C5603925C6F63600644AC4 /* ExamHeaderCollectionReusableView.swift */,
 			);
 			path = ExamListScene;
 			sourceTree = "<group>";
@@ -589,7 +595,9 @@
 				51D07BA625C3EDB100DA2F69 /* SwipeCardsDataSource.swift in Sources */,
 				513DE9CE25C2D9BC00810997 /* ExamViewController.swift in Sources */,
 				51ADDF6925B9C85700E9CA18 /* VocaBrain.swift in Sources */,
+				51C5603125C64DC400644AC4 /* ExamCollectionViewCell.swift in Sources */,
 				51ADDF2A25B9B07600E9CA18 /* Voca.xcdatamodeld in Sources */,
+				51C5603A25C6F63700644AC4 /* ExamHeaderCollectionReusableView.swift in Sources */,
 				51ADDEC225B84F7500E9CA18 /* TestData.swift in Sources */,
 				51ADDEB525B84B5B00E9CA18 /* VocaListViewModel.swift in Sources */,
 				51ADDEA725B84A3900E9CA18 /* VocaSectionModel.swift in Sources */,
