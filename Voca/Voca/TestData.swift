@@ -9,6 +9,12 @@ import Foundation
 
 struct TestData {
 
+    static var section1: VocaSectionModel {
+        let section: VocaSectionModel = VocaSectionModel(title: "수능")
+        section.add(voca: AddVocaModel(question: "one", answer: "하나"))
+        return section
+    }
+    
     static var section2: VocaSectionModel {
         let section: VocaSectionModel = VocaSectionModel(title: "토익")
         section.add(voca: AddVocaModel(question: "milk", answer: "우유"))
@@ -26,6 +32,8 @@ struct TestData {
         section.add(voca: AddVocaModel(question: "bear", answer: "곰"))
         section.add(voca: AddVocaModel(question: "bear", answer: "버티다"))
         section.add(voca: AddVocaModel(question: "swift", answer: "빠른"))
+        section.add(voca: AddVocaModel(question: "5", answer: "?"))
+//        section.add(voca: AddVocaModel(question: "4", answer: "!"))
 
         return section
     }
