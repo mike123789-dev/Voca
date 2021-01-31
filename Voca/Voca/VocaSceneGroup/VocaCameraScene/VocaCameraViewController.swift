@@ -10,8 +10,23 @@ import AVFoundation
 
 class VocaCameraViewController: UIViewController {
     @IBOutlet weak var capturePreview: UIView!
+    @IBOutlet weak var imageView: UIImageView!
     
+    let cameraController = CameraController()
+
     override func viewDidLoad() {
-        super.viewDidLoad()
+        configureCameraController()
     }
+    
+    override var prefersStatusBarHidden: Bool { return true }
+
+    private func configureCameraController() {
+        cameraController.prepare {(error) in
+            if let error = error {
+                print(error)
+            }
+            try? self.cameraController.displayPreview(on: self.capturePreview)
+        }
+    }
+        
 }
