@@ -8,13 +8,14 @@
 import UIKit
 import Combine
 
-class VocaListViewController: UIViewController {
+class VocaListViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var dataSource: DataSource! = nil
     typealias DataSource = UICollectionViewDiffableDataSource<Section, VocaItem>
     
+    weak var coordinator: VocaListCoordinator?
     let viewModel = VocaListViewModel()
     @Published var isEditMode = false
     var subscriptions = Set<AnyCancellable>()
@@ -56,6 +57,7 @@ class VocaListViewController: UIViewController {
     }
     
     @IBAction func didTapAddButton(_ sender: Any) {
+        coordinator?.showAdd()
     }
     
     private func configureBinding() {

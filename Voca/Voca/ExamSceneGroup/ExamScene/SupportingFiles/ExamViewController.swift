@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-class ExamViewController: UIViewController {
+class ExamViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var leftCountLabel: UILabel!
     @IBOutlet weak var leftCountView: UIView!
@@ -20,6 +20,7 @@ class ExamViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var stackViewContainer: StackViewContainer!
     
+    weak var coordinator: ExamCoordinator?
     let viewModel = ExamViewModel()
     var subscriptions = Set<AnyCancellable>()
     

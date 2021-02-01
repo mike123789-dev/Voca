@@ -12,16 +12,18 @@ enum ExamSection: Int, CaseIterable {
     case folder
 }
 
-class ExamListViewController: UIViewController {
+class ExamListViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    weak var coordinator: ExamListCoordinator?
     private var dataSource: DataSource! = nil
     typealias DataSource = UICollectionViewDiffableDataSource<ExamSection, VocaSectionModel>
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
+        configureNavigationController()
         dummysnapshot()
     }
     
@@ -56,7 +58,6 @@ extension ExamListViewController {
             }
         }
         return layout
-        
     }
     
     private func generateFavoriteLayout() -> NSCollectionLayoutSection {
@@ -153,5 +154,15 @@ extension ExamListViewController {
 }
 
 extension ExamListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        coordinator?.showExam()
+    }
+}
+
+extension ExamListViewController {
     
+    func configureNavigationController() {
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
 }

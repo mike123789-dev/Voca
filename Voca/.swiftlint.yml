@@ -6,3 +6,4 @@ disabled_rules:
     - trailing_whitespace
     - identifier_name
     - mark
+    - force_cast

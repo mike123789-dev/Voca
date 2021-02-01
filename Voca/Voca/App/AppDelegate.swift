@@ -64,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data Saving support
 
     func saveContext () {
+        print("SAVING!!!!")
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {

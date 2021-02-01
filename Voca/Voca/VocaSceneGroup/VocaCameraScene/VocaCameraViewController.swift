@@ -8,10 +8,11 @@
 import UIKit
 import AVFoundation
 
-class VocaCameraViewController: UIViewController {
+class VocaCameraViewController: UIViewController, Storyboarded {
     @IBOutlet weak var capturePreview: UIView!
     @IBOutlet weak var imageView: UIImageView!
     
+    weak var coordinator: VocaCameraCoordinator?
     let cameraController = CameraController()
 
     override func viewDidLoad() {

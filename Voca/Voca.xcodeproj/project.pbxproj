@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		1BC504D8B7E60EB722D85E62 /* Pods_VocaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DC1A73C445EF157317FFF9 /* Pods_VocaTests.framework */; };
 		234E8C6D75254EE13212438C /* Pods_Voca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0584AF11E81223E49CB85F84 /* Pods_Voca.framework */; };
+		512587E725C82A3E004AAC6F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512587E625C82A3E004AAC6F /* Coordinator.swift */; };
+		512587EF25C82A47004AAC6F /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512587EE25C82A47004AAC6F /* Storyboarded.swift */; };
+		512587F425C82AB7004AAC6F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512587F325C82AB7004AAC6F /* MainTabBarController.swift */; };
+		512587FE25C82C3E004AAC6F /* ExamListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512587FD25C82C3E004AAC6F /* ExamListCoordinator.swift */; };
+		5125880325C82C47004AAC6F /* ExamCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5125880225C82C47004AAC6F /* ExamCoordinator.swift */; };
+		5125880825C82C59004AAC6F /* VocaListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5125880725C82C59004AAC6F /* VocaListCoordinator.swift */; };
+		5125881025C82C62004AAC6F /* VocaAddCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5125880F25C82C62004AAC6F /* VocaAddCoordinator.swift */; };
+		5125881525C82C6A004AAC6F /* VocaCameraCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5125881425C82C6A004AAC6F /* VocaCameraCoordinator.swift */; };
 		51290D7F25C1A17800A3EBBB /* VocaAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D7E25C1A17800A3EBBB /* VocaAddViewController.swift */; };
 		51290D8725C1A2F600A3EBBB /* VocaAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D8625C1A2F600A3EBBB /* VocaAddTableViewCell.swift */; };
 		51290D8F25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D8E25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift */; };
@@ -76,6 +84,14 @@
 		22AAA2341AA93A7C0BD083C9 /* Pods-VocaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocaTests.debug.xcconfig"; path = "Target Support Files/Pods-VocaTests/Pods-VocaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		259AC6681F31489D73FE7B74 /* Pods_Voca_VocaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voca_VocaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38A3EBC187849A1366BDA025 /* Pods-Voca-VocaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voca-VocaUITests.release.xcconfig"; path = "Target Support Files/Pods-Voca-VocaUITests/Pods-Voca-VocaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		512587E625C82A3E004AAC6F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		512587EE25C82A47004AAC6F /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		512587F325C82AB7004AAC6F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		512587FD25C82C3E004AAC6F /* ExamListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamListCoordinator.swift; sourceTree = "<group>"; };
+		5125880225C82C47004AAC6F /* ExamCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCoordinator.swift; sourceTree = "<group>"; };
+		5125880725C82C59004AAC6F /* VocaListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaListCoordinator.swift; sourceTree = "<group>"; };
+		5125880F25C82C62004AAC6F /* VocaAddCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaAddCoordinator.swift; sourceTree = "<group>"; };
+		5125881425C82C6A004AAC6F /* VocaCameraCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaCameraCoordinator.swift; sourceTree = "<group>"; };
 		51290D7E25C1A17800A3EBBB /* VocaAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaAddViewController.swift; sourceTree = "<group>"; };
 		51290D8625C1A2F600A3EBBB /* VocaAddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaAddTableViewCell.swift; sourceTree = "<group>"; };
 		51290D8E25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaAddCellViewModel.swift; sourceTree = "<group>"; };
@@ -167,12 +183,51 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		512587E525C82A2E004AAC6F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				512587E625C82A3E004AAC6F /* Coordinator.swift */,
+				512587EE25C82A47004AAC6F /* Storyboarded.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		512587F825C82B1A004AAC6F /* ReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+				51ADDF6D25BAA1DB00E9CA18 /* CustomAlertViewController.swift */,
+				51290D9325C1BA4A00A3EBBB /* CardView.swift */,
+				51ADDF7B25BBB60200E9CA18 /* TextFieldStackView.swift */,
+				51290D9B25C1CDA900A3EBBB /* TextFieldStackViewController.swift */,
+			);
+			path = ReusableViews;
+			sourceTree = "<group>";
+		};
+		512587FC25C82C07004AAC6F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				513DE9C625C2D99400810997 /* ExamListViewController.swift */,
+				51C5603025C64DC400644AC4 /* ExamCollectionViewCell.swift */,
+				51C5603925C6F63600644AC4 /* ExamHeaderCollectionReusableView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5125881925C82C70004AAC6F /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				51C5602825C6386D00644AC4 /* CameraController.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
 		51290D7D25C1A16900A3EBBB /* VocaAddScene */ = {
 			isa = PBXGroup;
 			children = (
 				513DE9BA25C28EA400810997 /* Views */,
 				513DE9BB25C28EDB00810997 /* VocaAddViewModel.swift */,
 				51290D8E25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift */,
+				5125880F25C82C62004AAC6F /* VocaAddCoordinator.swift */,
 			);
 			path = VocaAddScene;
 			sourceTree = "<group>";
@@ -189,9 +244,9 @@
 		513DE9CB25C2D99A00810997 /* ExamScene */ = {
 			isa = PBXGroup;
 			children = (
-				513DE9CD25C2D9BC00810997 /* ExamViewController.swift */,
-				513DE9DA25C2D9DA00810997 /* ExamViewModel.swift */,
 				51D07BA425C3EDA300DA2F69 /* SupportingFiles */,
+				513DE9DA25C2D9DA00810997 /* ExamViewModel.swift */,
+				5125880225C82C47004AAC6F /* ExamCoordinator.swift */,
 			);
 			path = ExamScene;
 			sourceTree = "<group>";
@@ -199,10 +254,9 @@
 		513DE9CC25C2D99C00810997 /* ExamListScene */ = {
 			isa = PBXGroup;
 			children = (
-				513DE9C625C2D99400810997 /* ExamListViewController.swift */,
+				512587FC25C82C07004AAC6F /* Views */,
 				513DE9D525C2D9CF00810997 /* ExamListViewModel.swift */,
-				51C5603025C64DC400644AC4 /* ExamCollectionViewCell.swift */,
-				51C5603925C6F63600644AC4 /* ExamHeaderCollectionReusableView.swift */,
+				512587FD25C82C3E004AAC6F /* ExamListCoordinator.swift */,
 			);
 			path = ExamListScene;
 			sourceTree = "<group>";
@@ -234,10 +288,9 @@
 		51ADDEB025B84AEB00E9CA18 /* VocaSceneGroup */ = {
 			isa = PBXGroup;
 			children = (
-				51C5601F25C5B59600644AC4 /* VocaCameraScene */,
-				51290D7D25C1A16900A3EBBB /* VocaAddScene */,
 				51ADDEB325B84B4600E9CA18 /* VocaListScene */,
-				51ADDF7725BBAD3700E9CA18 /* SupportingViews */,
+				51290D7D25C1A16900A3EBBB /* VocaAddScene */,
+				51C5601F25C5B59600644AC4 /* VocaCameraScene */,
 			);
 			path = VocaSceneGroup;
 			sourceTree = "<group>";
@@ -263,6 +316,7 @@
 			children = (
 				51ADDEDA25B87A6600E9CA18 /* Views */,
 				51ADDEB425B84B5B00E9CA18 /* VocaListViewModel.swift */,
+				5125880725C82C59004AAC6F /* VocaListCoordinator.swift */,
 			);
 			path = VocaListScene;
 			sourceTree = "<group>";
@@ -276,22 +330,12 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		51ADDF7725BBAD3700E9CA18 /* SupportingViews */ = {
-			isa = PBXGroup;
-			children = (
-				51ADDF6D25BAA1DB00E9CA18 /* CustomAlertViewController.swift */,
-				51290D9325C1BA4A00A3EBBB /* CardView.swift */,
-				51ADDF7B25BBB60200E9CA18 /* TextFieldStackView.swift */,
-				51290D9B25C1CDA900A3EBBB /* TextFieldStackViewController.swift */,
-			);
-			path = SupportingViews;
-			sourceTree = "<group>";
-		};
 		51C5601F25C5B59600644AC4 /* VocaCameraScene */ = {
 			isa = PBXGroup;
 			children = (
+				5125881925C82C70004AAC6F /* SupportingFiles */,
 				51C5602325C5B5AB00644AC4 /* VocaCameraViewController.swift */,
-				51C5602825C6386D00644AC4 /* CameraController.swift */,
+				5125881425C82C6A004AAC6F /* VocaCameraCoordinator.swift */,
 			);
 			path = VocaCameraScene;
 			sourceTree = "<group>";
@@ -299,6 +343,7 @@
 		51D07BA425C3EDA300DA2F69 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				513DE9CD25C2D9BC00810997 /* ExamViewController.swift */,
 				51D07BA525C3EDB100DA2F69 /* SwipeCardsDataSource.swift */,
 				51D07BB525C3EE0400DA2F69 /* StackViewContainer.swift */,
 				51D07BAD25C3EDD800DA2F69 /* SwipeCardView.swift */,
@@ -339,10 +384,13 @@
 				51ADDEB225B84B0F00E9CA18 /* ChartSceneGroup */,
 				51ADDEB125B84B0800E9CA18 /* ExamSceneGroup */,
 				51ADDEB025B84AEB00E9CA18 /* VocaSceneGroup */,
-				51E5EA3B25A1FC8C008A8034 /* Info.plist */,
+				512587E525C82A2E004AAC6F /* Protocols */,
+				512587F825C82B1A004AAC6F /* ReusableViews */,
+				512587F325C82AB7004AAC6F /* MainTabBarController.swift */,
 				51ADDEC125B84F7500E9CA18 /* TestData.swift */,
 				51E5EA3025A1FC89008A8034 /* Main.storyboard */,
 				51E5EA3825A1FC8C008A8034 /* LaunchScreen.storyboard */,
+				51E5EA3B25A1FC8C008A8034 /* Info.plist */,
 				51E5EA3625A1FC8C008A8034 /* Assets.xcassets */,
 			);
 			path = Voca;
@@ -604,22 +652,29 @@
 				51ADDF5525B9BA6000E9CA18 /* VocaSection+CoreDataProperties.swift in Sources */,
 				51290D7F25C1A17800A3EBBB /* VocaAddViewController.swift in Sources */,
 				51ADDF6125B9C0B200E9CA18 /* Voca+CoreDataProperties.swift in Sources */,
+				5125881525C82C6A004AAC6F /* VocaCameraCoordinator.swift in Sources */,
 				51D07BD425C4EB0C00DA2F69 /* SwipeCardInfoView.swift in Sources */,
 				51290D8F25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift in Sources */,
 				51C5602925C6386D00644AC4 /* CameraController.swift in Sources */,
 				51D07BA625C3EDB100DA2F69 /* SwipeCardsDataSource.swift in Sources */,
+				512587E725C82A3E004AAC6F /* Coordinator.swift in Sources */,
 				513DE9CE25C2D9BC00810997 /* ExamViewController.swift in Sources */,
 				51ADDF6925B9C85700E9CA18 /* VocaBrain.swift in Sources */,
 				51C5603125C64DC400644AC4 /* ExamCollectionViewCell.swift in Sources */,
 				51ADDF2A25B9B07600E9CA18 /* Voca.xcdatamodeld in Sources */,
 				51C5602425C5B5AB00644AC4 /* VocaCameraViewController.swift in Sources */,
+				512587FE25C82C3E004AAC6F /* ExamListCoordinator.swift in Sources */,
 				51C5603A25C6F63700644AC4 /* ExamHeaderCollectionReusableView.swift in Sources */,
 				51ADDEC225B84F7500E9CA18 /* TestData.swift in Sources */,
 				51ADDEB525B84B5B00E9CA18 /* VocaListViewModel.swift in Sources */,
+				5125880825C82C59004AAC6F /* VocaListCoordinator.swift in Sources */,
+				512587EF25C82A47004AAC6F /* Storyboarded.swift in Sources */,
 				51ADDEA725B84A3900E9CA18 /* VocaSectionModel.swift in Sources */,
 				51E5EA2B25A1FC89008A8034 /* AppDelegate.swift in Sources */,
 				51290D8725C1A2F600A3EBBB /* VocaAddTableViewCell.swift in Sources */,
+				5125881025C82C62004AAC6F /* VocaAddCoordinator.swift in Sources */,
 				513DE9DB25C2D9DA00810997 /* ExamViewModel.swift in Sources */,
+				5125880325C82C47004AAC6F /* ExamCoordinator.swift in Sources */,
 				51D07BB625C3EE0400DA2F69 /* StackViewContainer.swift in Sources */,
 				513DE9D625C2D9CF00810997 /* ExamListViewModel.swift in Sources */,
 				51D07BC325C4540A00DA2F69 /* ResultView.swift in Sources */,
@@ -630,6 +685,7 @@
 				513DE9C725C2D99400810997 /* ExamListViewController.swift in Sources */,
 				51ADDF6E25BAA1DC00E9CA18 /* CustomAlertViewController.swift in Sources */,
 				51ADDF5425B9BA6000E9CA18 /* VocaSection+CoreDataClass.swift in Sources */,
+				512587F425C82AB7004AAC6F /* MainTabBarController.swift in Sources */,
 				51ADDF7C25BBB60200E9CA18 /* TextFieldStackView.swift in Sources */,
 				51E5EA2D25A1FC89008A8034 /* SceneDelegate.swift in Sources */,
 				513DE9BC25C28EDB00810997 /* VocaAddViewModel.swift in Sources */,

@@ -7,11 +7,12 @@
 
 import UIKit
 
-class VocaAddViewController: UIViewController {
+class VocaAddViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var tableView: UITableView!
     
+    weak var coordinator: VocaAddCoordinator?
     let viewModel = VocaAddViewModel()
     var cellViewModels: [VocaAddCellViewModel] {
         viewModel.cellViewModels
@@ -53,7 +54,9 @@ class VocaAddViewController: UIViewController {
     }
     
     @IBAction func didTapCameraButton(_ sender: Any) {
+        coordinator?.showCamera()
     }
+    
 }
 extension VocaAddViewController {
     private func setupKeyboard() {
