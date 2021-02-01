@@ -22,11 +22,17 @@ class VocaListCoordinator: NSObject, Coordinator, UINavigationControllerDelegate
         navigationController.pushViewController(vc, animated: false)
     }
     
-    func showAdd() {
+    func showAdd(with folders: [String], viewModel: VocaListViewModel) {
         let vocaAddCoordinator = VocaAddCoordinator(navigationController: navigationController)
-        childCoordinators.append(vocaAddCoordinator)
         vocaAddCoordinator.parentCoordinator = self
-        vocaAddCoordinator.start()
+
+        let vc = VocaAddViewController.instantiate()
+        vc.coordinator = vocaAddCoordinator
+        vc.viewModel.folders = folders
+        vc.viewModel.delegate = viewModel
+        
+        navigationController.pushViewController(vc, animated: true)
+        childCoordinators.append(vocaAddCoordinator)
     }
 
     func childDidFinish(_ child: Coordinator?) {
@@ -46,7 +52,7 @@ class VocaListCoordinator: NSObject, Coordinator, UINavigationControllerDelegate
         }
         
         //pop하고 있는중!
-        if let detailVC = fromViewController as? ExamViewController {
+        if let detailVC = fromViewController as? VocaAddViewController {
             childDidFinish(detailVC.coordinator)
         }
     }

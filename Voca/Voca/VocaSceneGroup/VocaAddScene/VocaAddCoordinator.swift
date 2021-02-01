@@ -8,6 +8,7 @@
 import UIKit
 
 class VocaAddCoordinator: NSObject, Coordinator, UINavigationControllerDelegate {
+    
     var childCoordinators = [Coordinator]()
     weak var parentCoordinator: VocaListCoordinator?
     var navigationController: UINavigationController
@@ -15,16 +16,21 @@ class VocaAddCoordinator: NSObject, Coordinator, UINavigationControllerDelegate 
     init(navigationController: UINavigationController = UINavigationController()) {
         self.navigationController = navigationController
     }
+    
+    func start() { }
 
-    func start() {
-        navigationController.delegate = self
-        let vc = VocaAddViewController.instantiate()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
-    }
+//    func start(with folders: [String], viewModel: VocaListViewModel) {
+//        navigationController.delegate = self
+//        let vc = VocaAddViewController.instantiate()
+//        vc.coordinator = self
+//        vc.viewModel.folders = folders
+//        vc.viewModel.delegate = viewModel
+//        navigationController.pushViewController(vc, animated: true)
+//    }
     
     func showCamera() {
-        navigationController.present(VocaCameraViewController.instantiate(), animated: true) {
+        let vc = VocaCameraViewController.instantiate()
+        navigationController.present(vc, animated: true) {
             print("bye")
         }
     }

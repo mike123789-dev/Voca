@@ -57,7 +57,15 @@ class VocaListViewController: UIViewController, Storyboarded {
     }
     
     @IBAction func didTapAddButton(_ sender: Any) {
-        coordinator?.showAdd()
+        let folders = dataSource.snapshot().sectionIdentifiers.map({ section -> String? in
+            switch section {
+            case .folder(count: _, title: let title):
+                return title
+            case .favorite(count: _):
+                return nil
+            }
+        })
+        coordinator?.showAdd(with: folders.compactMap{$0}, viewModel: viewModel)
     }
     
     private func configureBinding() {
@@ -182,7 +190,7 @@ extension VocaListViewController {
                 print(count)
             }
         }
-
+        
         dataSource =
             DataSource(collectionView: collectionView,
                        cellProvider: { (collectionView, indexPath, item) -> UICollectionViewCell? in
@@ -210,7 +218,7 @@ extension VocaListViewController {
                 return nil
             }
         }
-
+        
         dataSource.reorderingHandlers.canReorderItem = { item in true}
         dataSource.reorderingHandlers.didReorder = { transaction in
             //TODO: Reorder 구현

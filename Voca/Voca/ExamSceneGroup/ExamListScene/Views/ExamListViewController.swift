@@ -155,7 +155,9 @@ extension ExamListViewController {
 
 extension ExamListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        coordinator?.showExam()
+        if let folder = dataSource.itemIdentifier(for: indexPath) {
+            coordinator?.showExam(with: folder)
+        }
     }
 }
 
