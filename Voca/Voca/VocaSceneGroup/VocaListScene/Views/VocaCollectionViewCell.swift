@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class VocaCollectionViewCell: UICollectionViewListCell {
+    @IBOutlet weak var starImageView: UIImageView!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
     override var isSelected: Bool {
@@ -36,6 +37,7 @@ class VocaCollectionViewCell: UICollectionViewListCell {
     func configure(with voca: Voca) {
         questionLabel.text = voca.question
         answerLabel.text = voca.answer
+        starImageView.isHidden = !voca.isFavorite
         accessories = [.reorder(displayed: .whenEditing, options: .init())]
     }
     

@@ -25,7 +25,7 @@ class VocaListViewController: UIViewController, Storyboarded {
         configureCollectionView()
         configureNavigationController()
         configureBinding()
-        viewModel.setup()
+        viewModel.fetchData()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -140,10 +140,11 @@ extension VocaListViewController {
                 return nil
             }
             let favoriteAction = UIContextualAction(style: .normal, title: "즐겨찾기") { (action, _, completion) in
+                self?.viewModel.toggleFavorite(at: indexPath)
                 //TODO: 좋아요 토글 기능 추가
                 completion(true)
             }
-            favoriteAction.image = .checkmark
+            favoriteAction.image = UIImage(systemName: "star.fill")
             favoriteAction.backgroundColor = .systemOrange
             let modifyAction = UIContextualAction(style: .normal, title: "수정") { (_, _, completion) in
                 //TODO: 수정 기능 추가
