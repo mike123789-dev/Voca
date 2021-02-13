@@ -81,6 +81,13 @@ class VocaListViewController: UIViewController, Storyboarded {
                 self.dataSource.apply(sectionSnapshot, to: section, animatingDifferences: true)
             }
             .store(in: &subscriptions)
+        viewModel.vocaUpdatePublisher
+            .sink { [weak self] indexPath, voca in
+                guard let self = self else { return }
+                let cell = self.collectionView.cellForItem(at: indexPath) as? VocaCollectionViewCell
+                cell?.configure(with: voca)
+            }
+            .store(in: &subscriptions)
         $isEditMode
             .sink { [weak self] isEditMode in
                 self?.collectionView.isEditing = isEditMode

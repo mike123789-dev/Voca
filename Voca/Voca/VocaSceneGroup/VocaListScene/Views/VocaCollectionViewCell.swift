@@ -37,7 +37,12 @@ class VocaCollectionViewCell: UICollectionViewListCell {
     func configure(with voca: Voca) {
         questionLabel.text = voca.question
         answerLabel.text = voca.answer
-        starImageView.isHidden = !voca.isFavorite
+        UIView.transition(with: self.starImageView,
+                          duration: 0.5,
+                          options: .transitionCrossDissolve) { [weak self] in
+            self?.starImageView.isHidden = !voca.isFavorite
+        }
+
         accessories = [.reorder(displayed: .whenEditing, options: .init())]
     }
     

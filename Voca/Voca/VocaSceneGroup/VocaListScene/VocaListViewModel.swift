@@ -32,6 +32,7 @@ class VocaListViewModel: NSObject {
     
     let snapshotPublisher = PassthroughSubject<Snapshot, Never>()
     let sectionSnapshotPublisher = PassthroughSubject<(SectionSnapshot, Section), Never>()
+    let vocaUpdatePublisher = PassthroughSubject<(IndexPath, Voca), Never>()
     
     var isShowingFavorites = false {
         didSet {
@@ -86,7 +87,7 @@ extension VocaListViewModel {
         let voca = section.vocaArray[indexPath.row - 1]
         voca.isFavorite.toggle()
         coreDataStack.saveContext()
-        updateSnapshot()
+        vocaUpdatePublisher.send((indexPath, voca))
     }
     
     func addFolder(title: String) {
