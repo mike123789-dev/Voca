@@ -65,7 +65,7 @@ class VocaListViewController: UIViewController, Storyboarded {
                 return nil
             }
         })
-        coordinator?.showAdd(with: folders.compactMap{$0}, viewModel: viewModel)
+        coordinator?.showAdd(with: folders.compactMap { $0 }, viewModel: viewModel)
     }
     
     private func configureBinding() {

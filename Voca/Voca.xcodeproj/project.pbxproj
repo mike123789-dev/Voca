@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1BC504D8B7E60EB722D85E62 /* Pods_VocaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5DC1A73C445EF157317FFF9 /* Pods_VocaTests.framework */; };
 		234E8C6D75254EE13212438C /* Pods_Voca.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0584AF11E81223E49CB85F84 /* Pods_Voca.framework */; };
+		511E3F9025D7F6A80069A31F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511E3F8F25D7F6A80069A31F /* CoreDataStack.swift */; };
 		512587E725C82A3E004AAC6F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512587E625C82A3E004AAC6F /* Coordinator.swift */; };
 		512587EF25C82A47004AAC6F /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512587EE25C82A47004AAC6F /* Storyboarded.swift */; };
 		512587F425C82AB7004AAC6F /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512587F325C82AB7004AAC6F /* MainTabBarController.swift */; };
@@ -84,6 +85,7 @@
 		22AAA2341AA93A7C0BD083C9 /* Pods-VocaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VocaTests.debug.xcconfig"; path = "Target Support Files/Pods-VocaTests/Pods-VocaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		259AC6681F31489D73FE7B74 /* Pods_Voca_VocaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Voca_VocaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		38A3EBC187849A1366BDA025 /* Pods-Voca-VocaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voca-VocaUITests.release.xcconfig"; path = "Target Support Files/Pods-Voca-VocaUITests/Pods-Voca-VocaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		511E3F8F25D7F6A80069A31F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		512587E625C82A3E004AAC6F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		512587EE25C82A47004AAC6F /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		512587F325C82AB7004AAC6F /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -109,10 +111,10 @@
 		51ADDEC125B84F7500E9CA18 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		51ADDED525B85AF900E9CA18 /* VocaCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaCollectionViewCell.swift; sourceTree = "<group>"; };
 		51ADDF2925B9B07600E9CA18 /* Voca.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Voca.xcdatamodel; sourceTree = "<group>"; };
-		51ADDF5025B9BA5F00E9CA18 /* VocaSection+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VocaSection+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		51ADDF5125B9BA5F00E9CA18 /* VocaSection+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VocaSection+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		51ADDF5E25B9C0B200E9CA18 /* Voca+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Voca+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		51ADDF5F25B9C0B200E9CA18 /* Voca+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Voca+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		51ADDF5025B9BA5F00E9CA18 /* VocaSection+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "VocaSection+CoreDataClass.swift"; path = "Voca/CoreData/NSManagedObject/VocaSection+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		51ADDF5125B9BA5F00E9CA18 /* VocaSection+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "VocaSection+CoreDataProperties.swift"; path = "Voca/CoreData/NSManagedObject/VocaSection+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		51ADDF5E25B9C0B200E9CA18 /* Voca+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Voca+CoreDataClass.swift"; path = "Voca/CoreData/NSManagedObject/Voca+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		51ADDF5F25B9C0B200E9CA18 /* Voca+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Voca+CoreDataProperties.swift"; path = "Voca/CoreData/NSManagedObject/Voca+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		51ADDF6825B9C85700E9CA18 /* VocaBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaBrain.swift; sourceTree = "<group>"; };
 		51ADDF6D25BAA1DB00E9CA18 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
 		51ADDF7B25BBB60200E9CA18 /* TextFieldStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStackView.swift; sourceTree = "<group>"; };
@@ -181,6 +183,27 @@
 				C5DC1A73C445EF157317FFF9 /* Pods_VocaTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		511E3F8D25D7F65E0069A31F /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				511E3F8F25D7F6A80069A31F /* CoreDataStack.swift */,
+				51ADDF2825B9B07600E9CA18 /* Voca.xcdatamodeld */,
+				511E3F8E25D7F6840069A31F /* NSManagedObject */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		511E3F8E25D7F6840069A31F /* NSManagedObject */ = {
+			isa = PBXGroup;
+			children = (
+				51ADDF5E25B9C0B200E9CA18 /* Voca+CoreDataClass.swift */,
+				51ADDF5F25B9C0B200E9CA18 /* Voca+CoreDataProperties.swift */,
+				51ADDF5025B9BA5F00E9CA18 /* VocaSection+CoreDataClass.swift */,
+				51ADDF5125B9BA5F00E9CA18 /* VocaSection+CoreDataProperties.swift */,
+			);
+			path = NSManagedObject;
 			sourceTree = "<group>";
 		};
 		512587E525C82A2E004AAC6F /* Protocols */ = {
@@ -264,14 +287,9 @@
 		51ADDEA225B84A3900E9CA18 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				51ADDF5E25B9C0B200E9CA18 /* Voca+CoreDataClass.swift */,
-				51ADDF5F25B9C0B200E9CA18 /* Voca+CoreDataProperties.swift */,
-				51ADDF5025B9BA5F00E9CA18 /* VocaSection+CoreDataClass.swift */,
-				51ADDF5125B9BA5F00E9CA18 /* VocaSection+CoreDataProperties.swift */,
 				51ADDEA325B84A3900E9CA18 /* AddVocaModel.swift */,
 				51ADDF6825B9C85700E9CA18 /* VocaBrain.swift */,
 				51ADDEA425B84A3900E9CA18 /* VocaSectionModel.swift */,
-				51ADDF2825B9B07600E9CA18 /* Voca.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -388,6 +406,7 @@
 				512587F825C82B1A004AAC6F /* ReusableViews */,
 				512587F325C82AB7004AAC6F /* MainTabBarController.swift */,
 				51ADDEC125B84F7500E9CA18 /* TestData.swift */,
+				511E3F8D25D7F65E0069A31F /* CoreData */,
 				51E5EA3025A1FC89008A8034 /* Main.storyboard */,
 				51E5EA3825A1FC8C008A8034 /* LaunchScreen.storyboard */,
 				51E5EA3B25A1FC8C008A8034 /* Info.plist */,
@@ -687,6 +706,7 @@
 				51ADDF5425B9BA6000E9CA18 /* VocaSection+CoreDataClass.swift in Sources */,
 				512587F425C82AB7004AAC6F /* MainTabBarController.swift in Sources */,
 				51ADDF7C25BBB60200E9CA18 /* TextFieldStackView.swift in Sources */,
+				511E3F9025D7F6A80069A31F /* CoreDataStack.swift in Sources */,
 				51E5EA2D25A1FC89008A8034 /* SceneDelegate.swift in Sources */,
 				513DE9BC25C28EDB00810997 /* VocaAddViewModel.swift in Sources */,
 				51ADDEA625B84A3900E9CA18 /* AddVocaModel.swift in Sources */,
