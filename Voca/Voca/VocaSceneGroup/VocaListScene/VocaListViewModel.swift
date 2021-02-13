@@ -126,10 +126,6 @@ extension VocaListViewModel: NSFetchedResultsControllerDelegate {
         updateSnapshot()
     }
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChangeContentWith diff: CollectionDifference<NSManagedObjectID>) {
-        print(#function)
-    }
-    
     private func updateSnapshot() {
         guard let vocaSections = fetchedResultsController.fetchedObjects else { return }
         let sections = vocaSections.map { Section.folder(count: $0.vocas.count, title: $0.title) }

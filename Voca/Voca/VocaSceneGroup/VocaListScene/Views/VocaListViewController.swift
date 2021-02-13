@@ -25,31 +25,14 @@ class VocaListViewController: UIViewController, Storyboarded {
         configureCollectionView()
         configureNavigationController()
         configureBinding()
-        viewModel.fetchData()
+        UIView.performWithoutAnimation {
+          viewModel.fetchData()
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         isEditMode = false
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let segueId = segue.identifier else { return }
-        switch segueId {
-        case "VocaAddViewController":
-            guard let addVC = segue.destination as? VocaAddViewController  else { return }
-            addVC.viewModel.folders = dataSource.snapshot().sectionIdentifiers.map({ section -> String in
-                switch section {
-                case .folder(count: _, title: let title):
-                    return title
-                case .favorite(count: _):
-                    return ""
-                }
-            })
-            addVC.viewModel.delegate = viewModel
-        default:
-            break
-        }
     }
     
     @IBAction func didTapEditButton(_ sender: Any) {
