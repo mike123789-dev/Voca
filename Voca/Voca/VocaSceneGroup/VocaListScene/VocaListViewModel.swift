@@ -11,16 +11,20 @@ import Combine
 import CoreData
 
 enum VocaItem: Hashable {
-    case parent(VocaSection)
+    case parent(Section)
     case child(Voca)
 }
 
 enum Section: Hashable {
+    case search
     case favorite(count: Int)
     case folder(count: Int, title: String)
 }
 
 class VocaListViewModel: NSObject {
+    enum Mode {
+        case search, favorite, folder
+    }
     
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, VocaItem>
     typealias SectionSnapshot = NSDiffableDataSourceSectionSnapshot<VocaItem>
@@ -28,8 +32,9 @@ class VocaListViewModel: NSObject {
     lazy var coreDataStack = CoreDataStack(modelName: "Voca")
     var currentSearchText = ""
     var predicate: NSPredicate?
-    var fetchedResultsController: NSFetchedResultsController<VocaSection>!
-    
+    var vocaSectionFetchedController: NSFetchedResultsController<VocaSection>!
+    var vocaFetchedController: NSFetchedResultsController<Voca>!
+
     let snapshotPublisher = PassthroughSubject<Snapshot, Never>()
     let sectionSnapshotPublisher = PassthroughSubject<(SectionSnapshot, Section), Never>()
     let vocaUpdatePublisher = PassthroughSubject<(IndexPath, Voca), Never>()
@@ -39,32 +44,55 @@ class VocaListViewModel: NSObject {
             print("showing favorites \(isShowingFavorites)")
         }
     }
+    var currentMode: Mode = .folder
     
     func fetchData() {
         loadSavedData()
-        updateSnapshot()
     }
     
     private func loadSavedData() {
-        if fetchedResultsController == nil {
+        if vocaSectionFetchedController == nil {
             let request = VocaSection.createFetchRequest()
             let sort = NSSortDescriptor(key: "date", ascending: true)
             request.sortDescriptors = [sort]
-            fetchedResultsController =
+            vocaSectionFetchedController =
                 NSFetchedResultsController(fetchRequest: request,
                                            managedObjectContext: coreDataStack.managedContext,
                                            sectionNameKeyPath: nil,
                                            cacheName: nil)
-            fetchedResultsController.delegate = self
+            vocaSectionFetchedController.delegate = self
+            if !currentSearchText.isEmpty {
+                request.predicate = NSPredicate(format: "vocas.question CONTAINS[c] %@", currentSearchText)
+            }
         }
-        if !currentSearchText.isEmpty {
-            predicate = NSPredicate(format: "name CONTAINS[c] %@", currentSearchText)
-        }
-        fetchedResultsController.fetchRequest.predicate = predicate
+        vocaSectionFetchedController.fetchRequest.predicate = predicate
         
         do {
-            try fetchedResultsController.performFetch()
-            //            updateSnapshot()
+            try vocaSectionFetchedController.performFetch()
+            updateSnapshot()
+        } catch {
+            print("Fetch failed")
+        }
+    }
+    
+    private func loadSearchedVocas() {
+        let request = Voca.createFetchRequest()
+        request.fetchBatchSize = 30
+        request.predicate = NSPredicate(format: "question CONTAINS[c] %@ OR answer CONTAINS[c] %@", currentSearchText, currentSearchText)
+        let sort = NSSortDescriptor(key: "date", ascending: true)
+        request.sortDescriptors = [sort]
+        
+        vocaFetchedController = NSFetchedResultsController(
+            fetchRequest: request,
+            managedObjectContext: coreDataStack.managedContext,
+            sectionNameKeyPath: nil,
+            cacheName: nil
+        )
+        vocaFetchedController.delegate = self
+        
+        do {
+            try vocaFetchedController.performFetch()
+            updateSearchSnapshot()
         } catch {
             print("Fetch failed")
         }
@@ -77,15 +105,17 @@ extension VocaListViewModel {
         case .child(let voca):
             coreDataStack.managedContext.delete(voca)
         case .parent(let section):
-            coreDataStack.managedContext.delete(section)
-            updateSnapshot()
+            break
+            //TODO: 폴더 지우기
+//            coreDataStack.managedContext.delete(section)
+//            updateSnapshot()
         }
         coreDataStack.saveContext()
     }
     
     func toggleFavorite(at indexPath: IndexPath) {
         print(indexPath)
-        guard let section = fetchedResultsController.fetchedObjects?[indexPath.section] else { return }
+        guard let section = vocaSectionFetchedController.fetchedObjects?[indexPath.section] else { return }
         let voca = section.vocaArray[indexPath.row - 1]
         voca.isFavorite.toggle()
         coreDataStack.saveContext()
@@ -109,7 +139,7 @@ extension VocaListViewModel {
     }
     
     func addVocas(_ vocas: [(question: String, answer: String)], to folder: String) {
-        let section = fetchedResultsController.fetchedObjects?.first(where: { section -> Bool in
+        let section = vocaSectionFetchedController.fetchedObjects?.first(where: { section -> Bool in
             section.title == folder
         })
         vocas.forEach { voca in
@@ -131,15 +161,8 @@ extension VocaListViewModel {
 
 extension VocaListViewModel: NSFetchedResultsControllerDelegate {
     
-    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
-                    didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-//        print(#function)
-//        updateSnapshot()
-    }
-    
     private func updateSnapshot() {
-        guard let vocaSections = fetchedResultsController.fetchedObjects else { return }
-        print(vocaSections)
+        guard let vocaSections = vocaSectionFetchedController.fetchedObjects else { return }
         let sections = vocaSections.map { Section.folder(count: $0.vocas.count, title: $0.title) }
         var snapshot = Snapshot()
         snapshot.appendSections(sections)
@@ -147,7 +170,7 @@ extension VocaListViewModel: NSFetchedResultsControllerDelegate {
         
         for (index, section) in vocaSections.enumerated() {
             var sectionSnapshot = SectionSnapshot()
-            let header = VocaItem.parent(section)
+            let header = VocaItem.parent(Section.folder(count: 0, title: section.title))
             sectionSnapshot.append([header])
             sectionSnapshot.append(
                 section.vocaArray.map {  VocaItem.child($0) },
@@ -157,11 +180,42 @@ extension VocaListViewModel: NSFetchedResultsControllerDelegate {
             sectionSnapshotPublisher.send((sectionSnapshot, sections[index]))
         }
     }
-    
+
+    private func updateSearchSnapshot() {
+        guard let vocas = vocaFetchedController.fetchedObjects else { return }
+        var snapshot = Snapshot()
+        snapshot.appendSections([.search])
+        
+        snapshotPublisher.send(snapshot)
+        var sectionSnapshot = SectionSnapshot()
+        let searchSection = Section.search
+        let header = VocaItem.parent(searchSection)
+        sectionSnapshot.append([header])
+        sectionSnapshot.append(
+            vocas.map { VocaItem.child($0) },
+            to: header
+        )
+        sectionSnapshot.expand([header])
+        sectionSnapshotPublisher.send((sectionSnapshot, searchSection))
+    }
+
 }
 
 extension VocaListViewModel: VocaAddDelegate {
     func didAdd(_ vocas: [(String, String)], to folder: String) {
         addVocas(vocas, to: folder)
+    }
+}
+
+//MARK: - Search 관련 함수들
+extension VocaListViewModel: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let text = searchController.searchBar.text else { return }
+        currentSearchText = text
+        if searchController.isActive {
+            loadSearchedVocas()
+        } else {
+            loadSavedData()
+        }
     }
 }

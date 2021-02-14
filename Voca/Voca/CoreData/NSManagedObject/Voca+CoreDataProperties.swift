@@ -11,7 +11,7 @@ import CoreData
 
 extension Voca {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Voca> {
+    @nonobjc public class func createFetchRequest() -> NSFetchRequest<Voca> {
         return NSFetchRequest<Voca>(entityName: "Voca")
     }
 

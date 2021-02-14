@@ -14,7 +14,8 @@ class VocaListViewController: UIViewController, Storyboarded {
     
     private var dataSource: DataSource! = nil
     typealias DataSource = UICollectionViewDiffableDataSource<Section, VocaItem>
-    
+    private var searchController = UISearchController(searchResultsController: nil)
+
     weak var coordinator: VocaListCoordinator?
     let viewModel = VocaListViewModel()
     @Published var isEditMode = false
@@ -24,11 +25,11 @@ class VocaListViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
         configureCollectionView()
         configureNavigationController()
+        configureSearchController()
         configureBinding()
         UIView.performWithoutAnimation {
           viewModel.fetchData()
         }
-//        dataSource.snapshot().appendSections([])
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -46,6 +47,8 @@ class VocaListViewController: UIViewController, Storyboarded {
             case .folder(count: _, title: let title):
                 return title
             case .favorite(count: _):
+                return nil
+            case .search:
                 return nil
             }
         })
@@ -161,13 +164,19 @@ extension VocaListViewController {
     
     private func configureDataSource() {
         
-        let parentCell = UICollectionView.CellRegistration<UICollectionViewListCell, VocaSection> { cell, _, item in
+        let parentCell = UICollectionView.CellRegistration<UICollectionViewListCell, Section> { cell, _, section in
             var content = cell.defaultContentConfiguration()
-            content.text = item.title
+            switch section {
+            case .folder(count: _, title: let title):
+                content.text = title
+                let headerDisclosureOption = UICellAccessory.OutlineDisclosureOptions(style: .header)
+                cell.accessories = [.outlineDisclosure(options:headerDisclosureOption)]
+            case .favorite(count: let count):
+                content.text = "즐겨찾기"
+            case .search:
+                break
+            }
             cell.contentConfiguration = content
-            
-            let headerDisclosureOption = UICellAccessory.OutlineDisclosureOptions(style: .header)
-            cell.accessories = [.outlineDisclosure(options:headerDisclosureOption)]
         }
         
         let footerRegistration = UICollectionView.SupplementaryRegistration
@@ -183,6 +192,8 @@ extension VocaListViewController {
                 footerView.contentConfiguration = configuration
             case .favorite(count: let count):
                 print(count)
+            case .search:
+                break
             }
         }
         
@@ -216,6 +227,7 @@ extension VocaListViewController {
         
         dataSource.reorderingHandlers.canReorderItem = { item in true}
         dataSource.reorderingHandlers.didReorder = { transaction in
+            print(transaction.difference)
             //TODO: Reorder 구현
         }
     }
@@ -241,6 +253,16 @@ extension VocaListViewController {
         toolbarItems = [addFolder, spacer, favorites]
     }
     
+}
+//MARK: - Search 관련 함수
+extension VocaListViewController {
+    private func configureSearchController() {
+        searchController.searchResultsUpdater = self.viewModel
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "단어 찾기"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
+    }
 }
 
 //MARK: - UICollectionViewDelegate 관렴 함수
