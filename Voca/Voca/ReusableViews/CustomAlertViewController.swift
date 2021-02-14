@@ -8,60 +8,116 @@
 import UIKit
 import Combine
 
-class CustomAlertViewController: UIAlertController {
+extension UIAlertController {
     
-    enum CustomAlertType {
-        case addVoca, addFolder
+    class func create(title: String?, preferredStyle: UIAlertController.Style) -> UIAlertController {
+        return UIAlertController(title: title, message: nil, preferredStyle: preferredStyle)
     }
+    
+}
+
+class VocaAlertController {
+    enum CustomAlertType {
+        case addVoca, addFolder, modifyVoca
+    }
+    
+    private var alertController: UIAlertController!
+    let alertType: CustomAlertType
+    
     @Published var isValid: Bool = false
     var subscriptions = Set<AnyCancellable>()
-    var textHandler: ((String) -> Void)?
+    var firstTextHandler: ((String) -> Void)?
+    var secondTextHandler: ((String) -> Void)?
     var cancelAction: UIAlertAction!
     var okAction: UIAlertAction!
     
-    convenience init(type: CustomAlertType) {
-        switch type {
+    var firstText: String?
+    var secondText: String?
+    
+    init(alertType: CustomAlertType) {
+        self.alertType = alertType
+        var title = ""
+        switch alertType {
         case .addFolder:
-            self.init(title: "폴더 추가",
-                      message: nil,
-                      preferredStyle: .alert)
+            title = "폴더 추가"
         case .addVoca:
-            self.init(title: "단어 추가",
-                      message: nil,
-                      preferredStyle: .alert)
+            title = "단어 추가"
+        case .modifyVoca:
+            title = "단어 수정"
         }
+        alertController = UIAlertController.create(title: title, preferredStyle: .alert)
+        setup()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupView()
+    private func setup() {
+        switch alertType {
+        case .addFolder:
+            setupAddFolder()
+        case .addVoca:
+            setupAddVoca()
+        case .modifyVoca:
+            setupModifyVoca()
+        }
         setupBinding()
     }
     
-    private func setupView() {
+    private func setupAddFolder() {
+//        let contentVC = OneTextFieldViewController()
+//        alertController.setValue(contentVC, forKey: "contentViewController")
+//        contentVC.$textFieldString
+//            .sink {[weak self ] text in
+//                print(text)
+//                if text.isEmpty {
+//                    self?.isValid = false
+//                } else {
+//                    self?.isValid = true
+//                }
+//            }
+//            .store(in: &subscriptions)
+//        print(contentVC.$textFieldString)
+//        print(contentVC.subscriptions)
+//        
+//        cancelAction = UIAlertAction(title: "취소", style: .cancel)
+//        okAction = UIAlertAction(title: "추가",
+//                                 style: .default,
+//                                 handler: { [weak self] _ in
+//                                    self?.firstTextHandler?(contentVC.textFieldString)
+//                                 })
+//        alertController.addAction(cancelAction)
+//        alertController.addAction(okAction)
+    }
+    
+    private func setupAddVoca() {
         
-        let contentVC = TextFieldStackViewController()
-        contentVC.stackView.textField.text = "hello"
-        setValue(contentVC, forKey: "contentViewController")
-        contentVC.$textFieldString
-            .sink {[weak self ] text in
-                if text.isEmpty {
-                    self?.isValid = false
-                } else {
-                    self?.isValid = true
-                }
-            }
-            .store(in: &subscriptions)
-        
-        cancelAction = UIAlertAction(title: "취소", style: .cancel)
-        okAction = UIAlertAction(title: "추가",
-                                 style: .default,
-                                 handler: { [weak self] _ in
-                                    self?.textHandler?(contentVC.textFieldString)
-                                 })
-        addAction(cancelAction)
-        addAction(okAction)
-        
+    }
+    
+    private func setupModifyVoca() {
+//        let contentVC = TwoTextFieldViewController()
+//        contentVC.secondTextFieldString = "되고있나?"
+//        alertController.setValue(contentVC, forKey: "contentViewController")
+//        Publishers.CombineLatest(contentVC.$firstTextFieldString, contentVC.$secondTextFieldString)
+//            .sink { [weak self] (first, second) in
+//                print(first)
+//                print(second)
+//
+//                if first.isEmpty || second.isEmpty {
+//                    self?.isValid = false
+//                } else {
+//                    self?.isValid = true
+//                }
+//            }
+//            .store(in: &subscriptions)
+//        
+//        cancelAction = UIAlertAction(title: "취소", style: .cancel)
+//        okAction = UIAlertAction(
+//            title: "추가",
+//            style: .default,
+//            handler: { [weak self] _ in
+//                self?.firstTextHandler?(contentVC.firstTextFieldString)
+//                self?.secondTextHandler?(contentVC.secondTextFieldString)
+//            })
+//        alertController.addAction(cancelAction)
+//        alertController.addAction(okAction)
     }
     
     private func setupBinding() {
@@ -70,6 +126,10 @@ class CustomAlertViewController: UIAlertController {
                 self?.okAction.isEnabled = isValid
             }
             .store(in: &subscriptions)
+    }
+
+    func present(inViewController controller: UIViewController) {
+        controller.present(alertController, animated: true)
     }
     
 }

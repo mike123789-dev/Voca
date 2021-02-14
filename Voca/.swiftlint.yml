@@ -7,3 +7,4 @@ disabled_rules:
     - identifier_name
     - mark
     - force_cast
+    - empty_enum_arguments

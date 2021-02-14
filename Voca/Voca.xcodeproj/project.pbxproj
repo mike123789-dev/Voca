@@ -22,12 +22,14 @@
 		51290D8725C1A2F600A3EBBB /* VocaAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D8625C1A2F600A3EBBB /* VocaAddTableViewCell.swift */; };
 		51290D8F25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D8E25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift */; };
 		51290D9425C1BA4A00A3EBBB /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D9325C1BA4A00A3EBBB /* CardView.swift */; };
-		51290D9C25C1CDA900A3EBBB /* TextFieldStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D9B25C1CDA900A3EBBB /* TextFieldStackViewController.swift */; };
+		51290D9C25C1CDA900A3EBBB /* OneTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51290D9B25C1CDA900A3EBBB /* OneTextFieldViewController.swift */; };
 		513DE9BC25C28EDB00810997 /* VocaAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DE9BB25C28EDB00810997 /* VocaAddViewModel.swift */; };
 		513DE9C725C2D99400810997 /* ExamListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DE9C625C2D99400810997 /* ExamListViewController.swift */; };
 		513DE9CE25C2D9BC00810997 /* ExamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DE9CD25C2D9BC00810997 /* ExamViewController.swift */; };
 		513DE9D625C2D9CF00810997 /* ExamListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DE9D525C2D9CF00810997 /* ExamListViewModel.swift */; };
 		513DE9DB25C2D9DA00810997 /* ExamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513DE9DA25C2D9DA00810997 /* ExamViewModel.swift */; };
+		514D5D3F25D8936D00B3DD0E /* TwoTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514D5D3E25D8936D00B3DD0E /* TwoTextFieldViewController.swift */; };
+		514D5D4C25D8D57300B3DD0E /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514D5D4B25D8D57300B3DD0E /* UIAlertController+Extensions.swift */; };
 		51ADDEA625B84A3900E9CA18 /* AddVocaModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEA325B84A3900E9CA18 /* AddVocaModel.swift */; };
 		51ADDEA725B84A3900E9CA18 /* VocaSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEA425B84A3900E9CA18 /* VocaSectionModel.swift */; };
 		51ADDEB525B84B5B00E9CA18 /* VocaListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51ADDEB425B84B5B00E9CA18 /* VocaListViewModel.swift */; };
@@ -98,12 +100,14 @@
 		51290D8625C1A2F600A3EBBB /* VocaAddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaAddTableViewCell.swift; sourceTree = "<group>"; };
 		51290D8E25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaAddCellViewModel.swift; sourceTree = "<group>"; };
 		51290D9325C1BA4A00A3EBBB /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
-		51290D9B25C1CDA900A3EBBB /* TextFieldStackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStackViewController.swift; sourceTree = "<group>"; };
+		51290D9B25C1CDA900A3EBBB /* OneTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneTextFieldViewController.swift; sourceTree = "<group>"; };
 		513DE9BB25C28EDB00810997 /* VocaAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaAddViewModel.swift; sourceTree = "<group>"; };
 		513DE9C625C2D99400810997 /* ExamListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamListViewController.swift; sourceTree = "<group>"; };
 		513DE9CD25C2D9BC00810997 /* ExamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamViewController.swift; sourceTree = "<group>"; };
 		513DE9D525C2D9CF00810997 /* ExamListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamListViewModel.swift; sourceTree = "<group>"; };
 		513DE9DA25C2D9DA00810997 /* ExamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamViewModel.swift; sourceTree = "<group>"; };
+		514D5D3E25D8936D00B3DD0E /* TwoTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoTextFieldViewController.swift; sourceTree = "<group>"; };
+		514D5D4B25D8D57300B3DD0E /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
 		51ADDEA325B84A3900E9CA18 /* AddVocaModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddVocaModel.swift; sourceTree = "<group>"; };
 		51ADDEA425B84A3900E9CA18 /* VocaSectionModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VocaSectionModel.swift; sourceTree = "<group>"; };
 		51ADDEB425B84B5B00E9CA18 /* VocaListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaListViewModel.swift; sourceTree = "<group>"; };
@@ -221,7 +225,8 @@
 				51ADDF6D25BAA1DB00E9CA18 /* CustomAlertViewController.swift */,
 				51290D9325C1BA4A00A3EBBB /* CardView.swift */,
 				51ADDF7B25BBB60200E9CA18 /* TextFieldStackView.swift */,
-				51290D9B25C1CDA900A3EBBB /* TextFieldStackViewController.swift */,
+				51290D9B25C1CDA900A3EBBB /* OneTextFieldViewController.swift */,
+				514D5D3E25D8936D00B3DD0E /* TwoTextFieldViewController.swift */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
@@ -282,6 +287,14 @@
 				512587FD25C82C3E004AAC6F /* ExamListCoordinator.swift */,
 			);
 			path = ExamListScene;
+			sourceTree = "<group>";
+		};
+		514D5D4A25D8D54600B3DD0E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				514D5D4B25D8D57300B3DD0E /* UIAlertController+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		51ADDEA225B84A3900E9CA18 /* Models */ = {
@@ -397,6 +410,7 @@
 		51E5EA2925A1FC89008A8034 /* Voca */ = {
 			isa = PBXGroup;
 			children = (
+				514D5D4A25D8D54600B3DD0E /* Extensions */,
 				51ADDEAC25B84A4100E9CA18 /* App */,
 				51ADDEA225B84A3900E9CA18 /* Models */,
 				51ADDEB225B84B0F00E9CA18 /* ChartSceneGroup */,
@@ -681,6 +695,7 @@
 				51ADDF6925B9C85700E9CA18 /* VocaBrain.swift in Sources */,
 				51C5603125C64DC400644AC4 /* ExamCollectionViewCell.swift in Sources */,
 				51ADDF2A25B9B07600E9CA18 /* Voca.xcdatamodeld in Sources */,
+				514D5D4C25D8D57300B3DD0E /* UIAlertController+Extensions.swift in Sources */,
 				51C5602425C5B5AB00644AC4 /* VocaCameraViewController.swift in Sources */,
 				512587FE25C82C3E004AAC6F /* ExamListCoordinator.swift in Sources */,
 				51C5603A25C6F63700644AC4 /* ExamHeaderCollectionReusableView.swift in Sources */,
@@ -696,6 +711,7 @@
 				5125880325C82C47004AAC6F /* ExamCoordinator.swift in Sources */,
 				51D07BB625C3EE0400DA2F69 /* StackViewContainer.swift in Sources */,
 				513DE9D625C2D9CF00810997 /* ExamListViewModel.swift in Sources */,
+				514D5D3F25D8936D00B3DD0E /* TwoTextFieldViewController.swift in Sources */,
 				51D07BC325C4540A00DA2F69 /* ResultView.swift in Sources */,
 				51ADDEBD25B84B7000E9CA18 /* VocaListViewController.swift in Sources */,
 				51ADDED625B85AF900E9CA18 /* VocaCollectionViewCell.swift in Sources */,
@@ -710,7 +726,7 @@
 				51E5EA2D25A1FC89008A8034 /* SceneDelegate.swift in Sources */,
 				513DE9BC25C28EDB00810997 /* VocaAddViewModel.swift in Sources */,
 				51ADDEA625B84A3900E9CA18 /* AddVocaModel.swift in Sources */,
-				51290D9C25C1CDA900A3EBBB /* TextFieldStackViewController.swift in Sources */,
+				51290D9C25C1CDA900A3EBBB /* OneTextFieldViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
