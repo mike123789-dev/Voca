@@ -34,6 +34,22 @@ class VocaListCoordinator: NSObject, Coordinator, UINavigationControllerDelegate
         navigationController.pushViewController(vc, animated: true)
         childCoordinators.append(vocaAddCoordinator)
     }
+    
+    func showAddFolderAlert(viewModel: VocaListViewModel) {
+        let alert = UIAlertController(title: "도전!", message: nil, preferredStyle: .alert)
+        alert.addOneTextField { folderName in
+            viewModel.addFolder(title: folderName)
+        }
+        navigationController.present(alert, animated: true)
+    }
+    
+    func showModifyVocaAlert(voca: Voca, viewModel: VocaListViewModel, at indexPath: IndexPath) {
+        let alert = UIAlertController(title: "추가", message: nil, preferredStyle: .alert)
+        alert.addTwoTextField(firstText: voca.question, secondText: voca.answer) { (q, a) in
+            viewModel.update(voca, question: q, answer: a, at: indexPath)
+        }
+        navigationController.present(alert, animated: true)
+    }
 
     func childDidFinish(_ child: Coordinator?) {
         for (index, coordinator) in childCoordinators.enumerated() where coordinator === child {
