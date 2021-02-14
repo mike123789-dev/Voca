@@ -28,6 +28,7 @@ class VocaListViewController: UIViewController, Storyboarded {
         UIView.performWithoutAnimation {
           viewModel.fetchData()
         }
+//        dataSource.snapshot().appendSections([])
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -81,16 +82,12 @@ class VocaListViewController: UIViewController, Storyboarded {
     
     @objc
     func didTapAddFolderButton() {
-        let alert = CustomAlertViewController(type: .addVoca)
-        alert.textHandler = { [weak self] inputText in
-            self?.viewModel.addFolder(title: inputText)
-        }
-        self.present(alert, animated: true)
+        coordinator?.showAddFolderAlert(viewModel: viewModel)
     }
     
     @objc
     func didTapFavoriteButton() {
-        //TODO: 좋아요 기능 추가
+        //TODO: 좋아요 필터링 기능 추가
         viewModel.isShowingFavorites.toggle()
     }
     
@@ -113,9 +110,8 @@ extension VocaListViewController {
         
         configuration.trailingSwipeActionsConfigurationProvider = { [weak self] (indexPath) in
             guard let item = self?.dataSource?.itemIdentifier(for: indexPath),
-                  let self = self else {
-                return nil
-            }
+                  let self = self else { return nil }
+            
             let deleteAction = UIContextualAction(style: .destructive, title: "제거") { (_, _, completion) in
                 var snapShot = self.dataSource.snapshot()
                 snapShot.deleteItems([item])
@@ -125,30 +121,38 @@ extension VocaListViewController {
             }
             return UISwipeActionsConfiguration(actions: [deleteAction])
         }
+        
         configuration.leadingSwipeActionsConfigurationProvider = { [weak self] (indexPath) in
-            guard let item = self?.dataSource?.itemIdentifier(for: indexPath) else {
-                return nil
-            }
-            let favoriteAction = UIContextualAction(style: .normal, title: "즐겨찾기") { (action, _, completion) in
-                self?.viewModel.toggleFavorite(at: indexPath)
-                //TODO: 좋아요 토글 기능 추가
+            
+            guard let item = self?.dataSource?.itemIdentifier(for: indexPath),
+                  let self = self else { return nil }
+
+            let favoriteAction = UIContextualAction(style: .normal, title: "즐겨찾기") { (_, _, completion) in
+                self.viewModel.toggleFavorite(at: indexPath)
                 completion(true)
             }
             favoriteAction.image = UIImage(systemName: "star.fill")
             favoriteAction.backgroundColor = .systemOrange
+            
             let modifyAction = UIContextualAction(style: .normal, title: "수정") { (_, _, completion) in
-                //TODO: 수정 기능 추가
-                
+                switch item {
+                case .parent(_):
+                    break
+                case .child(let voca):
+                    self.coordinator?.showModifyVocaAlert(voca: voca, viewModel: self.viewModel, at: indexPath)
+                }
                 completion(true)
             }
             modifyAction.image = nil
             modifyAction.backgroundColor = .systemBlue
+            
             switch item {
-            case .parent(let section):
-                return UISwipeActionsConfiguration(actions: [modifyAction])
-            case .child(let voca):
+            case .parent(_):
+                return UISwipeActionsConfiguration(actions: [])
+            case .child(_):
                 return UISwipeActionsConfiguration(actions: [favoriteAction, modifyAction])
             }
+            
         }
         configuration.headerMode = .firstItemInSection
         configuration.footerMode = .supplementary
