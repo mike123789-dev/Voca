@@ -42,6 +42,7 @@ class VocaListViewModel: NSObject {
     
     func fetchData() {
         loadSavedData()
+        updateSnapshot()
     }
     
     private func loadSavedData() {
@@ -77,6 +78,7 @@ extension VocaListViewModel {
             coreDataStack.managedContext.delete(voca)
         case .parent(let section):
             coreDataStack.managedContext.delete(section)
+            updateSnapshot()
         }
         coreDataStack.saveContext()
     }
@@ -90,12 +92,20 @@ extension VocaListViewModel {
         vocaUpdatePublisher.send((indexPath, voca))
     }
     
+    func update(_ voca: Voca, question: String, answer: String, at indexPath: IndexPath) {
+        voca.question = question
+        voca.answer = answer
+        coreDataStack.saveContext()
+        vocaUpdatePublisher.send((indexPath, voca))
+    }
+    
     func addFolder(title: String) {
         let s = VocaSection(context: coreDataStack.managedContext)
         s.date = Date()
         s.title = title
         s.id = UUID()
         coreDataStack.saveContext()
+        updateSnapshot()
     }
     
     func addVocas(_ vocas: [(question: String, answer: String)], to folder: String) {
@@ -114,6 +124,7 @@ extension VocaListViewModel {
             section?.addToVocas(v)
         }
         coreDataStack.saveContext()
+        updateSnapshot()
     }
     
 }
@@ -122,12 +133,13 @@ extension VocaListViewModel: NSFetchedResultsControllerDelegate {
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                     didChangeContentWith snapshot: NSDiffableDataSourceSnapshotReference) {
-        print(#function)
-        updateSnapshot()
+//        print(#function)
+//        updateSnapshot()
     }
     
     private func updateSnapshot() {
         guard let vocaSections = fetchedResultsController.fetchedObjects else { return }
+        print(vocaSections)
         let sections = vocaSections.map { Section.folder(count: $0.vocas.count, title: $0.title) }
         var snapshot = Snapshot()
         snapshot.appendSections(sections)
