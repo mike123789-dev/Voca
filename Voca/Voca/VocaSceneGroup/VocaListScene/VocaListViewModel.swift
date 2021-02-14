@@ -114,12 +114,23 @@ extension VocaListViewModel {
     }
     
     func toggleFavorite(at indexPath: IndexPath) {
-        print(indexPath)
-        guard let section = vocaSectionFetchedController.fetchedObjects?[indexPath.section] else { return }
-        let voca = section.vocaArray[indexPath.row - 1]
-        voca.isFavorite.toggle()
-        coreDataStack.saveContext()
-        vocaUpdatePublisher.send((indexPath, voca))
+        switch currentMode {
+        case .folder:
+            guard let section = vocaSectionFetchedController.fetchedObjects?[indexPath.section] else { return }
+            let voca = section.vocaArray[indexPath.row - 1]
+            voca.isFavorite.toggle()
+            coreDataStack.saveContext()
+            vocaUpdatePublisher.send((indexPath, voca))
+        case .search:
+            let index = IndexPath(row: indexPath.row - 1,
+                                  section: indexPath.section)
+            let voca = vocaFetchedController.object(at: index)
+            voca.isFavorite.toggle()
+            coreDataStack.saveContext()
+            vocaUpdatePublisher.send((indexPath, voca))
+        default:
+            break
+        }
     }
     
     func update(_ voca: Voca, question: String, answer: String, at indexPath: IndexPath) {
@@ -213,8 +224,10 @@ extension VocaListViewModel: UISearchResultsUpdating {
         guard let text = searchController.searchBar.text else { return }
         currentSearchText = text
         if searchController.isActive {
+            currentMode = .search
             loadSearchedVocas()
         } else {
+            currentMode = .folder
             loadSavedData()
         }
     }

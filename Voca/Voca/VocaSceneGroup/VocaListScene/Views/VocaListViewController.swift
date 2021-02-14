@@ -173,7 +173,9 @@ extension VocaListViewController {
                 cell.accessories = [.outlineDisclosure(options:headerDisclosureOption)]
             case .favorite(count: let count):
                 content.text = "즐겨찾기"
+                cell.accessories = []
             case .search:
+                cell.accessories = []
                 break
             }
             cell.contentConfiguration = content
@@ -181,20 +183,21 @@ extension VocaListViewController {
         
         let footerRegistration = UICollectionView.SupplementaryRegistration
         <UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionFooter) { [unowned self] (footerView, _, indexPath) in
-            
             let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+            var configuration = footerView.defaultContentConfiguration()
             switch section {
             case .folder(count: let count, title: _):
                 // Configure footer view content
-                var configuration = footerView.defaultContentConfiguration()
                 configuration.text = "단어 수: \(count)"
                 configuration.textProperties.alignment = .center
-                footerView.contentConfiguration = configuration
             case .favorite(count: let count):
-                print(count)
+                configuration.text = "단어 수: \(count)"
+                configuration.textProperties.alignment = .center
+                configuration.text = nil
             case .search:
-                break
+                configuration.text = nil
             }
+            footerView.contentConfiguration = configuration
         }
         
         dataSource =
@@ -216,6 +219,7 @@ extension VocaListViewController {
                             return cell
                         }
                        })
+        
         dataSource.supplementaryViewProvider = { [unowned self] (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
             if elementKind == UICollectionView.elementKindSectionFooter {
                 return self.collectionView.dequeueConfiguredReusableSupplementary(
