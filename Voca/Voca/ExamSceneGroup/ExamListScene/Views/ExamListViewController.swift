@@ -44,17 +44,20 @@ extension ExamListViewController {
     private func configureCollectionView() {
         collectionView.delegate = self
         collectionView.collectionViewLayout = generateLayout()
-        collectionView.backgroundColor = .systemBackground
+        collectionView.backgroundColor = .systemGroupedBackground
         configureDataSource()
     }
     
     private func generateLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { [weak self] (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
+        let layout =
+            UICollectionViewCompositionalLayout { [weak self] (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let isWideView = layoutEnvironment.container.effectiveContentSize.width > 500
             let sectionLayoutKind = ExamSection.allCases[sectionIndex]
-            switch (sectionLayoutKind) {
-            case .favorite: return self?.generateFavoriteLayout()
-            case .folder: return self?.generateFolderLayout(isWide: isWideView)
+            switch sectionLayoutKind {
+            case .favorite:
+                return self?.generateFavoriteLayout()
+            case .folder:
+                return self?.generateFolderLayout(isWide: isWideView)
             }
         }
         return layout
@@ -71,8 +74,10 @@ extension ExamListViewController {
         
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .groupPagingCentered
-//        section.interGroupSpacing = 20
-//        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 8,
+                                                        leading: 0,
+                                                        bottom: 16,
+                                                        trailing: 0)
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                 heightDimension: .estimated(44))
@@ -80,7 +85,6 @@ extension ExamListViewController {
             layoutSize: headerSize,
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top)
-        
         section.boundarySupplementaryItems = [sectionHeader]
         return section
     }
@@ -101,13 +105,14 @@ extension ExamListViewController {
         
         let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                 heightDimension: .estimated(44))
-        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize,
-                                                                        elementKind: UICollectionView.elementKindSectionHeader,
-                                                                        alignment: .top)
-        
+        let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        //        sectionHeader.pinToVisibleBounds = true
         let section = NSCollectionLayoutSection(group: group)
         section.boundarySupplementaryItems = [sectionHeader]
-        
         return section
     }
     
@@ -127,28 +132,29 @@ extension ExamListViewController {
                         return cell
                        })
         
-        dataSource.supplementaryViewProvider = { [unowned self] (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
-            if elementKind == UICollectionView.elementKindSectionHeader {
-                let cell = collectionView
-                    .dequeueReusableSupplementaryView(
-                        ofKind: elementKind,
-                        withReuseIdentifier: "ExamHeaderCollectionReusableView",
-                        for: indexPath) as? ExamHeaderCollectionReusableView
-                let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
-                var sectionTitle = ""
-                switch section {
-                case .folder:
-                    sectionTitle = "폴더"
-                case .favorite:
-                    sectionTitle = "즐겨찾기"
+        dataSource.supplementaryViewProvider
+            = { [unowned self] (collectionView, elementKind, indexPath) -> UICollectionReusableView? in
+                if elementKind == UICollectionView.elementKindSectionHeader {
+                    let cell = collectionView
+                        .dequeueReusableSupplementaryView(
+                            ofKind: elementKind,
+                            withReuseIdentifier: "ExamHeaderCollectionReusableView",
+                            for: indexPath) as? ExamHeaderCollectionReusableView
+                    let section = self.dataSource.snapshot().sectionIdentifiers[indexPath.section]
+                    var sectionTitle = ""
+                    switch section {
+                    case .folder:
+                        sectionTitle = "폴더"
+                    case .favorite:
+                        sectionTitle = "즐겨찾기"
+                    }
+                    cell?.configure(title: sectionTitle
+                    )
+                    return cell
+                } else {
+                    return nil
                 }
-                cell?.configure(title: sectionTitle
-                )
-                return cell
-            } else {
-                return nil
             }
-        }
         
     }
 }
@@ -165,6 +171,7 @@ extension ExamListViewController {
     
     func configureNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.backgroundColor = .systemGroupedBackground
     }
 
 }

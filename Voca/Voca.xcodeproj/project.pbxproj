@@ -61,6 +61,7 @@
 		51E5EA3A25A1FC8C008A8034 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51E5EA3825A1FC8C008A8034 /* LaunchScreen.storyboard */; };
 		51E5EA4525A1FC8C008A8034 /* VocaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA4425A1FC8C008A8034 /* VocaTests.swift */; };
 		51E5EA5025A1FC8C008A8034 /* VocaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51E5EA4F25A1FC8C008A8034 /* VocaUITests.swift */; };
+		51F3D57225D943E80089C165 /* BackgroundDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F3D57125D943E80089C165 /* BackgroundDecorationView.swift */; };
 		8453AABAED93BE1E9965E363 /* Pods_Voca_VocaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 259AC6681F31489D73FE7B74 /* Pods_Voca_VocaUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +146,7 @@
 		51E5EA4B25A1FC8C008A8034 /* VocaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VocaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		51E5EA4F25A1FC8C008A8034 /* VocaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VocaUITests.swift; sourceTree = "<group>"; };
 		51E5EA5125A1FC8C008A8034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51F3D57125D943E80089C165 /* BackgroundDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundDecorationView.swift; sourceTree = "<group>"; };
 		7106633CF579918504801D1E /* Pods-Voca.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voca.debug.xcconfig"; path = "Target Support Files/Pods-Voca/Pods-Voca.debug.xcconfig"; sourceTree = "<group>"; };
 		C5DC1A73C445EF157317FFF9 /* Pods_VocaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VocaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D21850B5E981F353BAF78BA9 /* Pods-Voca.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Voca.release.xcconfig"; path = "Target Support Files/Pods-Voca/Pods-Voca.release.xcconfig"; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				51ADDF6D25BAA1DB00E9CA18 /* CustomAlertViewController.swift */,
+				51F3D57125D943E80089C165 /* BackgroundDecorationView.swift */,
 				51290D9325C1BA4A00A3EBBB /* CardView.swift */,
 				51ADDF7B25BBB60200E9CA18 /* TextFieldStackView.swift */,
 				51290D9B25C1CDA900A3EBBB /* OneTextFieldViewController.swift */,
@@ -724,6 +727,7 @@
 				51ADDF7C25BBB60200E9CA18 /* TextFieldStackView.swift in Sources */,
 				511E3F9025D7F6A80069A31F /* CoreDataStack.swift in Sources */,
 				51E5EA2D25A1FC89008A8034 /* SceneDelegate.swift in Sources */,
+				51F3D57225D943E80089C165 /* BackgroundDecorationView.swift in Sources */,
 				513DE9BC25C28EDB00810997 /* VocaAddViewModel.swift in Sources */,
 				51ADDEA625B84A3900E9CA18 /* AddVocaModel.swift in Sources */,
 				51290D9C25C1CDA900A3EBBB /* OneTextFieldViewController.swift in Sources */,
