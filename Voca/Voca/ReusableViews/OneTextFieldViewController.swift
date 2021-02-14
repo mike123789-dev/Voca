@@ -9,40 +9,28 @@ import Foundation
 import Combine
 import UIKit
 
-class TextFieldStackViewController: UIViewController {
+class OneTextFieldViewController: UIViewController {
     
     let stackView = TextFieldStackView()
-    @Published var textFieldString = ""
-    var subscriptions = Set<AnyCancellable>()
-    
+    var textFieldString = ""
+    var isValidated: ((Bool) -> Void)?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupStackView()
-        textfieldSubscription()
     }
     
     func setupStackView() {
         view.addSubview(stackView)
         stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-//        stackView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         stackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
         stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30).isActive = true
         stackView.didTextFieldChange = { [weak self] text in
-            self?.textFieldString = text
+            guard let self = self else { return }
+            self.textFieldString = text
+            self.isValidated?(!text.isEmpty)
         }
         stackView.configure(title: "폴더명", textfieldString: "")
-    }
-    
-    func textfieldSubscription() {
-        $textFieldString
-            .sink { [weak self] string in
-                if string.isEmpty {
-                    self?.stackView.hintLabel.text = "입력해주세요!"
-                } else {
-                    self?.stackView.hintLabel.text = " "
-                }
-            }
-            .store(in: &subscriptions)
     }
 
 }
