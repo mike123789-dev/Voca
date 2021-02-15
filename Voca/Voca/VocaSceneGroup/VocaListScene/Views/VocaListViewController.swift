@@ -17,9 +17,18 @@ class VocaListViewController: UIViewController, Storyboarded {
     private var searchController = UISearchController(searchResultsController: nil)
 
     weak var coordinator: VocaListCoordinator?
-    let viewModel = VocaListViewModel()
+    let viewModel: VocaListViewModel
     @Published var isEditMode = false
     var subscriptions = Set<AnyCancellable>()
+
+    init?(coder: NSCoder, viewModel: VocaListViewModel) {
+        self.viewModel = viewModel
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("You must create this view controller with a user.")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

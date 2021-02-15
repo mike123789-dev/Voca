@@ -16,11 +16,23 @@ class VocaListCoordinator: NSObject, Coordinator, UINavigationControllerDelegate
     }
 
     func start() {
+//        navigationController.delegate = self
+//        let vc = VocaListViewController.instantiate()
+//        vc.coordinator = self
+//        navigationController.pushViewController(vc, animated: false)
+    }
+    
+    func start(with coreDataStack: CoreDataStack) {
         navigationController.delegate = self
-        let vc = VocaListViewController.instantiate()
+        let viewmodel = VocaListViewModel(coreDataStack: coreDataStack)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(identifier: "VocaListViewController", creator: { coder in
+            return VocaListViewController(coder: coder, viewModel: viewmodel)
+        })
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }
+
     
     func showAdd(with folders: [String], viewModel: VocaListViewModel) {
         let vocaAddCoordinator = VocaAddCoordinator(navigationController: navigationController)

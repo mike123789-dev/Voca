@@ -6,36 +6,48 @@
 //
 
 import UIKit
-
-enum ExamSection: Int, CaseIterable {
-    case favorite
-    case folder
-}
+import Combine
 
 class ExamListViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
     weak var coordinator: ExamListCoordinator?
+    let viewModel: ExamListViewModel
+    var subscriptions = Set<AnyCancellable>()
     private var dataSource: DataSource! = nil
-    typealias DataSource = UICollectionViewDiffableDataSource<ExamSection, VocaSectionModel>
-    
+    typealias DataSource = UICollectionViewDiffableDataSource<ExamSection, CategorizedSection>
+
+    init?(coder: NSCoder, viewModel: ExamListViewModel) {
+        self.viewModel = viewModel
+        super.init(coder: coder)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("You must create this view controller with a user.")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureCollectionView()
         configureNavigationController()
-        dummysnapshot()
+        configureBinding()
     }
     
-    func dummysnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<ExamSection, VocaSectionModel>()
-        snapshot.appendSections([.favorite])
-        snapshot.appendItems([TestData.section1, TestData.section2, TestData.section3], toSection: .favorite)
-        snapshot.appendSections([.folder])
-        snapshot.appendItems([TestData.section2, TestData.section3], toSection: .folder)
-        dataSource.apply(snapshot, animatingDifferences: false)
+    override func viewDidAppear(_ animated: Bool) {
+        UIView.performWithoutAnimation {
+          viewModel.fetchData()
+        }
     }
     
+    private func configureBinding() {
+        viewModel.snapshotPublisher
+            .sink { [weak self] snapshot in
+                guard let self = self else { return }
+                self.dataSource.apply(snapshot)
+            }
+            .store(in: &subscriptions)
+    }
 }
 
 //MARK: - CollectionView 관련 함수들
@@ -128,7 +140,12 @@ extension ExamListViewController {
                             .dequeueReusableCell(
                                 withReuseIdentifier: "ExamCollectionViewCell",
                                 for: indexPath) as? ExamCollectionViewCell
-                        cell?.configure(with: item)
+                        switch item {
+                        case .favorite(let section):
+                        cell?.configure(with: section)
+                        case .folder(let section):
+                            cell?.configure(with: section)
+                        }
                         return cell
                        })
         
@@ -162,7 +179,7 @@ extension ExamListViewController {
 extension ExamListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let folder = dataSource.itemIdentifier(for: indexPath) {
-            coordinator?.showExam(with: folder)
+//            coordinator?.showExam(with: folder)
         }
     }
 }
@@ -173,5 +190,5 @@ extension ExamListViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.backgroundColor = .systemGroupedBackground
     }
-
+    
 }

@@ -29,7 +29,7 @@ class VocaListViewModel: NSObject {
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, VocaItem>
     typealias SectionSnapshot = NSDiffableDataSourceSectionSnapshot<VocaItem>
     
-    lazy var coreDataStack = CoreDataStack(modelName: "Voca")
+    let coreDataStack: CoreDataStack
     var currentSearchText = ""
     var predicate: NSPredicate?
     var vocaSectionFetchedController: NSFetchedResultsController<VocaSection>!
@@ -45,6 +45,10 @@ class VocaListViewModel: NSObject {
         }
     }
     var currentMode: Mode = .folder
+    
+    init(coreDataStack: CoreDataStack) {
+        self.coreDataStack = coreDataStack
+    }
     
     func fetchData() {
         loadSavedData()

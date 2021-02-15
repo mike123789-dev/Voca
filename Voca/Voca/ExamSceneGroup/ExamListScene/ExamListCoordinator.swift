@@ -16,8 +16,19 @@ class ExamListCoordinator: NSObject, Coordinator, UINavigationControllerDelegate
     }
 
     func start() {
+//        navigationController.delegate = self
+//        let vc = ExamListViewController.instantiate()
+//        vc.coordinator = self
+//        navigationController.pushViewController(vc, animated: false)
+    }
+    
+    func start(with coreDataStack: CoreDataStack) {
         navigationController.delegate = self
-        let vc = ExamListViewController.instantiate()
+        let viewmodel = ExamListViewModel(coreDataStack: coreDataStack)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyboard.instantiateViewController(identifier: "ExamListViewController", creator: { coder in
+            return ExamListViewController(coder: coder, viewModel: viewmodel)
+        })
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }

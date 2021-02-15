@@ -15,7 +15,7 @@ class ExamCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var averageScoreLabel: UILabel!
     @IBOutlet weak var RecentScoreLabel: UILabel!
     
-    func configure(with folder: VocaSectionModel) {
+    func configure(with folder: VocaSection) {
         folderLabel.text = folder.title
 //        dateLabel.text = folder.date.description
         vocaCountLabel.text = "총 \(folder.vocas.count) 단어"
