@@ -48,7 +48,7 @@
 		51C5602925C6386D00644AC4 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C5602825C6386D00644AC4 /* CameraController.swift */; };
 		51C5603125C64DC400644AC4 /* ExamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C5603025C64DC400644AC4 /* ExamCollectionViewCell.swift */; };
 		51C5603A25C6F63700644AC4 /* ExamHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51C5603925C6F63600644AC4 /* ExamHeaderCollectionReusableView.swift */; };
-		51D07BA625C3EDB100DA2F69 /* SwipeCardsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07BA525C3EDB100DA2F69 /* SwipeCardsDataSource.swift */; };
+		51D07BA625C3EDB100DA2F69 /* SwipeCardsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07BA525C3EDB100DA2F69 /* SwipeCardsProtocols.swift */; };
 		51D07BAE25C3EDD800DA2F69 /* SwipeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07BAD25C3EDD800DA2F69 /* SwipeCardView.swift */; };
 		51D07BB625C3EE0400DA2F69 /* StackViewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D07BB525C3EE0400DA2F69 /* StackViewContainer.swift */; };
 		51D07BBE25C453F400DA2F69 /* ResultView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51D07BBD25C453F400DA2F69 /* ResultView.xib */; };
@@ -127,7 +127,7 @@
 		51C5602825C6386D00644AC4 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		51C5603025C64DC400644AC4 /* ExamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamCollectionViewCell.swift; sourceTree = "<group>"; };
 		51C5603925C6F63600644AC4 /* ExamHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExamHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
-		51D07BA525C3EDB100DA2F69 /* SwipeCardsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardsDataSource.swift; sourceTree = "<group>"; };
+		51D07BA525C3EDB100DA2F69 /* SwipeCardsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardsProtocols.swift; sourceTree = "<group>"; };
 		51D07BAD25C3EDD800DA2F69 /* SwipeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardView.swift; sourceTree = "<group>"; };
 		51D07BB525C3EE0400DA2F69 /* StackViewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewContainer.swift; sourceTree = "<group>"; };
 		51D07BBD25C453F400DA2F69 /* ResultView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultView.xib; sourceTree = "<group>"; };
@@ -378,7 +378,7 @@
 			isa = PBXGroup;
 			children = (
 				513DE9CD25C2D9BC00810997 /* ExamViewController.swift */,
-				51D07BA525C3EDB100DA2F69 /* SwipeCardsDataSource.swift */,
+				51D07BA525C3EDB100DA2F69 /* SwipeCardsProtocols.swift */,
 				51D07BB525C3EE0400DA2F69 /* StackViewContainer.swift */,
 				51D07BAD25C3EDD800DA2F69 /* SwipeCardView.swift */,
 				51D07BD325C4EB0C00DA2F69 /* SwipeCardInfoView.swift */,
@@ -692,7 +692,7 @@
 				51D07BD425C4EB0C00DA2F69 /* SwipeCardInfoView.swift in Sources */,
 				51290D8F25C1AC0E00A3EBBB /* VocaAddCellViewModel.swift in Sources */,
 				51C5602925C6386D00644AC4 /* CameraController.swift in Sources */,
-				51D07BA625C3EDB100DA2F69 /* SwipeCardsDataSource.swift in Sources */,
+				51D07BA625C3EDB100DA2F69 /* SwipeCardsProtocols.swift in Sources */,
 				512587E725C82A3E004AAC6F /* Coordinator.swift in Sources */,
 				513DE9CE25C2D9BC00810997 /* ExamViewController.swift in Sources */,
 				51ADDF6925B9C85700E9CA18 /* VocaBrain.swift in Sources */,

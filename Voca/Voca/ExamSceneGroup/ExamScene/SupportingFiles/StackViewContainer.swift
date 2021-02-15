@@ -104,19 +104,11 @@ class StackViewContainer: UIView {
 }
 
 extension StackViewContainer: SwipeCardsDelegate {
-    
-    func didPressFavoriteButton() {
-        delegate?.didPressFavoriteButton(index: currentCardIndex)
-    }
-    
-    func swipeWillEnd(direction: SwipeCardDirection) {
-        delegate?.willSwipeCard(to: direction)
-    }
-    
-    func swipeDidEnd(on view: SwipeCardView, direction: SwipeCardDirection) {
+    func didSwipe(on view: SwipeCardView) {
         guard let datasource = dataSource else { return }
         view.removeFromSuperview()
-        delegate?.didSwipeCard(at: currentCardIndex, direction: direction)
+        //지금은 이렇게 하고있는데, 굳이 view를 넘겨야하나?
+//        delegate?.didSwipeCard(at: currentCardIndex, direction: at direction)
         currentCardIndex += 1
         
         if remainingcards > 0 {
@@ -134,5 +126,6 @@ extension StackViewContainer: SwipeCardsDelegate {
                            completion: nil)
         }
         addEmptyView()
+
     }
 }

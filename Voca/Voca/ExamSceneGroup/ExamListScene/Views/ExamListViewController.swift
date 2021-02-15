@@ -181,9 +181,9 @@ extension ExamListViewController: UICollectionViewDelegate {
         if let folder = dataSource.itemIdentifier(for: indexPath) {
             switch folder {
             case .favorite(let section):
-                coordinator?.showExam(with: section)
+                coordinator?.showExam(with: section, viewModel: viewModel)
             case .folder(let section):
-                coordinator?.showExam(with: section)
+                coordinator?.showExam(with: section, viewModel: viewModel)
             }
         }
     }

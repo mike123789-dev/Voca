@@ -18,14 +18,9 @@ protocol SwipeCardsDataSource {
 }
 
 protocol SwipeCardsDelegate: class {
-    func swipeWillEnd(direction: SwipeCardDirection)
-    func swipeDidEnd(on view: SwipeCardView, direction: SwipeCardDirection)
-    func didPressFavoriteButton()
+    func didSwipe(on view: SwipeCardView)
 }
 
 protocol SwipeStackDelegate: class {
-    func willSwipeCard(to direction: SwipeCardDirection)
-    func didSwipeCard(at index: Int, direction: SwipeCardDirection)
-    func didPressFavoriteButton(index: Int)
     func didReset()
 }

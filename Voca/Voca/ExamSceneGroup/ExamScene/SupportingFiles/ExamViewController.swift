@@ -60,30 +60,6 @@ class ExamViewController: UIViewController, Storyboarded {
                 "\($0 + 1 )  / \(self?.viewModel.vocas.count ?? 1)" }
             .assign(to: \.text, on: progressLabel)
             .store(in: &subscriptions)
-        viewModel.willSwipePublisher
-            .sink { [weak self] direction in
-                guard let self = self else { return }
-                UIView.animate(withDuration: 0.3,
-                               delay: 0,
-                               usingSpringWithDamping: 0.7,
-                               initialSpringVelocity: 3.0,
-                               options: .curveEaseInOut,
-                               animations: {
-                                switch direction {
-                                case .left:
-                                    self.leftCountViewWidthConstraint.isActive = true
-                                case .right:
-                                    self.rightCountViewWidthConstraint.isActive = true
-                                case .unknown:
-                                    self.leftCountViewWidthConstraint.isActive = false
-                                    self.rightCountViewWidthConstraint.isActive = false
-                                }
-                                self.view.layoutIfNeeded()
-                                
-                               },
-                               completion: nil)
-            }
-            .store(in: &subscriptions)
     }
     
     private func setSize(_ view: UIView, to length: CGFloat) {
@@ -115,6 +91,7 @@ extension ExamViewController: SwipeCardsDataSource {
     func card(at index: Int) -> SwipeCardView {
         let card = SwipeCardView()
         card.dataSource = viewModel.vocas[index]
+        setupCardBinding(card)
         return card
     }
     
@@ -126,4 +103,42 @@ extension ExamViewController: SwipeCardsDataSource {
         nil
     }
     
+    private func setupCardBinding(_ card: SwipeCardView) {
+        card.willSwipePublisher
+            .sink { [weak self] direction in
+                guard let self = self else { return }
+                UIView.animate(withDuration: 0.3,
+                               delay: 0,
+                               usingSpringWithDamping: 0.7,
+                               initialSpringVelocity: 3.0,
+                               options: .curveEaseInOut,
+                               animations: {
+                                switch direction {
+                                case .left:
+                                    self.leftCountViewWidthConstraint.isActive = true
+                                case .right:
+                                    self.rightCountViewWidthConstraint.isActive = true
+                                case .unknown:
+                                    self.leftCountViewWidthConstraint.isActive = false
+                                    self.rightCountViewWidthConstraint.isActive = false
+                                }
+                                self.view.layoutIfNeeded()
+                                
+                               },
+                               completion: nil)
+            }
+            .store(in: &subscriptions)
+        
+        card.didSwipePublisher
+            .sink { [weak self] direction, voca in
+                self?.viewModel.swipe(voca, at: direction)
+            }
+            .store(in: &subscriptions)
+        
+        card.didPressFavoritePublisher
+            .sink { [weak self] isFavorite, voca in
+                self?.viewModel.toggleFavorite(voca, to: isFavorite)
+            }
+            .store(in: &subscriptions)
+    }
 }

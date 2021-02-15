@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 class SwipeCardView: CardView {
     var questionLabel = UILabel()
@@ -17,6 +18,11 @@ class SwipeCardView: CardView {
         didSet {
             questionLabel.text = "\(dataSource?.question ?? "")"
             answerLabel.text = "\(dataSource?.answer ?? "")"
+            if dataSource?.isFavorite ?? true {
+                favoriteButton.isSelected = true
+            } else {
+                favoriteButton.isSelected = false
+            }
         }
     }
     var isAnswerHidden = true {
@@ -31,6 +37,10 @@ class SwipeCardView: CardView {
     }
     var divisor: CGFloat = 0
     let swipeThreshold: CGFloat = 100
+    
+    let willSwipePublisher = PassthroughSubject<SwipeCardDirection, Never>()
+    let didSwipePublisher = PassthroughSubject<(SwipeCardDirection, Voca), Never>()
+    let didPressFavoritePublisher = PassthroughSubject<(Bool, Voca), Never>()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -79,7 +89,8 @@ class SwipeCardView: CardView {
     }
     
     private func setupButton() {
-        favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+        favoriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+        favoriteButton.setImage(UIImage(systemName: "star.fill"), for: .selected)
         favoriteButton.tintColor = .systemYellow
         favoriteButton.sizeToFit()
         favoriteButton.addTarget(self,
@@ -113,8 +124,10 @@ class SwipeCardView: CardView {
                                                     action: #selector(handlePanGesture)))
     }
     
-    @objc func didTapFavoriteButton(){
-        delegate?.didPressFavoriteButton()
+    @objc func didTapFavoriteButton() {
+        guard let voca = dataSource else { return }
+        favoriteButton.isSelected.toggle()
+        didPressFavoritePublisher.send((favoriteButton.isSelected, voca))
     }
     
     @objc func handleTap() {
@@ -122,7 +135,8 @@ class SwipeCardView: CardView {
     }
     
     @objc func handlePanGesture(sender: UIPanGestureRecognizer) {
-        guard let card = sender.view as? SwipeCardView else { return }
+        guard let card = sender.view as? SwipeCardView,
+              let voca = dataSource else { return }
         let translation = sender.translation(in: self)
         let centerOfParentContainer = CGPoint(x: self.frame.width / 2,
                                               y: self.frame.height / 2)
@@ -132,7 +146,8 @@ class SwipeCardView: CardView {
         switch sender.state {
         case .ended:
             if translation.x > swipeThreshold {
-                delegate?.swipeDidEnd(on: card, direction: .right)
+                delegate?.didSwipe(on: card)
+                didSwipePublisher.send((.right, voca))
                 UIView.animate(withDuration: 1,
                                animations: {
                                 card.center = CGPoint(x: card.center.x + 200,
@@ -143,7 +158,8 @@ class SwipeCardView: CardView {
                                completion: nil)
                 return
             } else if translation.x < -swipeThreshold {
-                delegate?.swipeDidEnd(on: card, direction: .left)
+                delegate?.didSwipe(on: card)
+                didSwipePublisher.send((.left, voca))
                 UIView.animate(withDuration: 1,
                                animations: {
                                 card.center = CGPoint(x: card.center.x - 200,
@@ -165,11 +181,11 @@ class SwipeCardView: CardView {
             card.transform = CGAffineTransform(rotationAngle: rotation)
             configureInfoView(difference: translation.x)
             if translation.x > swipeThreshold {
-                delegate?.swipeWillEnd(direction: .right)
+                willSwipePublisher.send(.right)
             } else if translation.x < -swipeThreshold {
-                delegate?.swipeWillEnd(direction: .left)
+                willSwipePublisher.send(.left)
             } else {
-                delegate?.swipeWillEnd(direction: .unknown)
+                willSwipePublisher.send(.unknown)
             }
         default:
             break

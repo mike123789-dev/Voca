@@ -8,14 +8,19 @@
 import Foundation
 import Combine
 
+protocol ExamDelegate: class {
+    func save()
+}
+
 class ExamViewModel {
     var vocas: [Voca] = []
     @Published var currentIndex = 0
     @Published var progressPercent: Float = 0
     @Published var leftCount = 0
     @Published var rightCount = 0
-
+    
     let willSwipePublisher = PassthroughSubject<SwipeCardDirection, Never>()
+    weak var delegate: ExamDelegate?
     
     func configureInitialState() {
         currentIndex = 0
@@ -24,15 +29,7 @@ class ExamViewModel {
         progressPercent = 1 / Float(vocas.count)
     }
     
-}
-
-extension ExamViewModel: SwipeStackDelegate {
-    
-    func willSwipeCard(to direction: SwipeCardDirection) {
-        willSwipePublisher.send(direction)
-    }
-    
-    func didSwipeCard(at index: Int, direction: SwipeCardDirection) {
+    func swipe(_ voca: Voca, at direction: SwipeCardDirection) {
         let updatedIndex = currentIndex + 1
         currentIndex = min(updatedIndex, vocas.count - 1)
         progressPercent = Float(currentIndex + 1) / Float(vocas.count)
@@ -48,12 +45,15 @@ extension ExamViewModel: SwipeStackDelegate {
         }
     }
     
-    func didPressFavoriteButton(index: Int) {
-        print("favorited : \(index)")
+    func toggleFavorite(_ voca: Voca, to isFavorite: Bool) {
+        voca.isFavorite.toggle()
+        delegate?.save()
     }
-    
+
+}
+
+extension ExamViewModel: SwipeStackDelegate {
     func didReset() {
         configureInitialState()
     }
-    
 }

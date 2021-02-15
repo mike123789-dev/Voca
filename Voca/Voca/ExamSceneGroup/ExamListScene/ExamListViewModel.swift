@@ -67,3 +67,11 @@ class ExamListViewModel: NSObject {
     }
 
 }
+
+extension ExamListViewModel: ExamDelegate {
+    
+    func save() {
+        coreDataStack.saveContext()
+    }
+    
+}
