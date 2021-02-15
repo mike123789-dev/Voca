@@ -260,6 +260,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h72-9Z-Ua2">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4Y-Fp-Cx4">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLp-V8-3Ir">
                                         <rect key="frame" x="182" y="708" width="50" height="50"/>
                                         <constraints>
@@ -270,6 +274,9 @@
                                             <imageReference key="image" image="camera.circle.fill" catalog="system" symbolScale="large"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
+                                        <connections>
+                                            <action selector="didPressCameraButton:" destination="tzO-BQ-afH" eventType="touchUpInside" id="oQN-JL-AJ9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ouD-mh-5t0">
                                         <rect key="frame" x="350" y="20" width="44" height="44"/>
@@ -278,22 +285,20 @@
                                             <constraint firstAttribute="width" constant="44" id="UNH-lM-oxd"/>
                                         </constraints>
                                         <state key="normal" image="flashlight.on.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="didPressTorchButton:" destination="tzO-BQ-afH" eventType="touchUpInside" id="opq-Hm-Daf"/>
+                                        </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mnb-Jp-bc8">
-                                        <rect key="frame" x="82" y="239" width="250" height="340"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="250" id="4dC-zy-EMb"/>
-                                            <constraint firstAttribute="height" constant="340" id="8PY-rd-aAh"/>
-                                        </constraints>
-                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="F4Y-Fp-Cx4" secondAttribute="trailing" id="PRC-2y-Noa"/>
+                                    <constraint firstItem="F4Y-Fp-Cx4" firstAttribute="top" secondItem="h72-9Z-Ua2" secondAttribute="top" id="Y9e-Fi-GUc"/>
+                                    <constraint firstAttribute="bottom" secondItem="F4Y-Fp-Cx4" secondAttribute="bottom" id="b7g-69-J3J"/>
                                     <constraint firstItem="ouD-mh-5t0" firstAttribute="top" secondItem="h72-9Z-Ua2" secondAttribute="top" constant="20" id="dao-eV-6WK"/>
-                                    <constraint firstItem="mnb-Jp-bc8" firstAttribute="centerY" secondItem="h72-9Z-Ua2" secondAttribute="centerY" id="dwk-N9-iDC"/>
                                     <constraint firstAttribute="bottom" secondItem="CLp-V8-3Ir" secondAttribute="bottom" constant="60" id="hBU-a2-b6m"/>
                                     <constraint firstAttribute="trailing" secondItem="ouD-mh-5t0" secondAttribute="trailing" constant="20" id="j7f-B4-Ifk"/>
-                                    <constraint firstItem="mnb-Jp-bc8" firstAttribute="centerX" secondItem="h72-9Z-Ua2" secondAttribute="centerX" id="jca-t9-vym"/>
+                                    <constraint firstItem="F4Y-Fp-Cx4" firstAttribute="leading" secondItem="h72-9Z-Ua2" secondAttribute="leading" id="twC-0x-9p1"/>
                                     <constraint firstItem="CLp-V8-3Ir" firstAttribute="centerX" secondItem="h72-9Z-Ua2" secondAttribute="centerX" id="xr5-O7-Wap"/>
                                 </constraints>
                             </view>
@@ -308,13 +313,12 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="capturePreview" destination="h72-9Z-Ua2" id="G6K-IO-xKt"/>
-                        <outlet property="imageView" destination="mnb-Jp-bc8" id="rhi-eL-dZn"/>
+                        <outlet property="preview" destination="F4Y-Fp-Cx4" id="iQ7-Km-LTm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M4J-Sh-O77" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2778" y="119"/>
+            <point key="canvasLocation" x="2776.811594202899" y="118.52678571428571"/>
         </scene>
         <!--Section 제목-->
         <scene sceneID="8fU-nm-c6V">

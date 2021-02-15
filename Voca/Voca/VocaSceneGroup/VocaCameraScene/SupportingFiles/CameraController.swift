@@ -8,6 +8,7 @@
 import Foundation
 import AVFoundation
 import UIKit
+import Vision
 
 class CameraController: NSObject {
     enum CameraControllerError: Swift.Error {
@@ -24,6 +25,8 @@ class CameraController: NSObject {
     var photoOutput: AVCapturePhotoOutput?
     var videoOutput: AVCaptureVideoDataOutput?
     var previewLayer: AVCaptureVideoPreviewLayer?
+    
+    var requests = [VNRequest]()
     
     func prepare(completionHandler: @escaping (Error?) -> Void) {
         
@@ -117,5 +120,22 @@ class CameraController: NSObject {
 }
 
 extension CameraController: AVCaptureVideoDataOutputSampleBufferDelegate {
-    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        
+        var requestOptions:[VNImageOption : Any] = [:]
+        
+        if let camData = CMGetAttachment(sampleBuffer, key: kCMSampleBufferAttachmentKey_CameraIntrinsicMatrix, attachmentModeOut: nil) {
+            requestOptions = [.cameraIntrinsics:camData]
+        }
+        
+        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: CGImagePropertyOrientation(rawValue: 6)!, options: requestOptions)
+        
+        do {
+            try imageRequestHandler.perform(self.requests)
+        } catch {
+            print(error)
+        }
+    }
+
 }

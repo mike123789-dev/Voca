@@ -39,6 +39,18 @@ class VocaListViewController: UIViewController, Storyboarded {
         UIView.performWithoutAnimation {
           viewModel.fetchData()
         }
+        let folders = dataSource.snapshot().sectionIdentifiers.map({ section -> String? in
+            switch section {
+            case .folder(count: _, title: let title):
+                return title
+            case .favorite(count: _):
+                return nil
+            case .search:
+                return nil
+            }
+        })
+        coordinator?.showAdd(with: folders.compactMap { $0 }, viewModel: viewModel)
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {

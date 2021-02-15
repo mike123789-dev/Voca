@@ -15,7 +15,7 @@ class MainTabBarController: UITabBarController, Storyboarded {
     override func viewDidLoad() {
         self.delegate = self
         super.viewDidLoad()
-        viewControllers = [voca.navigationController, exam.navigationController]
+        viewControllers = [voca.navigationController, exam.navigationController, ]
         setupBaritems()
         voca.start(with: coreDataStack)
         exam.start(with: coreDataStack)
