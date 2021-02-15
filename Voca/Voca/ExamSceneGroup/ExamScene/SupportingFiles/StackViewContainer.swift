@@ -31,7 +31,7 @@ class StackViewContainer: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
-        backgroundColor = .clear
+        backgroundColor = .red
     }
     
     required init?(coder aDecoder: NSCoder) {

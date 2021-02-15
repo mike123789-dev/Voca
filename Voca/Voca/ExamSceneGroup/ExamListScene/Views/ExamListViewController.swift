@@ -179,7 +179,12 @@ extension ExamListViewController {
 extension ExamListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let folder = dataSource.itemIdentifier(for: indexPath) {
-//            coordinator?.showExam(with: folder)
+            switch folder {
+            case .favorite(let section):
+                coordinator?.showExam(with: section)
+            case .folder(let section):
+                coordinator?.showExam(with: section)
+            }
         }
     }
 }

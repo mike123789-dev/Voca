@@ -33,13 +33,13 @@ class ExamListCoordinator: NSObject, Coordinator, UINavigationControllerDelegate
         navigationController.pushViewController(vc, animated: false)
     }
     
-    func showExam(with folder: VocaSectionModel) {
+    func showExam(with folder: VocaSection) {
         let examCoordinator = ExamCoordinator(navigationController: navigationController)
         examCoordinator.parentCoordinator = self
         
         let vc = ExamViewController.instantiate()
         vc.coordinator = examCoordinator
-        vc.viewModel.vocas = folder.vocas
+        vc.viewModel.vocas = folder.vocaArray
         vc.navigationItem.title = folder.title
         
         navigationController.pushViewController(vc, animated: true)

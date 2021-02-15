@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 class ExamViewModel {
-    var vocas: [AddVocaModel] = TestData.section3.vocas
+    var vocas: [Voca] = []
     @Published var currentIndex = 0
     @Published var progressPercent: Float = 0
     @Published var leftCount = 0

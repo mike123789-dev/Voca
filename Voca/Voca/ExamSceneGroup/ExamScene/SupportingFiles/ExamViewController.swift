@@ -31,6 +31,7 @@ class ExamViewController: UIViewController, Storyboarded {
         stackViewContainer.delegate = self.viewModel
         setupBinding()
         setupConstraints(isActive: false)
+        setupView()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -93,6 +94,10 @@ class ExamViewController: UIViewController, Storyboarded {
     private func setupConstraints(isActive: Bool) {
         leftCountViewWidthConstraint.isActive = isActive
         rightCountViewWidthConstraint.isActive = isActive
+    }
+    
+    private func setupView() {
+        view.backgroundColor = .systemGroupedBackground
     }
     
     @IBAction func didTapResetButton(_ sender: Any) {

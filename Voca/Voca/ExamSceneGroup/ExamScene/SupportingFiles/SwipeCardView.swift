@@ -13,7 +13,7 @@ class SwipeCardView: CardView {
     var favoriteButton = UIButton()
     var infoView = SwipeCardInfoView()
     weak var delegate: SwipeCardsDelegate?
-    var dataSource: AddVocaModel? {
+    var dataSource: Voca? {
         didSet {
             questionLabel.text = "\(dataSource?.question ?? "")"
             answerLabel.text = "\(dataSource?.answer ?? "")"
