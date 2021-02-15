@@ -32,7 +32,6 @@ class VocaListCoordinator: NSObject, Coordinator, UINavigationControllerDelegate
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }
-
     
     func showAdd(with folders: [String], viewModel: VocaListViewModel) {
         let vocaAddCoordinator = VocaAddCoordinator(navigationController: navigationController)

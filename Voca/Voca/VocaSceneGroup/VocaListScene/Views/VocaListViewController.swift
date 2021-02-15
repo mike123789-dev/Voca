@@ -180,12 +180,11 @@ extension VocaListViewController {
                 content.text = title
                 let headerDisclosureOption = UICellAccessory.OutlineDisclosureOptions(style: .header)
                 cell.accessories = [.outlineDisclosure(options:headerDisclosureOption)]
-            case .favorite(count: let count):
+            case .favorite(count: _):
                 content.text = "즐겨찾기"
                 cell.accessories = []
             case .search:
                 cell.accessories = []
-                break
             }
             cell.contentConfiguration = content
         }

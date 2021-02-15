@@ -193,7 +193,7 @@ extension ExamListViewController {
     
     func configureNavigationController() {
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.navigationBar.backgroundColor = .systemGroupedBackground
+//        navigationController?.navigationBar.backgroundColor = .systemGroupedBackground
     }
     
 }
