@@ -63,9 +63,17 @@ class ExamViewController: UIViewController, Storyboarded {
         viewModel.didSwipePublisher
             .sink { [weak self] in
                 guard let self = self else { return  }
-                self.leftCountViewWidthConstraint.isActive = false
-                self.rightCountViewWidthConstraint.isActive = false
-                self.view.layoutIfNeeded()
+                UIView.animate(withDuration: 0.3,
+                               delay: 0,
+                               usingSpringWithDamping: 0.7,
+                               initialSpringVelocity: 3.0,
+                               options: .curveEaseInOut,
+                               animations: {
+                                self.leftCountViewWidthConstraint.isActive = false
+                                self.rightCountViewWidthConstraint.isActive = false
+                                self.view.layoutIfNeeded()
+                               }
+                )
             }
             .store(in: &subscriptions)
     }
