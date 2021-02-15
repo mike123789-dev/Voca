@@ -19,7 +19,7 @@ class ExamViewModel {
     @Published var leftCount = 0
     @Published var rightCount = 0
     
-    let willSwipePublisher = PassthroughSubject<SwipeCardDirection, Never>()
+    let didSwipePublisher = PassthroughSubject<Void, Never>()
     weak var delegate: ExamDelegate?
     
     func configureInitialState() {
@@ -33,7 +33,7 @@ class ExamViewModel {
         let updatedIndex = currentIndex + 1
         currentIndex = min(updatedIndex, vocas.count - 1)
         progressPercent = Float(currentIndex + 1) / Float(vocas.count)
-        willSwipePublisher.send(.unknown)
+        didSwipePublisher.send()
         
         switch direction {
         case .left:

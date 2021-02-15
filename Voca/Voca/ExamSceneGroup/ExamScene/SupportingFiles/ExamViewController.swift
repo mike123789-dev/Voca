@@ -60,6 +60,14 @@ class ExamViewController: UIViewController, Storyboarded {
                 "\($0 + 1 )  / \(self?.viewModel.vocas.count ?? 1)" }
             .assign(to: \.text, on: progressLabel)
             .store(in: &subscriptions)
+        viewModel.didSwipePublisher
+            .sink { [weak self] in
+                guard let self = self else { return  }
+                self.leftCountViewWidthConstraint.isActive = false
+                self.rightCountViewWidthConstraint.isActive = false
+                self.view.layoutIfNeeded()
+            }
+            .store(in: &subscriptions)
     }
     
     private func setSize(_ view: UIView, to length: CGFloat) {
